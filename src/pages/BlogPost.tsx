@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Calendar, Clock, ArrowLeft, MessageCircle } from "lucide-react";
 import { Skeleton } from "@/components/ui/skeleton";
+import SEO from "@/components/SEO";
 
 interface BlogPost {
   id: string;
@@ -99,6 +100,13 @@ const BlogPost = () => {
 
   return (
     <div className="min-h-screen pt-20 animate-fade-in">
+      {post && (
+        <SEO 
+          title={post.title}
+          description={post.subtitle || post.content.substring(0, 155)}
+          keywords="fisioterapia domiciliar Barretos, blog fisioterapia, dicas fisioterapia"
+        />
+      )}
       <article className="section-padding">
         <div className="container mx-auto max-w-4xl">
           {/* Back Button */}
@@ -146,9 +154,18 @@ const BlogPost = () => {
 
           {/* Article Content */}
           <div className="prose prose-lg max-w-none mb-16">
-            <div className="text-foreground/90 leading-relaxed whitespace-pre-wrap">
-              {post.content}
-            </div>
+            <div 
+              className="text-foreground/90 leading-relaxed"
+              dangerouslySetInnerHTML={{ 
+                __html: post.content
+                  .replace(/\n## (.*?)\n/g, '<h2 class="text-primary text-3xl font-semibold mt-12 mb-6">$1</h2>')
+                  .replace(/\n### (.*?)\n/g, '<h3 class="text-primary text-2xl font-semibold mt-8 mb-4">$1</h3>')
+                  .replace(/\*\*(.*?)\*\*/g, '<strong class="font-semibold text-foreground">$1</strong>')
+                  .replace(/\n- (.*?)(?=\n|$)/g, '<li class="ml-6 mb-2">$1</li>')
+                  .replace(/(<li.*?<\/li>)/s, '<ul class="my-6 space-y-2">$1</ul>')
+                  .replace(/\n\n/g, '<p class="mb-6"></p>')
+              }}
+            />
           </div>
 
           {/* CTA Section */}

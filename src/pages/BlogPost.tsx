@@ -20,7 +20,7 @@ const BlogPost = () => {
   const { id } = useParams<{ id: string }>();
   const [post, setPost] = useState<BlogPost | null>(null);
   const [loading, setLoading] = useState(true);
-  const whatsappLink = "https://wa.me/5517991527125";
+  const whatsappLink = "https://wa.me/5517982123269";
 
   useEffect(() => {
     const fetchPost = async () => {

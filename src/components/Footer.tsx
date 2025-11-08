@@ -63,7 +63,7 @@ const Footer = () => {
             <h4 className="font-semibold mb-4">Contato</h4>
             <ul className="space-y-2 text-sm text-primary-foreground/80">
               <li>Barretos - SP e região</li>
-              <li>(17) 99152-7125</li>
+              <li>(17) 98212-3269</li>
               <li>fisiorobertarochadomiciliar@gmail.com</li>
             </ul>
           </div>

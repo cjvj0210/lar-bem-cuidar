@@ -16,7 +16,7 @@ interface BlogPost {
 }
 
 const Blog = () => {
-  const whatsappLink = "https://wa.me/5517991527125";
+  const whatsappLink = "https://wa.me/5517982123269";
   const [posts, setPosts] = useState<BlogPost[]>([]);
   const [loading, setLoading] = useState(true);
 

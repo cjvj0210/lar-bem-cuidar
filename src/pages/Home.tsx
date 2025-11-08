@@ -42,7 +42,7 @@ const Home = () => {
                 <Button
                   size="lg"
                   className="bg-primary hover:bg-primary/90 text-primary-foreground shadow-soft"
-                  onClick={() => window.open("https://wa.me/5517991527125", "_blank")}
+                  onClick={() => window.open("https://wa.me/5517982123269", "_blank")}
                 >
                   Agende uma Avaliação
                   <ArrowRight className="ml-2 w-5 h-5" />
@@ -324,13 +324,13 @@ const Home = () => {
             <Button
               size="lg"
               className="bg-primary hover:bg-primary/90 text-primary-foreground shadow-soft"
-              onClick={() => window.open("https://wa.me/5517991527125", "_blank")}
+              onClick={() => window.open("https://wa.me/5517982123269", "_blank")}
             >
               <Phone className="w-5 h-5 mr-2" />
               Falar com Roberta
             </Button>
             <p className="text-sm text-muted-foreground">
-              Atendimento domiciliar em Barretos-SP e região • (17) 99152-7125
+              Atendimento domiciliar em Barretos-SP e região • (17) 98212-3269
             </p>
           </div>
         </div>

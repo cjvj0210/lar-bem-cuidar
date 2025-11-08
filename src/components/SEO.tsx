@@ -53,7 +53,7 @@ const SEO = ({ title, description, keywords, canonicalUrl, ogImage }: SEOProps) 
             "@type": "City",
             "name": "Barretos"
           },
-          "telephone": "+5517991527125",
+          "telephone": "+5517982123269",
           "priceRange": "$$",
           "openingHours": "Mo-Fr 08:00-18:00",
           "sameAs": [

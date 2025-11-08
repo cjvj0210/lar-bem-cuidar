@@ -35,7 +35,7 @@ const Contact = () => {
 
       // Redirecionar para WhatsApp
       const whatsappMessage = `Olá! Gostaria de agendar uma avaliação.%0A%0ANome: ${formData.name}%0ATelefone: ${formData.phone}%0AEmail: ${formData.email}%0AMensagem: ${formData.message}`;
-      window.open(`https://wa.me/5517991527125?text=${whatsappMessage}`, "_blank");
+      window.open(`https://wa.me/5517982123269?text=${whatsappMessage}`, "_blank");
       
       toast.success("Mensagem enviada! Obrigada pelo contato.");
       setFormData({ name: "", phone: "", email: "", message: "" });
@@ -45,7 +45,7 @@ const Contact = () => {
     }
   };
 
-  const whatsappLink = "https://wa.me/5517991527125";
+  const whatsappLink = "https://wa.me/5517982123269";
 
   return (
     <section id="contato" className="section-padding">
@@ -165,7 +165,7 @@ const Contact = () => {
                 <div>
                   <h4 className="font-semibold text-foreground mb-1">Telefone / WhatsApp</h4>
                   <p className="text-muted-foreground">
-                    (17) 99152-7125
+                    (17) 98212-3269
                   </p>
                   <Button
                     variant="link"

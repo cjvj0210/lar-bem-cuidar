@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import robertaImage from "@/assets/roberta-profile.jpg";
 
 const About = () => {
-  const whatsappLink = "https://wa.me/5517991527125?text=Olá! Gostaria de saber mais sobre o atendimento de fisioterapia domiciliar.";
+  const whatsappLink = "https://wa.me/5517982123269?text=Olá! Gostaria de saber mais sobre o atendimento de fisioterapia domiciliar.";
 
   return (
     <div className="bg-cream">

@@ -2,7 +2,7 @@ import { MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const WhatsAppFloating = () => {
-  const whatsappNumber = "5517991527125";
+  const whatsappNumber = "5517982123269";
   const message = "Olá! Gostaria de saber mais sobre os atendimentos de fisioterapia domiciliar.";
   
   const handleClick = () => {

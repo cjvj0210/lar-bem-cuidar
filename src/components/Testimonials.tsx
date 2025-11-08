@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Quote, Heart, MapPin } from "lucide-react";
 
 const Testimonials = () => {
-  const whatsappLink = "https://wa.me/5517991527125?text=Olá! Gostaria de agendar uma avaliação.";
+  const whatsappLink = "https://wa.me/5517982123269?text=Olá! Gostaria de agendar uma avaliação.";
 
   const testimonials = [
     {

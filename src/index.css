@@ -8,7 +8,8 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 32 40% 97%;
+    /* Cores da identidade visual Roberta Rocha */
+    --background: 32 40% 97%; /* #FDF8F1 - Fundo creme suave */
     --foreground: 0 0% 20%;
 
     --card: 0 0% 100%;
@@ -17,29 +18,31 @@ All colors MUST be HSL.
     --popover: 0 0% 100%;
     --popover-foreground: 0 0% 20%;
 
-    --primary: 151 22% 36%;
+    --primary: 151 23% 36%; /* #4B715B - Verde institucional */
     --primary-foreground: 32 40% 97%;
 
-    --secondary: 95 18% 65%;
-    --secondary-foreground: 151 22% 36%;
+    --secondary: 95 21% 68%; /* #A9BDA4 - Verde oliva claro */
+    --secondary-foreground: 151 23% 36%;
 
     --muted: 95 20% 90%;
     --muted-foreground: 0 0% 45%;
 
-    --accent: 95 18% 65%;
-    --accent-foreground: 151 22% 36%;
+    --accent: 195 43% 67%; /* #89B6C7 - Azul claro */
+    --accent-foreground: 151 23% 36%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 32 40% 97%;
 
     --border: 95 20% 88%;
     --input: 95 20% 88%;
-    --ring: 151 22% 36%;
+    --ring: 151 23% 36%;
 
     --radius: 0.75rem;
     
-    --gradient-hero: linear-gradient(135deg, hsl(151 22% 36%) 0%, hsl(95 18% 65%) 100%);
-    --shadow-soft: 0 4px 20px -2px hsl(151 22% 36% / 0.1);
+    --gradient-hero: linear-gradient(135deg, hsl(151 23% 36%) 0%, hsl(95 21% 68%) 100%);
+    --gradient-soft: linear-gradient(180deg, hsl(32 40% 97%) 0%, hsl(95 21% 90%) 100%);
+    --shadow-soft: 0 4px 20px -2px hsl(151 23% 36% / 0.1);
+    --shadow-elegant: 0 10px 30px -10px hsl(151 23% 36% / 0.2);
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
     --sidebar-background: 0 0% 98%;

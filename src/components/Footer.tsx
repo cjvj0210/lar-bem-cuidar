@@ -8,9 +8,11 @@ const Footer = () => {
         <div className="grid md:grid-cols-3 gap-8">
           <div>
             <div className="flex items-center space-x-2 mb-4">
-              <div className="w-10 h-10 rounded-full bg-primary-foreground/10 flex items-center justify-center">
-                <span className="text-primary-foreground font-bold">FR</span>
-              </div>
+              <img 
+                src="/logo.png" 
+                alt="Roberta Rocha Fisioterapeuta" 
+                className="w-12 h-12 object-contain"
+              />
               <div>
                 <h3 className="font-bold">Físio Roberta</h3>
                 <p className="text-sm text-primary-foreground/80">Atendimento Domiciliar</p>

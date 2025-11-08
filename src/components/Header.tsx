@@ -75,7 +75,7 @@ const Header = () => {
               Blog
             </Link>
             <Button
-              onClick={() => window.open("https://wa.me/5517991234567", "_blank")}
+              onClick={() => window.open("https://wa.me/5517991527125", "_blank")}
               className="bg-primary hover:bg-primary/90"
             >
               <Phone className="w-4 h-4 mr-2" />
@@ -149,7 +149,7 @@ const Header = () => {
               Blog
             </Link>
             <Button
-              onClick={() => window.open("https://wa.me/5517991234567", "_blank")}
+              onClick={() => window.open("https://wa.me/5517991527125", "_blank")}
               className="w-full bg-primary hover:bg-primary/90"
             >
               <Phone className="w-4 h-4 mr-2" />

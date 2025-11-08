@@ -7,6 +7,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { MapPin, Phone, Mail, Clock, MessageCircle, CheckCircle } from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
+import { supabase } from "@/integrations/supabase/client";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -16,19 +17,35 @@ const Contact = () => {
     message: ""
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    const whatsappMessage = `Olá! Gostaria de agendar uma avaliação.%0A%0ANome: ${formData.name}%0ATelefone: ${formData.phone}%0AEmail: ${formData.email}%0AMensagem: ${formData.message}`;
-    
-    window.open(`https://wa.me/5517991234567?text=${whatsappMessage}`, "_blank");
-    
-    toast.success("Redirecionando para WhatsApp...");
-    
-    setFormData({ name: "", phone: "", email: "", message: "" });
+    try {
+      // Salvar mensagem no banco de dados
+      const { error } = await supabase
+        .from('contact_messages')
+        .insert({
+          name: formData.name,
+          phone: formData.phone,
+          email: formData.email || null,
+          message: formData.message
+        });
+
+      if (error) throw error;
+
+      // Redirecionar para WhatsApp
+      const whatsappMessage = `Olá! Gostaria de agendar uma avaliação.%0A%0ANome: ${formData.name}%0ATelefone: ${formData.phone}%0AEmail: ${formData.email}%0AMensagem: ${formData.message}`;
+      window.open(`https://wa.me/5517991527125?text=${whatsappMessage}`, "_blank");
+      
+      toast.success("Mensagem enviada! Obrigada pelo contato.");
+      setFormData({ name: "", phone: "", email: "", message: "" });
+    } catch (error) {
+      console.error('Erro ao salvar mensagem:', error);
+      toast.error("Erro ao enviar mensagem. Por favor, tente novamente.");
+    }
   };
 
-  const whatsappLink = "https://wa.me/5517991234567";
+  const whatsappLink = "https://wa.me/5517991527125";
 
   return (
     <section id="contato" className="section-padding">
@@ -148,7 +165,7 @@ const Contact = () => {
                 <div>
                   <h4 className="font-semibold text-foreground mb-1">Telefone / WhatsApp</h4>
                   <p className="text-muted-foreground">
-                    (17) 99123-4567
+                    (17) 99152-7125
                   </p>
                   <Button
                     variant="link"

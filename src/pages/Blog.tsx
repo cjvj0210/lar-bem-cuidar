@@ -1,47 +1,55 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Calendar, Clock, ArrowRight, MessageCircle } from "lucide-react";
+import { useEffect, useState } from "react";
+import { supabase } from "@/integrations/supabase/client";
+
+interface BlogPost {
+  id: string;
+  title: string;
+  subtitle: string | null;
+  content: string;
+  created_at: string;
+}
 
 const Blog = () => {
-  const whatsappLink = "https://wa.me/5517991234567";
+  const whatsappLink = "https://wa.me/5517991527125";
+  const [posts, setPosts] = useState<BlogPost[]>([]);
+  const [loading, setLoading] = useState(true);
 
-  const posts = [
-    {
-      title: "5 exercícios simples para fazer em casa com segurança",
-      description: "Movimentos suaves e eficazes que ajudam a manter a mobilidade, fortalecer o corpo e prevenir quedas.",
-      date: "Há 3 dias",
-      readTime: "5 min",
-      content: "Manter-se ativo em casa é fundamental para preservar a saúde e a independência. Descubra exercícios que podem ser realizados com segurança, sem equipamentos especiais."
-    },
-    {
-      title: "Como prevenir quedas na terceira idade?",
-      description: "Dicas práticas e orientações para tornar o ambiente doméstico mais seguro e prevenir acidentes.",
-      date: "Semana passada",
-      readTime: "6 min",
-      content: "A prevenção de quedas é fundamental para a qualidade de vida dos idosos. Pequenas mudanças no ambiente e exercícios específicos podem fazer toda a diferença."
-    },
-    {
-      title: "Fisioterapia após AVC: o que esperar?",
-      description: "Entenda como a fisioterapia neurológica auxilia na recuperação e reabilitação após um AVC.",
-      date: "Há 2 semanas",
-      readTime: "7 min",
-      content: "A recuperação após um AVC é uma jornada que requer paciência, técnica e dedicação. A fisioterapia domiciliar oferece um caminho de esperança e progresso real."
-    },
-    {
-      title: "Cuidar de quem cuida: a importância do descanso do cuidador",
-      description: "Como familiares e cuidadores podem preservar sua própria saúde física e emocional.",
-      date: "Há 3 semanas",
-      readTime: "5 min",
-      content: "Cuidar de alguém que amamos é uma tarefa nobre, mas também exigente. É fundamental que o cuidador também cuide de si mesmo para continuar oferecendo o melhor."
-    },
-    {
-      title: "A diferença entre fisioterapia ortopédica e neurológica",
-      description: "Conheça as particularidades de cada abordagem e qual pode ser mais adequada para você.",
-      date: "Há 1 mês",
-      readTime: "6 min",
-      content: "Cada especialidade fisioterapêutica tem suas técnicas e objetivos específicos. Entender essas diferenças ajuda a tomar decisões mais conscientes sobre o tratamento."
-    }
-  ];
+  useEffect(() => {
+    const fetchPosts = async () => {
+      try {
+        const { data, error } = await supabase
+          .from('blog_posts')
+          .select('*')
+          .eq('published', true)
+          .order('created_at', { ascending: false });
+
+        if (error) throw error;
+        setPosts(data || []);
+      } catch (error) {
+        console.error('Erro ao carregar posts:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchPosts();
+  }, []);
+
+  const formatDate = (dateString: string) => {
+    const date = new Date(dateString);
+    const now = new Date();
+    const diffInDays = Math.floor((now.getTime() - date.getTime()) / (1000 * 60 * 60 * 24));
+
+    if (diffInDays === 0) return "Hoje";
+    if (diffInDays === 1) return "Ontem";
+    if (diffInDays <= 7) return `Há ${diffInDays} dias`;
+    if (diffInDays <= 30) return `Há ${Math.floor(diffInDays / 7)} semanas`;
+    
+    return date.toLocaleDateString('pt-BR', { day: '2-digit', month: 'long', year: 'numeric' });
+  };
 
   return (
     <div className="min-h-screen pt-20 animate-fade-in">
@@ -55,47 +63,59 @@ const Blog = () => {
           </div>
 
           <div className="grid md:grid-cols-2 gap-8 mb-20">
-            {posts.map((post, index) => (
-              <Card 
-                key={index}
-                className="border-2 hover:shadow-lg transition-all duration-300 hover:scale-[1.03] animate-fade-in flex flex-col"
-                style={{ animationDelay: `${index * 100}ms` }}
-              >
-                <CardHeader>
-                  <CardTitle className="text-foreground text-xl leading-snug">
-                    {post.title}
-                  </CardTitle>
-                  <CardDescription className="text-muted-foreground text-base">
-                    {post.description}
-                  </CardDescription>
-                </CardHeader>
-                <CardContent className="space-y-4 flex-1 flex flex-col">
-                  <p className="text-muted-foreground line-clamp-3 flex-1">
-                    {post.content}
-                  </p>
-                  <div className="flex items-center justify-between pt-4 border-t">
-                    <div className="flex items-center gap-4 text-sm text-muted-foreground">
-                      <div className="flex items-center gap-1">
-                        <Calendar className="w-4 h-4" />
-                        <span>{post.date}</span>
+            {loading ? (
+              <p className="col-span-2 text-center text-muted-foreground">Carregando posts...</p>
+            ) : posts.length === 0 ? (
+              <div className="col-span-2 text-center py-12">
+                <p className="text-lg text-muted-foreground">
+                  Ainda não publiquei nenhum conteúdo, mas em breve teremos dicas valiosas por aqui!
+                </p>
+              </div>
+            ) : (
+              posts.map((post, index) => (
+                <Card 
+                  key={post.id}
+                  className="border-2 hover:shadow-lg transition-all duration-300 hover:scale-[1.03] animate-fade-in flex flex-col"
+                  style={{ animationDelay: `${index * 100}ms` }}
+                >
+                  <CardHeader>
+                    <CardTitle className="text-foreground text-xl leading-snug">
+                      {post.title}
+                    </CardTitle>
+                    {post.subtitle && (
+                      <CardDescription className="text-muted-foreground text-base">
+                        {post.subtitle}
+                      </CardDescription>
+                    )}
+                  </CardHeader>
+                  <CardContent className="space-y-4 flex-1 flex flex-col">
+                    <p className="text-muted-foreground line-clamp-3 flex-1">
+                      {post.content.substring(0, 200)}...
+                    </p>
+                    <div className="flex items-center justify-between pt-4 border-t">
+                      <div className="flex items-center gap-4 text-sm text-muted-foreground">
+                        <div className="flex items-center gap-1">
+                          <Calendar className="w-4 h-4" />
+                          <span>{formatDate(post.created_at)}</span>
+                        </div>
+                        <div className="flex items-center gap-1">
+                          <Clock className="w-4 h-4" />
+                          <span>{Math.ceil(post.content.split(' ').length / 200)} min</span>
+                        </div>
                       </div>
-                      <div className="flex items-center gap-1">
-                        <Clock className="w-4 h-4" />
-                        <span>{post.readTime}</span>
-                      </div>
+                      <Button 
+                        variant="ghost" 
+                        size="sm"
+                        className="text-primary hover:text-primary/80"
+                      >
+                        Ler mais
+                        <ArrowRight className="w-4 h-4 ml-1" />
+                      </Button>
                     </div>
-                    <Button 
-                      variant="ghost" 
-                      size="sm"
-                      className="text-primary hover:text-primary/80"
-                    >
-                      Ler mais
-                      <ArrowRight className="w-4 h-4 ml-1" />
-                    </Button>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
+                  </CardContent>
+                </Card>
+              ))
+            )}
           </div>
 
           <Card className="border-2 bg-primary/5 animate-fade-in">

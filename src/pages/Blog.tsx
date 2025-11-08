@@ -12,6 +12,7 @@ interface BlogPost {
   subtitle: string | null;
   content: string;
   created_at: string;
+  image_url: string | null;
 }
 
 const Blog = () => {
@@ -82,9 +83,18 @@ const Blog = () => {
               posts.map((post, index) => (
                 <Card 
                   key={post.id}
-                  className="border-2 hover:shadow-lg transition-all duration-300 hover:scale-[1.03] animate-fade-in flex flex-col"
+                  className="border-2 hover:shadow-lg transition-all duration-300 hover:scale-[1.03] animate-fade-in flex flex-col overflow-hidden"
                   style={{ animationDelay: `${index * 100}ms` }}
                 >
+                  {post.image_url && (
+                    <div className="w-full h-48 overflow-hidden">
+                      <img 
+                        src={post.image_url} 
+                        alt={`${post.title} - Fisioterapeuta Roberta Rocha atendendo paciente em Barretos-SP`}
+                        className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                      />
+                    </div>
+                  )}
                   <CardHeader>
                     <CardTitle className="text-foreground text-xl leading-snug">
                       {post.title}

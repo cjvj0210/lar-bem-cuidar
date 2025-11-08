@@ -143,10 +143,10 @@ const BlogPost = () => {
 
           {/* Featured Image */}
           {post.image_url && (
-            <div className="mb-12 rounded-2xl overflow-hidden">
+            <div className="mb-12 rounded-2xl overflow-hidden shadow-elegant">
               <img
                 src={post.image_url}
-                alt={post.title}
+                alt={`${post.title} - Fisioterapeuta Roberta Rocha atendendo paciente em domicílio em Barretos-SP`}
                 className="w-full h-auto object-cover"
               />
             </div>

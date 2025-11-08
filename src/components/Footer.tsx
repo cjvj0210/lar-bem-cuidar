@@ -33,7 +33,7 @@ const Footer = () => {
               </li>
               <li>
                 <Link to="/sobre" className="hover:text-primary-foreground transition-smooth">
-                  Sobre Mim
+                  Sobre
                 </Link>
               </li>
               <li>
@@ -63,8 +63,8 @@ const Footer = () => {
             <h4 className="font-semibold mb-4">Contato</h4>
             <ul className="space-y-2 text-sm text-primary-foreground/80">
               <li>Barretos - SP e região</li>
-              <li>(17) 99123-4567</li>
-              <li>contato@fisioroberta.com.br</li>
+              <li>(17) 99152-7125</li>
+              <li>fisiorobertarochadomiciliar@gmail.com</li>
             </ul>
           </div>
         </div>

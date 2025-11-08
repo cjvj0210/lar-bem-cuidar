@@ -186,7 +186,7 @@ const Contact = () => {
                 <div>
                   <h4 className="font-semibold text-foreground mb-1">Email</h4>
                   <p className="text-muted-foreground">
-                    contato@fisioroberta.com.br
+                    fisiorobertarochadomiciliar@gmail.com
                   </p>
                 </div>
               </CardContent>

@@ -17,11 +17,11 @@ const Header = () => {
             <img 
               src="/logo.png" 
               alt="Roberta Rocha Fisioterapeuta" 
-              className="w-12 h-12 object-contain"
+              className="w-16 h-16 md:w-20 md:h-20 object-contain"
             />
             <div>
-              <h1 className="text-xl font-bold text-foreground">Físio Roberta</h1>
-              <p className="text-xs text-muted-foreground">Atendimento Domiciliar</p>
+              <h1 className="text-xl md:text-2xl font-bold text-foreground">Físio Roberta</h1>
+              <p className="text-xs md:text-sm text-muted-foreground">Atendimento Domiciliar</p>
             </div>
           </Link>
 

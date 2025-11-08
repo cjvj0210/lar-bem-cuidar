@@ -3,7 +3,8 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import { MapPin, Phone, Mail, Clock } from "lucide-react";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { MapPin, Phone, Mail, Clock, MessageCircle, CheckCircle } from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
 
@@ -27,13 +28,15 @@ const Contact = () => {
     setFormData({ name: "", phone: "", email: "", message: "" });
   };
 
+  const whatsappLink = "https://wa.me/5517991234567";
+
   return (
     <section id="contato" className="section-padding">
       <div className="container-custom">
         <div className="text-center max-w-3xl mx-auto mb-16 animate-fade-in">
-          <h2 className="text-primary mb-4">Contato</h2>
+          <h2 className="text-primary mb-4">Vamos conversar com calma?</h2>
           <p className="text-lg text-muted-foreground">
-            Agende sua avaliação gratuita. Vamos cuidar disso juntos.
+            Estou à disposição para tirar dúvidas, explicar os atendimentos e agendar sua avaliação.
           </p>
         </div>
 
@@ -83,7 +86,7 @@ const Contact = () => {
                   <Label htmlFor="message">Mensagem</Label>
                   <Textarea
                     id="message"
-                    placeholder="Conte-me um pouco sobre sua necessidade..."
+                    placeholder="Ex: Gostaria de atendimento para minha mãe, que teve um AVC."
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     required
@@ -92,9 +95,33 @@ const Contact = () => {
                 </div>
 
                 <Button type="submit" className="w-full bg-primary hover:bg-primary/90">
-                  Enviar pelo WhatsApp
+                  Enviar mensagem
                 </Button>
               </form>
+            </CardContent>
+          </Card>
+
+          <Card className="border-2 bg-primary/5 animate-fade-in">
+            <CardContent className="pt-6 text-center space-y-4">
+              <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto">
+                <MessageCircle className="w-8 h-8 text-primary" />
+              </div>
+              <h3 className="text-xl font-semibold text-foreground">
+                Prefere falar diretamente pelo WhatsApp?
+              </h3>
+              <p className="text-muted-foreground">
+                Clique no botão abaixo e converse comigo agora mesmo.
+              </p>
+              <Button
+                size="lg"
+                className="w-full bg-primary hover:bg-primary/90"
+                onClick={() => window.open(whatsappLink, "_blank")}
+              >
+                Falar com Roberta
+              </Button>
+              <p className="text-sm text-muted-foreground italic">
+                Fique à vontade para me enviar uma mensagem — sem compromisso.
+              </p>
             </CardContent>
           </Card>
 
@@ -119,14 +146,14 @@ const Contact = () => {
                   <Phone className="w-6 h-6 text-primary" />
                 </div>
                 <div>
-                  <h4 className="font-semibold text-foreground mb-1">Telefone</h4>
+                  <h4 className="font-semibold text-foreground mb-1">Telefone / WhatsApp</h4>
                   <p className="text-muted-foreground">
                     (17) 99123-4567
                   </p>
                   <Button
                     variant="link"
                     className="p-0 h-auto text-primary"
-                    onClick={() => window.open("https://wa.me/5517991234567", "_blank")}
+                    onClick={() => window.open(whatsappLink, "_blank")}
                   >
                     Chamar no WhatsApp
                   </Button>
@@ -162,6 +189,79 @@ const Contact = () => {
                 </div>
               </CardContent>
             </Card>
+          </div>
+        </div>
+
+        <div className="mt-20 max-w-4xl mx-auto animate-fade-in">
+          <div className="text-center mb-12">
+            <h3 className="text-2xl font-semibold text-foreground mb-4">
+              Atendimento domiciliar em Barretos-SP e região
+            </h3>
+            <p className="text-muted-foreground">
+              Se tiver dúvidas sobre sua região, me envie uma mensagem!
+            </p>
+          </div>
+
+          <Card className="border-2">
+            <CardHeader>
+              <CardTitle className="text-foreground flex items-center gap-3">
+                <MessageCircle className="w-6 h-6 text-primary" />
+                Dúvidas comuns
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <Accordion type="single" collapsible className="w-full">
+                <AccordionItem value="item-1">
+                  <AccordionTrigger className="text-left text-foreground">
+                    Atende convênio?
+                  </AccordionTrigger>
+                  <AccordionContent className="text-muted-foreground">
+                    O atendimento é particular. Emito recibos que podem ser utilizados para reembolso junto ao seu convênio, 
+                    dependendo da cobertura do seu plano de saúde.
+                  </AccordionContent>
+                </AccordionItem>
+
+                <AccordionItem value="item-2">
+                  <AccordionTrigger className="text-left text-foreground">
+                    Preciso de encaminhamento médico?
+                  </AccordionTrigger>
+                  <AccordionContent className="text-muted-foreground">
+                    O encaminhamento médico é recomendado para melhor acompanhamento do quadro clínico, 
+                    mas não é obrigatório para iniciar o tratamento. Podemos conversar sobre isso na avaliação inicial.
+                  </AccordionContent>
+                </AccordionItem>
+
+                <AccordionItem value="item-3">
+                  <AccordionTrigger className="text-left text-foreground">
+                    Quanto tempo dura uma sessão?
+                  </AccordionTrigger>
+                  <AccordionContent className="text-muted-foreground">
+                    Cada sessão dura em média 50 minutos, mas o tempo pode variar conforme a necessidade e o plano de tratamento 
+                    individual de cada paciente.
+                  </AccordionContent>
+                </AccordionItem>
+
+                <AccordionItem value="item-4">
+                  <AccordionTrigger className="text-left text-foreground">
+                    Leva os equipamentos necessários?
+                  </AccordionTrigger>
+                  <AccordionContent className="text-muted-foreground">
+                    Sim! Levo todos os equipamentos e materiais necessários para o atendimento. 
+                    Você não precisa se preocupar com nada — apenas em estar confortável em casa.
+                  </AccordionContent>
+                </AccordionItem>
+              </Accordion>
+            </CardContent>
+          </Card>
+
+          <div className="mt-8 p-6 bg-primary/5 rounded-lg text-center animate-fade-in">
+            <CheckCircle className="w-12 h-12 text-primary mx-auto mb-4" />
+            <p className="text-lg text-foreground font-medium mb-2">
+              Toda jornada começa com um primeiro passo.
+            </p>
+            <p className="text-muted-foreground">
+              Será um prazer cuidar de você ou de quem você ama.
+            </p>
           </div>
         </div>
       </div>

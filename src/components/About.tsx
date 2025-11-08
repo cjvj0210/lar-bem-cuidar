@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
 import { Heart, Brain, Home, Users, Award } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import robertaImage from "@/assets/roberta-portrait.jpg";
+import robertaImage from "@/assets/roberta-profile.jpg";
 
 const About = () => {
-  const whatsappLink = "https://wa.me/5517981234567?text=Olá! Gostaria de saber mais sobre o atendimento de fisioterapia domiciliar.";
+  const whatsappLink = "https://wa.me/5517991527125?text=Olá! Gostaria de saber mais sobre o atendimento de fisioterapia domiciliar.";
 
   return (
     <div className="bg-cream">
@@ -112,7 +112,7 @@ const About = () => {
             <div className="space-y-6 mb-8">
               <p className="text-lg leading-relaxed text-foreground/90">
                 Graduada em Fisioterapia, com especialização em reabilitação geriátrica, neurológica e ortopédica. 
-                Atuo há mais de 8 anos com foco em fisioterapia domiciliar e prevenção de quedas.
+                Com 13 anos de experiência, atuo com foco em fisioterapia domiciliar e prevenção de quedas.
               </p>
               <p className="text-lg leading-relaxed text-foreground/90">
                 Acredito que envelhecer bem é possível — com movimento, autonomia e cuidado diário. 

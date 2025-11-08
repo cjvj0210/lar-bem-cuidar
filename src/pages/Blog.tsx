@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Calendar, Clock, ArrowRight, MessageCircle } from "lucide-react";
 import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
+import { Link } from "react-router-dom";
 
 interface BlogPost {
   id: string;
@@ -103,14 +104,16 @@ const Blog = () => {
                           <span>{Math.ceil(post.content.split(' ').length / 200)} min</span>
                         </div>
                       </div>
-                      <Button 
-                        variant="ghost" 
-                        size="sm"
-                        className="text-primary hover:text-primary/80"
-                      >
-                        Ler mais
-                        <ArrowRight className="w-4 h-4 ml-1" />
-                      </Button>
+                      <Link to={`/blog/${post.id}`}>
+                        <Button 
+                          variant="ghost" 
+                          size="sm"
+                          className="text-primary hover:text-primary/80"
+                        >
+                          Ler mais
+                          <ArrowRight className="w-4 h-4 ml-1" />
+                        </Button>
+                      </Link>
                     </div>
                   </CardContent>
                 </Card>

@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Quote, Heart, MapPin } from "lucide-react";
 
 const Testimonials = () => {
-  const whatsappLink = "https://wa.me/5517991234567?text=Olá! Gostaria de agendar uma avaliação.";
+  const whatsappLink = "https://wa.me/5517991527125?text=Olá! Gostaria de agendar uma avaliação.";
 
   const testimonials = [
     {
@@ -99,7 +99,7 @@ const Testimonials = () => {
           <div className="max-w-3xl mx-auto space-y-6">
             <Heart className="w-16 h-16 text-primary mx-auto" strokeWidth={1.5} />
             <h3 className="text-primary text-2xl md:text-3xl">
-              Mais de 120 atendimentos realizados com carinho e técnica.
+              Mais de 250 pacientes atendidos com carinho e técnica ao longo de 13 anos.
             </h3>
             <p className="text-lg text-muted-foreground italic">
               "Cada atendimento é único — e cada história importa."

@@ -3,7 +3,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Brain, Heart, Stethoscope, UserCircle, Scissors, Target, Calendar, Users, Briefcase } from "lucide-react";
 
 const Services = () => {
-  const whatsappLink = "https://wa.me/5517981234567?text=Olá! Gostaria de saber mais sobre os serviços de fisioterapia domiciliar.";
+  const whatsappLink = "https://wa.me/5517991527125?text=Olá! Gostaria de saber mais sobre os serviços de fisioterapia domiciliar.";
   
   const services = [
     {

@@ -9,6 +9,8 @@ import Servicos from "./pages/Servicos";
 import Depoimentos from "./pages/Depoimentos";
 import Contato from "./pages/Contato";
 import Blog from "./pages/Blog";
+import BlogPost from "./pages/BlogPost";
+import Admin from "./pages/Admin";
 import NotFound from "./pages/NotFound";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -37,6 +39,8 @@ const App = () => (
           <Route path="/depoimentos" element={<Depoimentos />} />
           <Route path="/contato" element={<Contato />} />
           <Route path="/blog" element={<Blog />} />
+          <Route path="/blog/:id" element={<BlogPost />} />
+          <Route path="/admin" element={<Admin />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

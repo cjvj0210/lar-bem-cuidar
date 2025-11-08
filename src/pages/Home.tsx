@@ -2,8 +2,10 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { ArrowRight, Heart, Brain, Target, Award, UserCircle, Stethoscope, Phone, Quote } from "lucide-react";
 import { Link } from "react-router-dom";
-import heroImage from "@/assets/hero-image.jpg";
-import robertaPortrait from "@/assets/roberta-portrait.jpg";
+import heroImage from "@/assets/treatment-elderly-band.jpg";
+import robertaPortrait from "@/assets/roberta-profile.jpg";
+import treatmentImage1 from "@/assets/treatment-balance-outdoor.jpg";
+import treatmentImage2 from "@/assets/treatment-home-exercise.jpg";
 
 const Home = () => {
   return (
@@ -34,7 +36,7 @@ const Home = () => {
                 <Button
                   size="lg"
                   className="bg-primary hover:bg-primary/90 text-primary-foreground shadow-soft"
-                  onClick={() => window.open("https://wa.me/5517991234567", "_blank")}
+                  onClick={() => window.open("https://wa.me/5517991527125", "_blank")}
                 >
                   Agende uma Avaliação
                   <ArrowRight className="ml-2 w-5 h-5" />
@@ -52,11 +54,11 @@ const Home = () => {
 
               <div className="flex items-center space-x-8 pt-4">
                 <div>
-                  <p className="text-3xl font-bold text-primary">15+</p>
+                  <p className="text-3xl font-bold text-primary">13</p>
                   <p className="text-sm text-muted-foreground">Anos de Experiência</p>
                 </div>
                 <div>
-                  <p className="text-3xl font-bold text-primary">500+</p>
+                  <p className="text-3xl font-bold text-primary">250+</p>
                   <p className="text-sm text-muted-foreground">Pacientes Atendidos</p>
                 </div>
                 <div>
@@ -154,7 +156,7 @@ const Home = () => {
                 pessoas que cuidaram de tudo por uma vida inteira.
               </p>
               <p className="text-muted-foreground leading-relaxed">
-                Há mais de 15 anos, levo tratamento especializado para dentro das 
+                Com 13 anos de experiência, levo tratamento especializado para dentro das 
                 casas em Barretos e região. Acredito que o cuidado verdadeiro acontece 
                 quando unimos técnica, empatia e respeito pelo tempo de cada pessoa.
               </p>
@@ -316,13 +318,13 @@ const Home = () => {
             <Button
               size="lg"
               className="bg-primary hover:bg-primary/90 text-primary-foreground shadow-soft"
-              onClick={() => window.open("https://wa.me/5517991234567", "_blank")}
+              onClick={() => window.open("https://wa.me/5517991527125", "_blank")}
             >
               <Phone className="w-5 h-5 mr-2" />
               Falar com Roberta
             </Button>
             <p className="text-sm text-muted-foreground">
-              Atendimento em Barretos - SP e região • (17) 99123-4567
+              Atendimento em Barretos - SP e região • (17) 99152-7125
             </p>
           </div>
         </div>

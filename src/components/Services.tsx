@@ -1,8 +1,11 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Brain, Heart, Stethoscope, UserCircle } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const Services = () => {
+  const navigate = useNavigate();
+  
   const services = [
     {
       icon: UserCircle,
@@ -30,11 +33,8 @@ const Services = () => {
     }
   ];
 
-  const scrollToContact = () => {
-    const element = document.getElementById("contato");
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
+  const goToContact = () => {
+    navigate("/contato");
   };
 
   return (
@@ -76,7 +76,7 @@ const Services = () => {
                 <Button 
                   variant="outline" 
                   className="w-full border-primary text-primary hover:bg-primary/10"
-                  onClick={scrollToContact}
+                  onClick={goToContact}
                 >
                   Agendar Avaliação
                 </Button>

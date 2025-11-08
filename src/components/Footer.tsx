@@ -1,4 +1,5 @@
 import { Heart } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -24,29 +25,34 @@ const Footer = () => {
             <h4 className="font-semibold mb-4">Links Rápidos</h4>
             <ul className="space-y-2 text-sm text-primary-foreground/80">
               <li>
-                <a href="#inicio" className="hover:text-primary-foreground transition-smooth">
+                <Link to="/" className="hover:text-primary-foreground transition-smooth">
                   Início
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#sobre" className="hover:text-primary-foreground transition-smooth">
+                <Link to="/sobre" className="hover:text-primary-foreground transition-smooth">
                   Sobre Mim
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#servicos" className="hover:text-primary-foreground transition-smooth">
+                <Link to="/servicos" className="hover:text-primary-foreground transition-smooth">
                   Serviços
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#depoimentos" className="hover:text-primary-foreground transition-smooth">
+                <Link to="/depoimentos" className="hover:text-primary-foreground transition-smooth">
                   Depoimentos
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#contato" className="hover:text-primary-foreground transition-smooth">
+                <Link to="/contato" className="hover:text-primary-foreground transition-smooth">
                   Contato
-                </a>
+                </Link>
+              </li>
+              <li>
+                <Link to="/blog" className="hover:text-primary-foreground transition-smooth">
+                  Blog
+                </Link>
               </li>
             </ul>
           </div>

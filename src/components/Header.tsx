@@ -1,23 +1,19 @@
 import { Button } from "@/components/ui/button";
 import { Menu, Phone } from "lucide-react";
 import { useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const location = useLocation();
 
-  const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-      setIsMenuOpen(false);
-    }
-  };
+  const isActive = (path: string) => location.pathname === path;
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border shadow-soft">
       <nav className="container-custom py-4">
         <div className="flex items-center justify-between">
-          <div className="flex items-center space-x-2">
+          <Link to="/" className="flex items-center space-x-2 hover:opacity-80 transition-smooth">
             <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center">
               <span className="text-primary-foreground font-bold text-xl">FR</span>
             </div>
@@ -25,39 +21,57 @@ const Header = () => {
               <h1 className="text-xl font-bold text-foreground">Físio Roberta</h1>
               <p className="text-xs text-muted-foreground">Atendimento Domiciliar</p>
             </div>
-          </div>
+          </Link>
 
           <div className="hidden md:flex items-center space-x-8">
-            <button
-              onClick={() => scrollToSection("inicio")}
-              className="text-foreground hover:text-primary transition-smooth"
+            <Link
+              to="/"
+              className={`transition-smooth ${
+                isActive("/") ? "text-primary font-semibold" : "text-foreground hover:text-primary"
+              }`}
             >
               Início
-            </button>
-            <button
-              onClick={() => scrollToSection("sobre")}
-              className="text-foreground hover:text-primary transition-smooth"
+            </Link>
+            <Link
+              to="/sobre"
+              className={`transition-smooth ${
+                isActive("/sobre") ? "text-primary font-semibold" : "text-foreground hover:text-primary"
+              }`}
             >
               Sobre Mim
-            </button>
-            <button
-              onClick={() => scrollToSection("servicos")}
-              className="text-foreground hover:text-primary transition-smooth"
+            </Link>
+            <Link
+              to="/servicos"
+              className={`transition-smooth ${
+                isActive("/servicos") ? "text-primary font-semibold" : "text-foreground hover:text-primary"
+              }`}
             >
               Serviços
-            </button>
-            <button
-              onClick={() => scrollToSection("depoimentos")}
-              className="text-foreground hover:text-primary transition-smooth"
+            </Link>
+            <Link
+              to="/depoimentos"
+              className={`transition-smooth ${
+                isActive("/depoimentos") ? "text-primary font-semibold" : "text-foreground hover:text-primary"
+              }`}
             >
               Depoimentos
-            </button>
-            <button
-              onClick={() => scrollToSection("contato")}
-              className="text-foreground hover:text-primary transition-smooth"
+            </Link>
+            <Link
+              to="/contato"
+              className={`transition-smooth ${
+                isActive("/contato") ? "text-primary font-semibold" : "text-foreground hover:text-primary"
+              }`}
             >
               Contato
-            </button>
+            </Link>
+            <Link
+              to="/blog"
+              className={`transition-smooth ${
+                isActive("/blog") ? "text-primary font-semibold" : "text-foreground hover:text-primary"
+              }`}
+            >
+              Blog
+            </Link>
             <Button
               onClick={() => window.open("https://wa.me/5517991234567", "_blank")}
               className="bg-primary hover:bg-primary/90"
@@ -78,36 +92,60 @@ const Header = () => {
 
         {isMenuOpen && (
           <div className="md:hidden mt-4 py-4 space-y-4 border-t border-border animate-fade-in">
-            <button
-              onClick={() => scrollToSection("inicio")}
-              className="block w-full text-left text-foreground hover:text-primary transition-smooth"
+            <Link
+              to="/"
+              onClick={() => setIsMenuOpen(false)}
+              className={`block w-full text-left transition-smooth ${
+                isActive("/") ? "text-primary font-semibold" : "text-foreground hover:text-primary"
+              }`}
             >
               Início
-            </button>
-            <button
-              onClick={() => scrollToSection("sobre")}
-              className="block w-full text-left text-foreground hover:text-primary transition-smooth"
+            </Link>
+            <Link
+              to="/sobre"
+              onClick={() => setIsMenuOpen(false)}
+              className={`block w-full text-left transition-smooth ${
+                isActive("/sobre") ? "text-primary font-semibold" : "text-foreground hover:text-primary"
+              }`}
             >
               Sobre Mim
-            </button>
-            <button
-              onClick={() => scrollToSection("servicos")}
-              className="block w-full text-left text-foreground hover:text-primary transition-smooth"
+            </Link>
+            <Link
+              to="/servicos"
+              onClick={() => setIsMenuOpen(false)}
+              className={`block w-full text-left transition-smooth ${
+                isActive("/servicos") ? "text-primary font-semibold" : "text-foreground hover:text-primary"
+              }`}
             >
               Serviços
-            </button>
-            <button
-              onClick={() => scrollToSection("depoimentos")}
-              className="block w-full text-left text-foreground hover:text-primary transition-smooth"
+            </Link>
+            <Link
+              to="/depoimentos"
+              onClick={() => setIsMenuOpen(false)}
+              className={`block w-full text-left transition-smooth ${
+                isActive("/depoimentos") ? "text-primary font-semibold" : "text-foreground hover:text-primary"
+              }`}
             >
               Depoimentos
-            </button>
-            <button
-              onClick={() => scrollToSection("contato")}
-              className="block w-full text-left text-foreground hover:text-primary transition-smooth"
+            </Link>
+            <Link
+              to="/contato"
+              onClick={() => setIsMenuOpen(false)}
+              className={`block w-full text-left transition-smooth ${
+                isActive("/contato") ? "text-primary font-semibold" : "text-foreground hover:text-primary"
+              }`}
             >
               Contato
-            </button>
+            </Link>
+            <Link
+              to="/blog"
+              onClick={() => setIsMenuOpen(false)}
+              className={`block w-full text-left transition-smooth ${
+                isActive("/blog") ? "text-primary font-semibold" : "text-foreground hover:text-primary"
+              }`}
+            >
+              Blog
+            </Link>
             <Button
               onClick={() => window.open("https://wa.me/5517991234567", "_blank")}
               className="w-full bg-primary hover:bg-primary/90"

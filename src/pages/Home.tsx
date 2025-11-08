@@ -34,7 +34,7 @@ const Home = () => {
               </h1>
 
               <p className="text-lg text-muted-foreground">
-                Atendimento especializado para quem você ama, em Barretos e região. 
+                Atendimento especializado para quem você ama, em Barretos-SP. 
                 Cada passo respeita o seu ritmo, com técnica e carinho.
               </p>
 
@@ -163,7 +163,7 @@ const Home = () => {
               </p>
               <p className="text-muted-foreground leading-relaxed">
                 Com 13 anos de experiência, levo tratamento especializado para dentro das 
-                casas em Barretos e região. Acredito que o cuidado verdadeiro acontece 
+                casas em Barretos-SP. Acredito que o cuidado verdadeiro acontece 
                 quando unimos técnica, empatia e respeito pelo tempo de cada pessoa.
               </p>
               <Link to="/sobre">
@@ -330,7 +330,7 @@ const Home = () => {
               Falar com Roberta
             </Button>
             <p className="text-sm text-muted-foreground">
-              Atendimento domiciliar em Barretos-SP e região • (17) 98212-3269
+              Atendimento domiciliar exclusivo em Barretos-SP • (17) 98212-3269
             </p>
           </div>
         </div>

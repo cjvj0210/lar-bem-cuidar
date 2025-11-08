@@ -151,7 +151,7 @@ const Contact = () => {
                 <div>
                   <h4 className="font-semibold text-foreground mb-1">Área de Atendimento</h4>
                   <p className="text-muted-foreground">
-                    Barretos e região
+                    Barretos-SP
                   </p>
                 </div>
               </CardContent>
@@ -212,10 +212,10 @@ const Contact = () => {
         <div className="mt-20 max-w-4xl mx-auto animate-fade-in">
           <div className="text-center mb-12">
             <h3 className="text-2xl font-semibold text-foreground mb-4">
-              Atendimentos domiciliares exclusivos em Barretos-SP e bairros próximos
+              Atendimento domiciliar exclusivo em Barretos-SP
             </h3>
             <p className="text-muted-foreground">
-              Se tiver dúvidas sobre sua região, me envie uma mensagem!
+              Confira abaixo as dúvidas mais frequentes sobre o atendimento.
             </p>
           </div>
 

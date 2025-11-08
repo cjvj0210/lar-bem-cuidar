@@ -42,7 +42,7 @@ const SEO = ({ title, description, keywords, canonicalUrl, ogImage }: SEOProps) 
           "@type": "LocalBusiness",
           "name": "Físio Roberta Domiciliar",
           "image": defaultImage,
-          "description": "Fisioterapia domiciliar especializada em Barretos-SP. Atendimento personalizado para idosos, reabilitação neurológica, ortopédica e respiratória no conforto do seu lar.",
+          "description": "Fisioterapia domiciliar especializada em Barretos-SP. Atendimento personalizado e exclusivo para idosos, reabilitação neurológica, ortopédica e respiratória no conforto do seu lar.",
           "address": {
             "@type": "PostalAddress",
             "addressLocality": "Barretos",
@@ -51,11 +51,15 @@ const SEO = ({ title, description, keywords, canonicalUrl, ogImage }: SEOProps) 
           },
           "areaServed": {
             "@type": "City",
-            "name": "Barretos"
+            "name": "Barretos",
+            "containedIn": {
+              "@type": "State",
+              "name": "São Paulo"
+            }
           },
           "telephone": "+5517982123269",
           "priceRange": "$$",
-          "openingHours": "Mo-Fr 08:00-18:00",
+          "openingHours": "Mo-Fr 07:00-19:00, Sa 08:00-12:00",
           "sameAs": [
             "https://instagram.com/fisiorobertadomiciliar"
           ]

@@ -29,8 +29,8 @@ const Testimonials = () => {
     },
     {
       name: "Carlos Santos",
-      relation: "filho de paciente",
-      age: "52 anos",
+      relation: "filho de paciente com Parkinson",
+      age: "78 anos (mãe)",
       location: "Barretos-SP",
       text: "Minha mãe tem Parkinson e estava muito debilitada. A fisioterapia em casa trouxe mais segurança para ela e paz para toda a família. A Roberta é excepcional, muito profissional e humana.",
     },

@@ -18,8 +18,8 @@ const Footer = () => {
                 <p className="text-sm text-primary-foreground/80">Atendimento Domiciliar</p>
               </div>
             </div>
-            <p className="text-sm text-primary-foreground/80">
-              Fisioterapia especializada no conforto do seu lar, com técnica, empatia e dedicação.
+            <p className="text-sm text-primary-foreground/80 leading-relaxed">
+              Atendimento domiciliar de fisioterapia exclusivo em Barretos-SP — com técnica, empatia e dedicação.
             </p>
           </div>
 
@@ -62,7 +62,7 @@ const Footer = () => {
           <div>
             <h4 className="font-semibold mb-4">Contato</h4>
             <ul className="space-y-2 text-sm text-primary-foreground/80">
-              <li>Barretos - SP e região</li>
+              <li>Barretos-SP</li>
               <li>(17) 98212-3269</li>
               <li>fisiorobertarochadomiciliar@gmail.com</li>
             </ul>

@@ -143,7 +143,7 @@ const BlogPost = () => {
 
           {/* Featured Image */}
           {post.image_url && (
-            <div className="mb-12 rounded-2xl overflow-hidden shadow-elegant">
+            <div className="mb-12 rounded-2xl overflow-hidden shadow-elegant max-w-4xl mx-auto">
               <img
                 src={post.image_url}
                 alt={`${post.title} - Fisioterapeuta Roberta Rocha atendendo paciente em domicílio em Barretos-SP`}
@@ -153,20 +153,40 @@ const BlogPost = () => {
           )}
 
           {/* Article Content */}
-          <div className="prose prose-lg max-w-none mb-16">
-            <div 
-              className="text-foreground/90 leading-relaxed"
-              dangerouslySetInnerHTML={{ 
-                __html: post.content
-                  .replace(/\n## (.*?)\n/g, '<h2 class="text-primary text-3xl font-semibold mt-12 mb-6">$1</h2>')
-                  .replace(/\n### (.*?)\n/g, '<h3 class="text-primary text-2xl font-semibold mt-8 mb-4">$1</h3>')
-                  .replace(/\*\*(.*?)\*\*/g, '<strong class="font-semibold text-foreground">$1</strong>')
-                  .replace(/\n- (.*?)(?=\n|$)/g, '<li class="ml-6 mb-2">$1</li>')
-                  .replace(/(<li.*?<\/li>)/s, '<ul class="my-6 space-y-2">$1</ul>')
-                  .replace(/\n\n/g, '<p class="mb-6"></p>')
-              }}
-            />
-          </div>
+          <article 
+            className="prose prose-lg max-w-none mb-16
+              prose-headings:font-bold prose-headings:text-foreground
+              prose-h2:text-3xl prose-h2:text-primary prose-h2:mt-12 prose-h2:mb-6 prose-h2:leading-tight
+              prose-h3:text-2xl prose-h3:text-foreground prose-h3:mt-8 prose-h3:mb-4 prose-h3:leading-snug
+              prose-p:text-foreground/90 prose-p:leading-relaxed prose-p:mb-6 prose-p:text-base
+              prose-strong:text-foreground prose-strong:font-semibold
+              prose-ul:my-6 prose-ul:space-y-3 prose-ul:pl-6 prose-ul:list-disc
+              prose-li:text-foreground/90 prose-li:leading-relaxed prose-li:text-base
+              prose-a:text-primary prose-a:no-underline hover:prose-a:underline
+              [&>h2]:scroll-mt-24 [&>h3]:scroll-mt-24
+              [&>p]:max-w-none [&>ul]:max-w-none"
+            dangerouslySetInnerHTML={{ 
+              __html: post.content
+                // Headers
+                .replace(/## (.*?)(\n|$)/g, '<h2 class="text-3xl text-primary font-bold mt-12 mb-6 leading-tight">$1</h2>')
+                .replace(/### (.*?)(\n|$)/g, '<h3 class="text-2xl text-foreground font-bold mt-8 mb-4 leading-snug">$1</h3>')
+                // Bold text
+                .replace(/\*\*(.*?)\*\*/g, '<strong class="font-semibold text-foreground">$1</strong>')
+                // Lists - capture multiple list items together
+                .replace(/^- (.+)$/gm, '<li class="text-foreground/90 leading-relaxed mb-2">$1</li>')
+                .replace(/(<li>.*?<\/li>\s*)+/g, (match) => `<ul class="list-disc pl-6 my-6 space-y-3">${match}</ul>`)
+                // Paragraphs - wrap text that's not already in tags
+                .replace(/^(?!<[hul])([\s\S]+?)(?=\n<|$)/gm, (match) => {
+                  if (match.trim() && !match.includes('<')) {
+                    return `<p class="text-foreground/90 leading-relaxed mb-6 text-base">${match}</p>`;
+                  }
+                  return match;
+                })
+                // Clean up extra spacing
+                .replace(/<\/p>\s*<p/g, '</p><p')
+                .replace(/<p[^>]*>\s*<\/p>/g, '')
+            }}
+          />
 
           {/* CTA Section */}
           <Card className="border-2 bg-primary/5 animate-fade-in">

@@ -81,58 +81,61 @@ const Blog = () => {
               </div>
             ) : (
               posts.map((post, index) => (
-                <Card 
+                <Link 
                   key={post.id}
-                  className="border-2 hover:shadow-lg transition-all duration-300 hover:scale-[1.03] animate-fade-in flex flex-col overflow-hidden"
-                  style={{ animationDelay: `${index * 100}ms` }}
+                  to={`/blog/${post.id}`}
+                  className="block group"
                 >
-                  {post.image_url && (
-                    <div className="w-full h-48 overflow-hidden">
-                      <img 
-                        src={post.image_url} 
-                        alt={`${post.title} - Fisioterapeuta Roberta Rocha atendendo paciente em Barretos-SP`}
-                        className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                      />
-                    </div>
-                  )}
-                  <CardHeader>
-                    <CardTitle className="text-foreground text-xl leading-snug">
-                      {post.title}
-                    </CardTitle>
-                    {post.subtitle && (
-                      <CardDescription className="text-muted-foreground text-base">
-                        {post.subtitle}
-                      </CardDescription>
-                    )}
-                  </CardHeader>
-                  <CardContent className="space-y-4 flex-1 flex flex-col">
-                    <p className="text-muted-foreground line-clamp-3 flex-1">
-                      {post.content.substring(0, 200)}...
-                    </p>
-                    <div className="flex items-center justify-between pt-4 border-t">
-                      <div className="flex items-center gap-4 text-sm text-muted-foreground">
-                        <div className="flex items-center gap-1">
-                          <Calendar className="w-4 h-4" />
-                          <span>{formatDate(post.created_at)}</span>
-                        </div>
-                        <div className="flex items-center gap-1">
-                          <Clock className="w-4 h-4" />
-                          <span>{Math.ceil(post.content.split(' ').length / 200)} min</span>
-                        </div>
+                  <Card 
+                    className="border-2 hover:shadow-lg transition-all duration-300 hover:scale-[1.03] animate-fade-in flex flex-col overflow-hidden h-full cursor-pointer"
+                    style={{ animationDelay: `${index * 100}ms` }}
+                  >
+                    {post.image_url && (
+                      <div className="w-full h-48 overflow-hidden">
+                        <img 
+                          src={post.image_url} 
+                          alt={`${post.title} - Fisioterapeuta Roberta Rocha em atendimento domiciliar em Barretos-SP`}
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                        />
                       </div>
-                      <Link to={`/blog/${post.id}`}>
+                    )}
+                    <CardHeader>
+                      <CardTitle className="text-foreground text-xl leading-snug group-hover:text-primary transition-colors">
+                        {post.title}
+                      </CardTitle>
+                      {post.subtitle && (
+                        <CardDescription className="text-muted-foreground text-base mt-2">
+                          {post.subtitle}
+                        </CardDescription>
+                      )}
+                    </CardHeader>
+                    <CardContent className="space-y-4 flex-1 flex flex-col">
+                      <p className="text-muted-foreground line-clamp-3 flex-1">
+                        {post.content.substring(0, 200)}...
+                      </p>
+                      <div className="flex items-center justify-between pt-4 border-t">
+                        <div className="flex items-center gap-4 text-sm text-muted-foreground">
+                          <div className="flex items-center gap-1">
+                            <Calendar className="w-4 h-4" />
+                            <span>{formatDate(post.created_at)}</span>
+                          </div>
+                          <div className="flex items-center gap-1">
+                            <Clock className="w-4 h-4" />
+                            <span>{Math.ceil(post.content.split(' ').length / 200)} min</span>
+                          </div>
+                        </div>
                         <Button 
                           variant="ghost" 
                           size="sm"
-                          className="text-primary hover:text-primary/80"
+                          className="text-primary hover:text-primary/80 pointer-events-none"
                         >
                           Ler mais
                           <ArrowRight className="w-4 h-4 ml-1" />
                         </Button>
-                      </Link>
-                    </div>
-                  </CardContent>
-                </Card>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </Link>
               ))
             )}
           </div>

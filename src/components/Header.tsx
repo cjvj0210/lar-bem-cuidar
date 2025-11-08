@@ -14,9 +14,11 @@ const Header = () => {
       <nav className="container-custom py-4">
         <div className="flex items-center justify-between">
           <Link to="/" className="flex items-center space-x-2 hover:opacity-80 transition-smooth">
-            <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center">
-              <span className="text-primary-foreground font-bold text-xl">FR</span>
-            </div>
+            <img 
+              src="/logo.png" 
+              alt="Roberta Rocha Fisioterapeuta" 
+              className="w-12 h-12 object-contain"
+            />
             <div>
               <h1 className="text-xl font-bold text-foreground">Físio Roberta</h1>
               <p className="text-xs text-muted-foreground">Atendimento Domiciliar</p>

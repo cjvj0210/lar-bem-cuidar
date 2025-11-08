@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { ArrowRight, Heart, Brain, Target, Award, UserCircle, Stethoscope, Phone, Quote } from "lucide-react";
 import { Link } from "react-router-dom";
+import SEO from "@/components/SEO";
 import heroImage from "@/assets/treatment-elderly-band.jpg";
 import robertaPortrait from "@/assets/roberta-profile.jpg";
 import treatmentImage1 from "@/assets/treatment-balance-outdoor.jpg";
@@ -10,6 +11,11 @@ import treatmentImage2 from "@/assets/treatment-home-exercise.jpg";
 const Home = () => {
   return (
     <div className="min-h-screen animate-fade-in">
+      <SEO 
+        title="Fisioterapia Domiciliar em Barretos-SP"
+        description="Fisioterapeuta especializada em atendimento domiciliar para idosos em Barretos-SP. 13 anos de experiência em reabilitação neurológica, geriátrica e ortopédica."
+        keywords="fisioterapia domiciliar Barretos, fisioterapeuta para idosos Barretos, fisioterapia em casa Barretos-SP, reabilitação domiciliar"
+      />
       {/* Hero Section */}
       <section className="relative pt-24 min-h-screen flex items-center">
         <div className="container-custom">
@@ -23,12 +29,12 @@ const Home = () => {
               </div>
 
               <h1 className="text-foreground">
-                Cuidado profissional,{" "}
-                <span className="text-primary">no conforto do seu lar</span>
+                Fisioterapia domiciliar em Barretos-SP:{" "}
+                <span className="text-primary">cuidado profissional no conforto do seu lar</span>
               </h1>
 
               <p className="text-lg text-muted-foreground">
-                Fisioterapia domiciliar especializada para quem você ama. 
+                Atendimento especializado para quem você ama, em Barretos e região. 
                 Cada passo respeita o seu ritmo, com técnica e carinho.
               </p>
 
@@ -72,7 +78,7 @@ const Home = () => {
               <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-accent/20 rounded-3xl blur-3xl"></div>
               <img
                 src={heroImage}
-                alt="Fisioterapeuta Roberta atendendo paciente idosa em casa com carinho e profissionalismo"
+                alt="Fisioterapeuta Roberta Rocha atendendo paciente idosa com exercícios de fortalecimento em domicílio em Barretos-SP"
                 className="relative rounded-3xl shadow-soft w-full h-auto object-cover"
               />
             </div>
@@ -144,7 +150,7 @@ const Home = () => {
               <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-accent/10 rounded-3xl blur-2xl"></div>
               <img
                 src={robertaPortrait}
-                alt="Roberta Rocha - Fisioterapeuta especializada em atendimento domiciliar"
+                alt="Roberta Rocha - Fisioterapeuta especializada em atendimento domiciliar em Barretos-SP com 13 anos de experiência"
                 className="relative rounded-3xl shadow-soft w-full h-auto object-cover"
               />
             </div>
@@ -324,7 +330,7 @@ const Home = () => {
               Falar com Roberta
             </Button>
             <p className="text-sm text-muted-foreground">
-              Atendimento em Barretos - SP e região • (17) 99152-7125
+              Atendimento domiciliar em Barretos-SP e região • (17) 99152-7125
             </p>
           </div>
         </div>

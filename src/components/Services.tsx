@@ -67,10 +67,10 @@ const Services = () => {
       <section className="py-16 px-4 bg-gradient-to-b from-white to-cream">
         <div className="container mx-auto max-w-4xl text-center">
           <h1 className="text-4xl md:text-5xl font-bold text-primary mb-6 leading-tight animate-fade-in">
-            Atendimento individualizado, para cada necessidade.
+            Fisioterapia domiciliar em Barretos-SP: atendimento individualizado para cada necessidade
           </h1>
           <p className="text-xl text-foreground/80 leading-relaxed animate-fade-in" style={{ animationDelay: "200ms" }}>
-            Conheça os tipos de fisioterapia que ofereço no conforto da sua casa — sempre com foco em segurança, autonomia e qualidade de vida.
+            Especialista em fisioterapia neurológica e geriátrica em Barretos-SP. Conheça os tipos de tratamento que ofereço no conforto da sua casa — sempre com foco em segurança, autonomia e qualidade de vida.
           </p>
         </div>
       </section>

@@ -23,7 +23,7 @@ const About = () => {
             <div className="animate-fade-in" style={{ animationDelay: "200ms" }}>
               <img
                 src={robertaImage}
-                alt="Roberta Rocha - Fisioterapeuta especializada em atendimento domiciliar"
+                alt="Roberta Rocha - Fisioterapeuta especializada em atendimento domiciliar para idosos em Barretos-SP"
                 className="rounded-xl shadow-lg w-full object-cover"
               />
             </div>
@@ -36,7 +36,7 @@ const About = () => {
         <div className="container mx-auto max-w-4xl">
           <div className="bg-white rounded-xl shadow-sm p-8 md:p-12 animate-fade-in">
             <p className="text-lg leading-relaxed text-foreground/90 mb-6">
-              Desde o início da minha carreira, percebi que a fisioterapia vai muito além de exercícios. 
+              Desde o início da minha carreira em Barretos-SP, percebi que a fisioterapia vai muito além de exercícios. 
               Trata-se de devolver movimento, autonomia e qualidade de vida a quem dedicou uma vida 
               inteira a cuidar dos outros.
             </p>

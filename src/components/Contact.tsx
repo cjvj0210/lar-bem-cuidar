@@ -212,7 +212,7 @@ const Contact = () => {
         <div className="mt-20 max-w-4xl mx-auto animate-fade-in">
           <div className="text-center mb-12">
             <h3 className="text-2xl font-semibold text-foreground mb-4">
-              Atendimento domiciliar em Barretos-SP e região
+              Atendimentos domiciliares exclusivos em Barretos-SP e bairros próximos
             </h3>
             <p className="text-muted-foreground">
               Se tiver dúvidas sobre sua região, me envie uma mensagem!

@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { ArrowRight, Heart, Brain, Target, Award, UserCircle, Stethoscope, Phone, Quote } from "lucide-react";
+import { ArrowRight, Heart, Brain, Target, Award, UserCircle, Stethoscope, Phone, Quote, Instagram, Facebook } from "lucide-react";
 import { Link } from "react-router-dom";
 import SEO from "@/components/SEO";
 import heroImage from "@/assets/treatment-elderly-band.jpg";
@@ -70,6 +70,36 @@ const Home = () => {
                 <div>
                   <p className="text-3xl font-bold text-primary">98%</p>
                   <p className="text-sm text-muted-foreground">Satisfação</p>
+                </div>
+              </div>
+
+              <div className="pt-6">
+                <p className="text-sm text-muted-foreground mb-3">Siga nas redes sociais:</p>
+                <div className="flex space-x-4">
+                  <a 
+                    href="https://www.instagram.com/fisiorobertadomiciliar/" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 px-4 py-2 rounded-lg border border-border hover:border-primary hover:bg-primary/5 transition-smooth group"
+                    aria-label="Instagram da Físio Roberta Domiciliar"
+                  >
+                    <Instagram className="w-5 h-5 text-primary" />
+                    <span className="text-sm text-muted-foreground group-hover:text-primary transition-smooth">
+                      Instagram
+                    </span>
+                  </a>
+                  <a 
+                    href="https://www.facebook.com/profile.php?id=61553900038660" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 px-4 py-2 rounded-lg border border-border hover:border-primary hover:bg-primary/5 transition-smooth group"
+                    aria-label="Facebook da Físio Roberta Domiciliar"
+                  >
+                    <Facebook className="w-5 h-5 text-primary" />
+                    <span className="text-sm text-muted-foreground group-hover:text-primary transition-smooth">
+                      Facebook
+                    </span>
+                  </a>
                 </div>
               </div>
             </div>

@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Menu, Phone } from "lucide-react";
+import { Menu, Phone, Instagram, Facebook } from "lucide-react";
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 
@@ -81,6 +81,26 @@ const Header = () => {
               <Phone className="w-4 h-4 mr-2" />
               WhatsApp
             </Button>
+            <div className="flex items-center space-x-3 pl-3 border-l border-border">
+              <a 
+                href="https://www.instagram.com/fisiorobertadomiciliar/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-muted-foreground hover:text-primary transition-smooth"
+                aria-label="Instagram da Físio Roberta Domiciliar"
+              >
+                <Instagram className="w-5 h-5" />
+              </a>
+              <a 
+                href="https://www.facebook.com/profile.php?id=61553900038660" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-muted-foreground hover:text-primary transition-smooth"
+                aria-label="Facebook da Físio Roberta Domiciliar"
+              >
+                <Facebook className="w-5 h-5" />
+              </a>
+            </div>
           </div>
 
           <button
@@ -155,6 +175,26 @@ const Header = () => {
               <Phone className="w-4 h-4 mr-2" />
               WhatsApp
             </Button>
+            <div className="flex justify-center space-x-6 pt-4 mt-4 border-t border-border">
+              <a 
+                href="https://www.instagram.com/fisiorobertadomiciliar/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-muted-foreground hover:text-primary transition-smooth"
+                aria-label="Instagram da Físio Roberta Domiciliar"
+              >
+                <Instagram className="w-6 h-6" />
+              </a>
+              <a 
+                href="https://www.facebook.com/profile.php?id=61553900038660" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-muted-foreground hover:text-primary transition-smooth"
+                aria-label="Facebook da Físio Roberta Domiciliar"
+              >
+                <Facebook className="w-6 h-6" />
+              </a>
+            </div>
           </div>
         )}
       </nav>

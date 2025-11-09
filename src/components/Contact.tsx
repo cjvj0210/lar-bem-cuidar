@@ -4,7 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { MapPin, Phone, Mail, Clock, MessageCircle, CheckCircle } from "lucide-react";
+import { MapPin, Phone, Mail, Clock, MessageCircle, CheckCircle, Instagram, Facebook } from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
@@ -203,6 +203,42 @@ const Contact = () => {
                     Segunda a Sexta: 7h às 19h<br />
                     Sábado: 8h às 12h
                   </p>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card className="border-2 bg-gradient-to-br from-primary/5 to-primary/10">
+              <CardContent className="pt-6">
+                <h4 className="font-semibold text-foreground mb-4 text-center">Siga nas Redes Sociais</h4>
+                <div className="flex justify-center gap-4">
+                  <a 
+                    href="https://www.instagram.com/fisiorobertadomiciliar/" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="flex flex-col items-center gap-2 p-4 rounded-lg bg-background hover:bg-primary/5 transition-smooth group"
+                    aria-label="Instagram da Físio Roberta Domiciliar"
+                  >
+                    <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center group-hover:scale-110 transition-smooth">
+                      <Instagram className="w-6 h-6 text-primary" />
+                    </div>
+                    <span className="text-sm text-muted-foreground group-hover:text-primary transition-smooth">
+                      @fisiorobertadomiciliar
+                    </span>
+                  </a>
+                  <a 
+                    href="https://www.facebook.com/profile.php?id=61553900038660" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="flex flex-col items-center gap-2 p-4 rounded-lg bg-background hover:bg-primary/5 transition-smooth group"
+                    aria-label="Facebook da Físio Roberta Domiciliar"
+                  >
+                    <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center group-hover:scale-110 transition-smooth">
+                      <Facebook className="w-6 h-6 text-primary" />
+                    </div>
+                    <span className="text-sm text-muted-foreground group-hover:text-primary transition-smooth">
+                      Facebook
+                    </span>
+                  </a>
                 </div>
               </CardContent>
             </Card>

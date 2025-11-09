@@ -61,7 +61,8 @@ const SEO = ({ title, description, keywords, canonicalUrl, ogImage }: SEOProps) 
           "priceRange": "$$",
           "openingHours": "Mo-Fr 07:00-19:00, Sa 08:00-12:00",
           "sameAs": [
-            "https://instagram.com/fisiorobertadomiciliar"
+            "https://www.instagram.com/fisiorobertadomiciliar/",
+            "https://www.facebook.com/profile.php?id=61553900038660"
           ]
         })}
       </script>

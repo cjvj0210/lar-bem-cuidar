@@ -1,4 +1,4 @@
-import { Heart } from "lucide-react";
+import { Heart, Instagram, Facebook } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const Footer = () => {
@@ -66,6 +66,30 @@ const Footer = () => {
               <li>(17) 98212-3269</li>
               <li>fisiorobertarochadomiciliar@gmail.com</li>
             </ul>
+            
+            <div className="mt-6">
+              <h4 className="font-semibold mb-4">Redes Sociais</h4>
+              <div className="flex space-x-4">
+                <a 
+                  href="https://www.instagram.com/fisiorobertadomiciliar/" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-primary-foreground/80 hover:text-primary-foreground transition-smooth"
+                  aria-label="Instagram da Físio Roberta Domiciliar"
+                >
+                  <Instagram className="w-6 h-6" />
+                </a>
+                <a 
+                  href="https://www.facebook.com/profile.php?id=61553900038660" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-primary-foreground/80 hover:text-primary-foreground transition-smooth"
+                  aria-label="Facebook da Físio Roberta Domiciliar"
+                >
+                  <Facebook className="w-6 h-6" />
+                </a>
+              </div>
+            </div>
           </div>
         </div>
 

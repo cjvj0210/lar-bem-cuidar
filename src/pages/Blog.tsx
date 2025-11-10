@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { Link } from "react-router-dom";
 import SEO from "@/components/SEO";
+import Breadcrumb from "@/components/Breadcrumb";
 
 interface BlogPost {
   id: string;
@@ -57,10 +58,12 @@ const Blog = () => {
   return (
     <div className="min-h-screen pt-20 animate-fade-in">
       <SEO 
-        title="Blog - Dicas de Fisioterapia e Bem-Estar em Barretos-SP"
+        title="Blog - Dicas de Fisioterapia Barretos-SP"
         description="Conteúdos sobre fisioterapia domiciliar, cuidados com idosos e reabilitação em Barretos-SP. Dicas práticas e confiáveis para você e sua família."
-        keywords="blog fisioterapia Barretos, dicas fisioterapia idosos, cuidados domiciliares Barretos-SP"
+        keywords="blog fisioterapia barretos, dicas fisioterapia idosos, cuidados domiciliares barretos, artigos fisioterapia"
+        canonicalUrl="https://fisiorobertadomiciliar.com.br/blog"
       />
+      <Breadcrumb items={[{ label: "Blog" }]} />
       <section className="section-padding">
         <div className="container-custom">
           <div className="text-center max-w-3xl mx-auto mb-16">
@@ -94,8 +97,9 @@ const Blog = () => {
                       <div className="w-full h-48 overflow-hidden">
                         <img 
                           src={post.image_url} 
-                          alt={`${post.title} - Fisioterapeuta Roberta Rocha em atendimento domiciliar em Barretos-SP`}
+                          alt={`${post.title} - Artigo de fisioterapia domiciliar em Barretos-SP por Roberta Rocha`}
                           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                          loading="lazy"
                         />
                       </div>
                     )}

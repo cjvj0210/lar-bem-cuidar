@@ -6,25 +6,122 @@ interface SEOProps {
   keywords?: string;
   canonicalUrl?: string;
   ogImage?: string;
+  schema?: Record<string, any>;
 }
 
-const SEO = ({ title, description, keywords, canonicalUrl, ogImage }: SEOProps) => {
+const SEO = ({ title, description, keywords, canonicalUrl, ogImage, schema }: SEOProps) => {
   const siteName = "Físio Roberta Domiciliar";
-  const fullTitle = `${title} | ${siteName}`;
-  const defaultImage = "/logo.png";
+  const siteUrl = "https://fisiorobertadomiciliar.com.br";
+  const fullTitle = title.includes(siteName) ? title : `${title} | ${siteName}`;
+  const defaultImage = `${siteUrl}/logo.png`;
+  const finalCanonicalUrl = canonicalUrl || siteUrl;
+
+  // Schema LocalBusiness/Physiotherapist principal
+  const localBusinessSchema = {
+    "@context": "https://schema.org",
+    "@type": "Physiotherapist",
+    "name": "Roberta Rocha - Fisioterapia Domiciliar",
+    "alternateName": "Físio Roberta Domiciliar",
+    "description": "Fisioterapia domiciliar premium em Barretos-SP. Especializada em idosos, reabilitação neurológica, ortopédica e pós-operatória no conforto do seu lar.",
+    "image": defaultImage,
+    "url": siteUrl,
+    "telephone": "+5517982123269",
+    "priceRange": "R$ 150 - R$ 200",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Barretos",
+      "addressRegion": "SP",
+      "addressCountry": "BR"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": "-20.5577",
+      "longitude": "-48.5682"
+    },
+    "areaServed": {
+      "@type": "City",
+      "name": "Barretos",
+      "containedIn": {
+        "@type": "State",
+        "name": "São Paulo"
+      }
+    },
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        "opens": "08:00",
+        "closes": "18:00"
+      }
+    ],
+    "sameAs": [
+      "https://www.instagram.com/fisiorobertadomiciliar/",
+      "https://www.facebook.com/profile.php?id=61553900038660"
+    ],
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "5.0",
+      "reviewCount": "4",
+      "bestRating": "5",
+      "worstRating": "1"
+    },
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Serviços de Fisioterapia Domiciliar",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Fisioterapia Geriátrica",
+            "description": "Prevenção de quedas, fortalecimento muscular e manutenção da autonomia em idosos"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Fisioterapia Neurológica",
+            "description": "Tratamento para AVC, Parkinson, Alzheimer e outras condições neurológicas"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Fisioterapia Ortopédica",
+            "description": "Reabilitação de lesões e cirurgias ortopédicas"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Fisioterapia Respiratória",
+            "description": "Auxílio em doenças pulmonares crônicas"
+          }
+        }
+      ]
+    }
+  };
 
   return (
     <Helmet>
       <title>{fullTitle}</title>
       <meta name="description" content={description} />
       {keywords && <meta name="keywords" content={keywords} />}
+      <meta name="author" content="Roberta Rocha" />
+      <meta name="robots" content="index, follow" />
+      <meta name="googlebot" content="index, follow" />
       
       {/* Open Graph */}
+      <meta property="og:site_name" content={siteName} />
       <meta property="og:title" content={fullTitle} />
       <meta property="og:description" content={description} />
       <meta property="og:type" content="website" />
       <meta property="og:image" content={ogImage || defaultImage} />
-      {canonicalUrl && <meta property="og:url" content={canonicalUrl} />}
+      <meta property="og:url" content={finalCanonicalUrl} />
+      <meta property="og:locale" content="pt_BR" />
       
       {/* Twitter Card */}
       <meta name="twitter:card" content="summary_large_image" />
@@ -33,39 +130,25 @@ const SEO = ({ title, description, keywords, canonicalUrl, ogImage }: SEOProps) 
       <meta name="twitter:image" content={ogImage || defaultImage} />
       
       {/* Canonical URL */}
-      {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
+      <link rel="canonical" href={finalCanonicalUrl} />
+      
+      {/* Geo Tags */}
+      <meta name="geo.region" content="BR-SP" />
+      <meta name="geo.placename" content="Barretos" />
+      <meta name="geo.position" content="-20.5577;-48.5682" />
+      <meta name="ICBM" content="-20.5577, -48.5682" />
       
       {/* Local Business Schema */}
       <script type="application/ld+json">
-        {JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "LocalBusiness",
-          "name": "Físio Roberta Domiciliar",
-          "image": defaultImage,
-          "description": "Fisioterapia domiciliar especializada em Barretos-SP. Atendimento personalizado e exclusivo para idosos, reabilitação neurológica, ortopédica e respiratória no conforto do seu lar.",
-          "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "Barretos",
-            "addressRegion": "SP",
-            "addressCountry": "BR"
-          },
-          "areaServed": {
-            "@type": "City",
-            "name": "Barretos",
-            "containedIn": {
-              "@type": "State",
-              "name": "São Paulo"
-            }
-          },
-          "telephone": "+5517982123269",
-          "priceRange": "$$",
-          "openingHours": "Mo-Fr 07:00-19:00, Sa 08:00-12:00",
-          "sameAs": [
-            "https://www.instagram.com/fisiorobertadomiciliar/",
-            "https://www.facebook.com/profile.php?id=61553900038660"
-          ]
-        })}
+        {JSON.stringify(localBusinessSchema)}
       </script>
+      
+      {/* Additional Schema if provided */}
+      {schema && (
+        <script type="application/ld+json">
+          {JSON.stringify(schema)}
+        </script>
+      )}
     </Helmet>
   );
 };

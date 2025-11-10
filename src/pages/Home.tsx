@@ -9,12 +9,53 @@ import treatmentImage1 from "@/assets/treatment-balance-outdoor.jpg";
 import treatmentImage2 from "@/assets/treatment-home-exercise.jpg";
 
 const Home = () => {
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Como funciona o atendimento de fisioterapia domiciliar em Barretos-SP?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "O atendimento domiciliar é realizado na casa do paciente, em horários flexíveis. Levo todos os equipamentos necessários e realizo avaliação individualizada para criar um plano personalizado de tratamento."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Qual o valor da consulta de fisioterapia domiciliar?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Os valores variam entre R$ 150 e R$ 200 por sessão, dependendo da complexidade do tratamento e frequência. Entre em contato para um orçamento personalizado."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Quais condições são tratadas pela fisioterapia domiciliar?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Atendo principalmente idosos com dificuldade de locomoção, pacientes em reabilitação pós-operatória, sequelas de AVC, Parkinson, Alzheimer, e condições ortopédicas e respiratórias."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Atende em quais bairros de Barretos?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Atendo em toda a cidade de Barretos-SP, incluindo todos os bairros centrais e periféricos da cidade."
+        }
+      }
+    ]
+  };
+
   return (
     <div className="min-h-screen animate-fade-in">
       <SEO 
-        title="Fisioterapia Domiciliar em Barretos-SP"
-        description="Fisioterapeuta especializada em atendimento domiciliar para idosos em Barretos-SP. 13 anos de experiência em reabilitação neurológica, geriátrica e ortopédica."
-        keywords="fisioterapia domiciliar Barretos, fisioterapeuta para idosos Barretos, fisioterapia em casa Barretos-SP, reabilitação domiciliar"
+        title="Fisioterapia Domiciliar em Barretos-SP | Roberta Rocha"
+        description="Fisioterapia domiciliar especializada para idosos em Barretos-SP. Atendimento personalizado com foco em recuperação, autonomia e bem-estar no conforto do seu lar."
+        keywords="fisioterapia domiciliar barretos, fisioterapeuta para idosos barretos, fisioterapia geriátrica barretos, reabilitação pós-operatória barretos, fisioterapia neurológica barretos, fisioterapia em casa barretos"
+        canonicalUrl="https://fisiorobertadomiciliar.com.br/"
+        schema={faqSchema}
       />
       {/* Hero Section */}
       <section className="relative pt-24 min-h-screen flex items-center">
@@ -29,8 +70,8 @@ const Home = () => {
               </div>
 
               <h1 className="text-foreground">
-                Fisioterapia domiciliar em Barretos-SP:{" "}
-                <span className="text-primary">cuidado profissional no conforto do seu lar</span>
+                Fisioterapia Domiciliar em Barretos-SP:{" "}
+                <span className="text-primary">Cuidado Profissional no Conforto do Seu Lar</span>
               </h1>
 
               <p className="text-lg text-muted-foreground">
@@ -108,8 +149,9 @@ const Home = () => {
               <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-accent/20 rounded-3xl blur-3xl"></div>
               <img
                 src={heroImage}
-                alt="Fisioterapeuta Roberta Rocha atendendo paciente idosa com exercícios de fortalecimento em domicílio em Barretos-SP"
+                alt="Fisioterapeuta Roberta Rocha atendendo paciente idosa com exercícios de fortalecimento em domicílio em Barretos-SP - Fisioterapia especializada"
                 className="relative rounded-3xl shadow-soft w-full h-auto object-cover"
+                loading="eager"
               />
             </div>
           </div>
@@ -180,8 +222,9 @@ const Home = () => {
               <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-accent/10 rounded-3xl blur-2xl"></div>
               <img
                 src={robertaPortrait}
-                alt="Roberta Rocha - Fisioterapeuta especializada em atendimento domiciliar em Barretos-SP com 13 anos de experiência"
+                alt="Roberta Rocha - Fisioterapeuta especializada em atendimento domiciliar em Barretos-SP com 13 anos de experiência em reabilitação geriátrica e neurológica"
                 className="relative rounded-3xl shadow-soft w-full h-auto object-cover"
+                loading="lazy"
               />
             </div>
 

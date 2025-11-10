@@ -1,15 +1,18 @@
 import Contact from "@/components/Contact";
 import SEO from "@/components/SEO";
+import Breadcrumb from "@/components/Breadcrumb";
 
 const Contato = () => {
   return (
     <>
       <SEO 
-        title="Contato - Fisioterapia Domiciliar em Barretos-SP"
-        description="Entre em contato para agendar uma avaliação de fisioterapia domiciliar em Barretos-SP. Atendimento personalizado para idosos e pacientes em reabilitação."
-        keywords="agendar fisioterapia Barretos, contato fisioterapeuta domiciliar, avaliação fisioterapia em casa Barretos-SP"
+        title="Contato - Agende sua Avaliação Barretos-SP"
+        description="Entre em contato e agende sua avaliação de fisioterapia domiciliar em Barretos-SP. Atendimento personalizado no conforto do seu lar."
+        keywords="contato fisioterapeuta barretos, agendar fisioterapia domiciliar, whatsapp fisioterapeuta barretos"
+        canonicalUrl="https://fisiorobertadomiciliar.com.br/contato"
       />
       <div className="min-h-screen pt-20 animate-fade-in">
+        <Breadcrumb items={[{ label: "Contato" }]} />
         <Contact />
       </div>
     </>

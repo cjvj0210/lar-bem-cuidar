@@ -6,6 +6,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Calendar, Clock, ArrowLeft, MessageCircle } from "lucide-react";
 import { Skeleton } from "@/components/ui/skeleton";
 import SEO from "@/components/SEO";
+import Breadcrumb from "@/components/Breadcrumb";
 
 interface BlogPost {
   id: string;
@@ -101,11 +102,18 @@ const BlogPost = () => {
   return (
     <div className="min-h-screen pt-20 animate-fade-in">
       {post && (
-        <SEO 
-          title={post.title}
-          description={post.subtitle || post.content.substring(0, 155)}
-          keywords="fisioterapia domiciliar Barretos, blog fisioterapia, dicas fisioterapia"
-        />
+        <>
+          <SEO 
+            title={`${post.title} - Blog Fisioterapia Barretos-SP`}
+            description={post.subtitle || post.content.substring(0, 155)}
+            keywords="fisioterapia domiciliar barretos, blog fisioterapia, dicas cuidados idosos, reabilitação em casa"
+            canonicalUrl={`https://fisiorobertadomiciliar.com.br/blog/${id}`}
+          />
+          <Breadcrumb items={[
+            { label: "Blog", href: "/blog" },
+            { label: post.title }
+          ]} />
+        </>
       )}
       <article className="section-padding">
         <div className="container mx-auto max-w-4xl">
@@ -146,8 +154,9 @@ const BlogPost = () => {
             <div className="mb-12 rounded-2xl overflow-hidden shadow-elegant max-w-4xl mx-auto">
               <img
                 src={post.image_url}
-                alt={`${post.title} - Fisioterapeuta Roberta Rocha atendendo paciente em domicílio em Barretos-SP`}
+                alt={`${post.title} - Artigo sobre fisioterapia domiciliar em Barretos-SP por Roberta Rocha, fisioterapeuta especializada`}
                 className="w-full h-auto object-cover"
+                loading="lazy"
               />
             </div>
           )}

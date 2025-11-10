@@ -23,9 +23,9 @@ const Hero = () => {
             </div>
 
             <h1 className="text-foreground">
-              Fisioterapia domiciliar para{" "}
-              <span className="text-primary">recuperar movimento</span> e{" "}
-              <span className="text-primary">autonomia</span>
+              Fisioterapia Domiciliar em Barretos-SP: {" "}
+              <span className="text-primary">Recupere Movimento</span> e{" "}
+              <span className="text-primary">Autonomia</span>
             </h1>
 
             <p className="text-lg text-muted-foreground">
@@ -76,8 +76,9 @@ const Hero = () => {
             <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-accent/20 rounded-3xl blur-3xl"></div>
             <img
               src={heroImage}
-              alt="Fisioterapeuta Roberta atendendo paciente idosa em casa"
+              alt="Fisioterapeuta Roberta Rocha atendendo paciente idosa em domicílio em Barretos-SP - Fisioterapia especializada para recuperação e autonomia"
               className="relative rounded-3xl shadow-soft w-full h-auto object-cover"
+              loading="eager"
             />
           </div>
         </div>

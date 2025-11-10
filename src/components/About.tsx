@@ -23,8 +23,9 @@ const About = () => {
             <div className="animate-fade-in" style={{ animationDelay: "200ms" }}>
               <img
                 src={robertaImage}
-                alt="Roberta Rocha - Fisioterapeuta especializada em atendimento domiciliar para idosos em Barretos-SP"
+                alt="Roberta Rocha - Fisioterapeuta especializada em atendimento domiciliar para idosos em Barretos-SP, com 13 anos de experiência em reabilitação geriátrica e neurológica"
                 className="rounded-xl shadow-lg w-full object-cover"
+                loading="lazy"
               />
             </div>
           </div>

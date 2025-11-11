@@ -61,6 +61,7 @@ export type Database = {
       }
       contact_messages: {
         Row: {
+          accept_whatsapp: boolean | null
           created_at: string
           email: string | null
           id: string
@@ -69,6 +70,7 @@ export type Database = {
           phone: string
         }
         Insert: {
+          accept_whatsapp?: boolean | null
           created_at?: string
           email?: string | null
           id?: string
@@ -77,6 +79,7 @@ export type Database = {
           phone: string
         }
         Update: {
+          accept_whatsapp?: boolean | null
           created_at?: string
           email?: string | null
           id?: string

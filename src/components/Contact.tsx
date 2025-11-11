@@ -3,9 +3,12 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { MapPin, Phone, Mail, Clock, MessageCircle, CheckCircle, Instagram, Facebook } from "lucide-react";
+import { MapPin, Phone, Mail, Clock, MessageCircle, Instagram, Facebook } from "lucide-react";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
 import { trackFormSubmit, trackWhatsAppClick, trackPhoneClick } from "@/lib/analytics";
@@ -13,26 +16,32 @@ import { z } from "zod";
 
 const contactSchema = z.object({
   name: z.string().trim().min(1, "Nome é obrigatório").max(100, "Nome muito longo"),
+  email: z.string().trim().email("Email inválido").max(255, "Email muito longo"),
   phone: z.string().trim().min(10, "Telefone inválido").max(20, "Telefone muito longo"),
-  email: z.string().trim().email("Email inválido").max(255, "Email muito longo").optional().or(z.literal("")),
-  message: z.string().trim().min(1, "Mensagem é obrigatória").max(1000, "Mensagem muito longa")
+  subject: z.string().min(1, "Selecione um assunto"),
+  message: z.string().trim().min(1, "Mensagem é obrigatória").max(1000, "Mensagem muito longa"),
+  acceptWhatsapp: z.boolean()
 });
 
 const Contact = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: "",
-    phone: "",
     email: "",
-    message: ""
+    phone: "",
+    subject: "",
+    message: "",
+    acceptWhatsapp: false
   });
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setErrors({});
+    setIsSubmitting(true);
     
     try {
-      // Validate form data
       const validatedData = contactSchema.parse(formData);
 
       // Salvar mensagem no banco de dados
@@ -41,22 +50,26 @@ const Contact = () => {
         .insert({
           name: validatedData.name,
           phone: validatedData.phone,
-          email: validatedData.email || null,
-          message: validatedData.message
+          email: validatedData.email,
+          message: `Assunto: ${validatedData.subject}\n\n${validatedData.message}`,
+          accept_whatsapp: validatedData.acceptWhatsapp
         });
 
       if (error) throw error;
 
-      // Track form submission
       trackFormSubmit('contact_form');
 
-      // Redirecionar para WhatsApp com dados validados e encoded
-      const whatsappMessage = `Olá! Gostaria de agendar uma avaliação.%0A%0ANome: ${encodeURIComponent(validatedData.name)}%0ATelefone: ${encodeURIComponent(validatedData.phone)}%0AEmail: ${encodeURIComponent(validatedData.email || '')}%0AMensagem: ${encodeURIComponent(validatedData.message)}`;
+      // Redirecionar para WhatsApp com dados validados
+      const whatsappMessage = `Olá! Vim através do site.%0A%0ANome: ${encodeURIComponent(validatedData.name)}%0ATelefone: ${encodeURIComponent(validatedData.phone)}%0AEmail: ${encodeURIComponent(validatedData.email)}%0AAssunto: ${encodeURIComponent(validatedData.subject)}%0AMensagem: ${encodeURIComponent(validatedData.message)}`;
       trackWhatsAppClick('contact_form');
       window.open(`https://wa.me/5517982123269?text=${whatsappMessage}`, "_blank");
       
-      toast.success("Mensagem enviada! Obrigada pelo contato.");
-      setFormData({ name: "", phone: "", email: "", message: "" });
+      toast.success("Mensagem enviada! Redirecionando...");
+      
+      // Redirecionar para página de obrigado
+      setTimeout(() => {
+        navigate("/obrigado");
+      }, 1500);
     } catch (error) {
       if (error instanceof z.ZodError) {
         const fieldErrors: Record<string, string> = {};
@@ -70,6 +83,8 @@ const Contact = () => {
       } else {
         toast.error("Erro ao enviar mensagem. Por favor, tente novamente.");
       }
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -78,67 +93,47 @@ const Contact = () => {
   return (
     <section id="contato" className="section-padding" aria-labelledby="contact-heading">
       <div className="container-custom">
+        {/* HERO */}
         <div className="text-center max-w-3xl mx-auto mb-16 animate-fade-in">
-          <h2 id="contact-heading" className="text-primary mb-4">Vamos conversar com calma?</h2>
-          <p className="text-lg text-muted-foreground">
-            Estou à disposição para tirar dúvidas, explicar os atendimentos e agendar sua avaliação.
+          <h1 id="contact-heading" className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+            Entre em Contato - Fisioterapia Domiciliar em Barretos
+          </h1>
+          <p className="text-xl text-muted-foreground">
+            Estamos prontos para ajudar você. <strong className="text-primary">Resposta em até 10 minutos.</strong>
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12">
+        <div className="grid lg:grid-cols-2 gap-12 mb-20">
+          {/* FORMULÁRIO DE CONTATO */}
           <Card className="animate-fade-in border-2">
             <CardHeader>
-              <CardTitle className="text-foreground">Envie sua mensagem</CardTitle>
+              <CardTitle className="text-2xl text-foreground">Envie sua mensagem</CardTitle>
+              <p className="text-sm text-muted-foreground">Preencha o formulário abaixo e entraremos em contato</p>
             </CardHeader>
             <CardContent>
-              <form onSubmit={handleSubmit} className="space-y-4" noValidate>
+              <form onSubmit={handleSubmit} className="space-y-5" noValidate>
                 <div>
-                  <Label htmlFor="name">Nome completo <span aria-label="campo obrigatório">*</span></Label>
+                  <Label htmlFor="name">Nome completo <span className="text-destructive">*</span></Label>
                   <Input
                     id="name"
                     name="name"
-                    placeholder="Seu nome"
+                    placeholder="Seu nome completo"
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    className={errors.name ? "border-red-500" : ""}
+                    className={errors.name ? "border-destructive" : ""}
                     maxLength={100}
+                    required
                     aria-required="true"
                     aria-invalid={!!errors.name}
-                    aria-describedby={errors.name ? "name-error" : undefined}
                     autoComplete="name"
                   />
                   {errors.name && (
-                    <p id="name-error" className="text-xs text-red-500 mt-1" role="alert">
-                      {errors.name}
-                    </p>
+                    <p className="text-xs text-destructive mt-1" role="alert">{errors.name}</p>
                   )}
                 </div>
 
                 <div>
-                  <Label htmlFor="phone">Telefone <span aria-label="campo obrigatório">*</span></Label>
-                  <Input
-                    id="phone"
-                    name="phone"
-                    type="tel"
-                    placeholder="(17) 99123-4567"
-                    value={formData.phone}
-                    onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                    className={errors.phone ? "border-red-500" : ""}
-                    maxLength={20}
-                    aria-required="true"
-                    aria-invalid={!!errors.phone}
-                    aria-describedby={errors.phone ? "phone-error" : undefined}
-                    autoComplete="tel"
-                  />
-                  {errors.phone && (
-                    <p id="phone-error" className="text-xs text-red-500 mt-1" role="alert">
-                      {errors.phone}
-                    </p>
-                  )}
-                </div>
-
-                <div>
-                  <Label htmlFor="email">Email (opcional)</Label>
+                  <Label htmlFor="email">Email <span className="text-destructive">*</span></Label>
                   <Input
                     id="email"
                     name="email"
@@ -146,53 +141,108 @@ const Contact = () => {
                     placeholder="seu@email.com"
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className={errors.email ? "border-red-500" : ""}
+                    className={errors.email ? "border-destructive" : ""}
                     maxLength={255}
+                    required
+                    aria-required="true"
                     aria-invalid={!!errors.email}
-                    aria-describedby={errors.email ? "email-error" : undefined}
                     autoComplete="email"
                   />
                   {errors.email && (
-                    <p id="email-error" className="text-xs text-red-500 mt-1" role="alert">
-                      {errors.email}
-                    </p>
+                    <p className="text-xs text-destructive mt-1" role="alert">{errors.email}</p>
                   )}
                 </div>
 
                 <div>
-                  <Label htmlFor="message">Mensagem <span aria-label="campo obrigatório">*</span></Label>
+                  <Label htmlFor="phone">Telefone/WhatsApp <span className="text-destructive">*</span></Label>
+                  <Input
+                    id="phone"
+                    name="phone"
+                    type="tel"
+                    placeholder="(17) 99123-4567"
+                    value={formData.phone}
+                    onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                    className={errors.phone ? "border-destructive" : ""}
+                    maxLength={20}
+                    required
+                    aria-required="true"
+                    aria-invalid={!!errors.phone}
+                    autoComplete="tel"
+                  />
+                  {errors.phone && (
+                    <p className="text-xs text-destructive mt-1" role="alert">{errors.phone}</p>
+                  )}
+                </div>
+
+                <div>
+                  <Label htmlFor="subject">Assunto <span className="text-destructive">*</span></Label>
+                  <Select 
+                    value={formData.subject} 
+                    onValueChange={(value) => setFormData({ ...formData, subject: value })}
+                    required
+                  >
+                    <SelectTrigger id="subject" className={errors.subject ? "border-destructive" : ""}>
+                      <SelectValue placeholder="Selecione o assunto" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="agendar-avaliacao">Agendar avaliação</SelectItem>
+                      <SelectItem value="duvidas-servicos">Dúvidas sobre serviços</SelectItem>
+                      <SelectItem value="solicitar-orcamento">Solicitar orçamento</SelectItem>
+                      <SelectItem value="outros">Outros</SelectItem>
+                    </SelectContent>
+                  </Select>
+                  {errors.subject && (
+                    <p className="text-xs text-destructive mt-1" role="alert">{errors.subject}</p>
+                  )}
+                </div>
+
+                <div>
+                  <Label htmlFor="message">Mensagem <span className="text-destructive">*</span></Label>
                   <Textarea
                     id="message"
                     name="message"
-                    placeholder="Ex: Gostaria de atendimento para minha mãe, que teve um AVC."
+                    placeholder="Conte-nos como podemos ajudar você..."
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    className={errors.message ? "border-red-500" : ""}
-                    rows={4}
+                    className={errors.message ? "border-destructive" : ""}
+                    rows={5}
                     maxLength={1000}
+                    required
                     aria-required="true"
                     aria-invalid={!!errors.message}
-                    aria-describedby={errors.message ? "message-error message-counter" : "message-counter"}
                   />
                   {errors.message && (
-                    <p id="message-error" className="text-xs text-red-500 mt-1" role="alert">
-                      {errors.message}
-                    </p>
+                    <p className="text-xs text-destructive mt-1" role="alert">{errors.message}</p>
                   )}
-                  <p id="message-counter" className="text-xs text-muted-foreground mt-1" aria-live="polite">
+                  <p className="text-xs text-muted-foreground mt-1">
                     {formData.message.length}/1000 caracteres
                   </p>
+                </div>
+
+                <div className="flex items-start space-x-2 pt-2">
+                  <Checkbox
+                    id="acceptWhatsapp"
+                    checked={formData.acceptWhatsapp}
+                    onCheckedChange={(checked) => 
+                      setFormData({ ...formData, acceptWhatsapp: checked === true })
+                    }
+                  />
+                  <Label 
+                    htmlFor="acceptWhatsapp" 
+                    className="text-sm font-normal leading-relaxed cursor-pointer"
+                  >
+                    Aceito receber contato por WhatsApp
+                  </Label>
                 </div>
 
                 <Button 
                   type="submit"
                   size="lg" 
                   className="w-full h-14 text-base bg-primary hover:bg-primary/90 focus:ring-4 focus:ring-primary/50"
-                  data-event="form_submit"
-                  data-form-name="contact_form"
-                  aria-label="Enviar mensagem e continuar pelo WhatsApp"
+                  disabled={isSubmitting}
+                  aria-label="Enviar mensagem"
                 >
-                  Enviar Mensagem
+                  {isSubmitting ? "Enviando..." : "Enviar Mensagem"}
                 </Button>
                 <p className="text-xs text-center text-muted-foreground">
                   ✓ Resposta em até 10 minutos • Sem compromisso
@@ -201,48 +251,31 @@ const Contact = () => {
             </CardContent>
           </Card>
 
-          <Card className="border-2 bg-primary/5 animate-fade-in">
-            <CardContent className="pt-6 text-center space-y-4">
-              <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto">
-                <MessageCircle className="w-8 h-8 text-primary" />
-              </div>
-              <h3 className="text-xl font-semibold text-foreground">
-                Prefere falar diretamente pelo WhatsApp?
-              </h3>
-              <p className="text-muted-foreground">
-                Clique no botão abaixo e converse comigo agora mesmo.
-              </p>
-              <Button
-                size="lg"
-                className="w-full bg-primary hover:bg-primary/90 focus:ring-4 focus:ring-primary/50"
-                onClick={() => {
-                  trackWhatsAppClick('contact_page_card');
-                  window.open(whatsappLink, "_blank");
-                }}
-                data-event="whatsapp_click"
-                data-source="contact_page_card"
-                aria-label="Abrir conversa no WhatsApp com Roberta"
-              >
-                Falar com Roberta
-              </Button>
-              <p className="text-sm text-muted-foreground italic">
-                Fique à vontade para me enviar uma mensagem — sem compromisso.
-              </p>
-            </CardContent>
-          </Card>
-
+          {/* INFORMAÇÕES DE CONTATO */}
           <div className="space-y-6 animate-fade-in">
-            <Card className="border-2">
-              <CardContent className="pt-6 flex items-start space-x-4">
-                <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-                  <MapPin className="w-6 h-6 text-primary" />
+            {/* CTA ALTERNATIVO - WhatsApp Direto */}
+            <Card className="border-2 bg-primary/5">
+              <CardContent className="pt-6 text-center space-y-4">
+                <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto">
+                  <MessageCircle className="w-8 h-8 text-primary" />
                 </div>
-                <div>
-                  <h4 className="font-semibold text-foreground mb-1">Área de Atendimento</h4>
-                  <p className="text-muted-foreground">
-                    Barretos-SP
-                  </p>
-                </div>
+                <h3 className="text-xl font-semibold text-foreground">
+                  Prefere falar pelo WhatsApp?
+                </h3>
+                <p className="text-muted-foreground">
+                  Clique no botão abaixo e converse comigo agora mesmo.
+                </p>
+                <Button
+                  size="lg"
+                  className="w-full bg-primary hover:bg-primary/90 focus:ring-4 focus:ring-primary/50"
+                  onClick={() => {
+                    trackWhatsAppClick('contact_cta_card');
+                    window.open(whatsappLink, "_blank");
+                  }}
+                  aria-label="Abrir conversa no WhatsApp"
+                >
+                  Falar no WhatsApp Agora
+                </Button>
               </CardContent>
             </Card>
 
@@ -253,30 +286,29 @@ const Contact = () => {
                 </div>
                 <div>
                   <h4 className="font-semibold text-foreground mb-1">Telefone / WhatsApp</h4>
-                  <p className="text-muted-foreground">
+                  <p className="text-muted-foreground mb-2">
                     (17) 98212-3269
                   </p>
-                  <Button
-                    variant="link"
-                    className="p-0 h-auto text-primary"
-                    onClick={() => {
-                      trackWhatsAppClick('contact_phone_link');
-                      window.open(whatsappLink, "_blank");
-                    }}
-                    data-event="whatsapp_click"
-                    data-source="contact_phone_link"
-                  >
-                    Chamar no WhatsApp
-                  </Button>
-                <a 
-                  href="tel:+5517982123269" 
-                  className="block text-sm text-primary hover:underline mt-1 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded"
-                  onClick={() => trackPhoneClick()}
-                  data-event="phone_click"
-                  aria-label="Ligar para o telefone (17) 98212-3269"
-                >
-                  Ligar agora
-                </a>
+                  <div className="space-y-1">
+                    <Button
+                      variant="link"
+                      className="p-0 h-auto text-primary"
+                      onClick={() => {
+                        trackWhatsAppClick('contact_phone_link');
+                        window.open(whatsappLink, "_blank");
+                      }}
+                    >
+                      Chamar no WhatsApp
+                    </Button>
+                    <a 
+                      href="tel:+5517982123269" 
+                      className="block text-sm text-primary hover:underline focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded"
+                      onClick={() => trackPhoneClick()}
+                      aria-label="Ligar para (17) 98212-3269"
+                    >
+                      Ligar agora
+                    </a>
+                  </div>
                 </div>
               </CardContent>
             </Card>
@@ -288,9 +320,12 @@ const Contact = () => {
                 </div>
                 <div>
                   <h4 className="font-semibold text-foreground mb-1">Email</h4>
-                  <p className="text-muted-foreground">
-                    fisiorobertarochadomiciliar@gmail.com
-                  </p>
+                  <a 
+                    href="mailto:contato@fisiorobertadomiciliar.com"
+                    className="text-muted-foreground hover:text-primary transition-colors"
+                  >
+                    contato@fisiorobertadomiciliar.com
+                  </a>
                 </div>
               </CardContent>
             </Card>
@@ -303,8 +338,8 @@ const Contact = () => {
                 <div>
                   <h4 className="font-semibold text-foreground mb-1">Horário de Atendimento</h4>
                   <p className="text-muted-foreground">
-                    Segunda a Sexta: 7h às 19h<br />
-                    Sábado: 8h às 12h
+                    Segunda a Sexta: 8h às 18h<br />
+                    <span className="text-sm">Tempo de resposta: Até 10 minutos (horário comercial)</span>
                   </p>
                 </div>
               </CardContent>
@@ -314,111 +349,170 @@ const Contact = () => {
               <CardContent className="pt-6">
                 <h4 className="font-semibold text-foreground mb-4 text-center">Siga nas Redes Sociais</h4>
                 <div className="flex justify-center gap-4">
-                <a 
-                  href="https://www.instagram.com/fisiorobertadomiciliar/" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="flex flex-col items-center gap-2 p-4 rounded-lg bg-background hover:bg-primary/5 transition-smooth group focus:outline-none focus:ring-4 focus:ring-primary/50"
-                  aria-label="Visitar perfil no Instagram - @fisiorobertadomiciliar (abre em nova aba)"
-                >
-                  <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center group-hover:scale-110 transition-smooth">
-                    <Instagram className="w-6 h-6 text-primary" aria-hidden="true" />
-                  </div>
-                  <span className="text-sm text-muted-foreground group-hover:text-primary transition-smooth">
-                    @fisiorobertadomiciliar
-                  </span>
-                </a>
-                <a 
-                  href="https://www.facebook.com/profile.php?id=61553900038660" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="flex flex-col items-center gap-2 p-4 rounded-lg bg-background hover:bg-primary/5 transition-smooth group focus:outline-none focus:ring-4 focus:ring-primary/50"
-                  aria-label="Visitar perfil no Facebook - Físio Roberta Domiciliar (abre em nova aba)"
-                >
-                  <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center group-hover:scale-110 transition-smooth">
-                    <Facebook className="w-6 h-6 text-primary" aria-hidden="true" />
-                  </div>
-                  <span className="text-sm text-muted-foreground group-hover:text-primary transition-smooth">
-                    Facebook
-                  </span>
-                </a>
+                  <a 
+                    href="https://www.instagram.com/fisiorobertadomiciliar/" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="flex flex-col items-center gap-2 p-4 rounded-lg bg-background hover:bg-primary/5 transition-all group focus:outline-none focus:ring-4 focus:ring-primary/50"
+                    aria-label="Visitar perfil no Instagram"
+                  >
+                    <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center group-hover:scale-110 transition-transform">
+                      <Instagram className="w-6 h-6 text-primary" />
+                    </div>
+                    <span className="text-sm text-muted-foreground group-hover:text-primary transition-colors">
+                      @fisiorobertadomiciliar
+                    </span>
+                  </a>
+                  <a 
+                    href="https://www.facebook.com/profile.php?id=61553900038660" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="flex flex-col items-center gap-2 p-4 rounded-lg bg-background hover:bg-primary/5 transition-all group focus:outline-none focus:ring-4 focus:ring-primary/50"
+                    aria-label="Visitar perfil no Facebook"
+                  >
+                    <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center group-hover:scale-110 transition-transform">
+                      <Facebook className="w-6 h-6 text-primary" />
+                    </div>
+                    <span className="text-sm text-muted-foreground group-hover:text-primary transition-colors">
+                      Facebook
+                    </span>
+                  </a>
                 </div>
               </CardContent>
             </Card>
           </div>
         </div>
 
-        <div className="mt-20 max-w-4xl mx-auto animate-fade-in">
-          <div className="text-center mb-12">
-            <h3 className="text-2xl font-semibold text-foreground mb-4">
-              Atendimento domiciliar exclusivo em Barretos-SP
-            </h3>
+        {/* ÁREA DE ATENDIMENTO - MAPA */}
+        <div className="mb-20 animate-fade-in">
+          <div className="text-center mb-8">
+            <h2 className="text-3xl font-bold text-foreground mb-4">Área de Atendimento</h2>
             <p className="text-muted-foreground">
-              Confira abaixo as dúvidas mais frequentes sobre o atendimento.
+              Atendimento domiciliar em Barretos-SP e região
             </p>
           </div>
 
           <Card className="border-2">
-            <CardHeader>
-              <CardTitle className="text-foreground flex items-center gap-3">
-                <MessageCircle className="w-6 h-6 text-primary" />
-                Dúvidas comuns
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
+            <CardContent className="p-0">
+              <div className="aspect-video w-full">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3757.8989736283866!2d-48.56828792394958!3d-20.55749558096988!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94be1f4c5e5e5e5f%3A0x5e5e5e5e5e5e5e5e!2sBarretos%2C%20SP!5e0!3m2!1spt-BR!2sbr!4v1700000000000!5m2!1spt-BR!2sbr"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="Mapa da área de atendimento em Barretos-SP"
+                  className="rounded-lg"
+                />
+              </div>
+            </CardContent>
+          </Card>
+
+          <div className="mt-6 grid md:grid-cols-2 gap-6">
+            <Card className="border-2">
+              <CardContent className="pt-6">
+                <div className="flex items-start space-x-3 mb-4">
+                  <MapPin className="w-5 h-5 text-primary flex-shrink-0 mt-1" />
+                  <div>
+                    <h4 className="font-semibold text-foreground mb-2">Centro de Referência</h4>
+                    <p className="text-sm text-muted-foreground">
+                      Churrascaria Estrela do Sul, Barretos-SP<br />
+                      <span className="text-primary">Raio de atendimento: 6km</span>
+                    </p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card className="border-2">
+              <CardContent className="pt-6">
+                <h4 className="font-semibold text-foreground mb-3">Principais Bairros Atendidos</h4>
+                <div className="grid grid-cols-2 gap-2 text-sm text-muted-foreground">
+                  <div>• Centro</div>
+                  <div>• Jardim América</div>
+                  <div>• Vila Boa Vista</div>
+                  <div>• Jardim Eldorado</div>
+                  <div>• Alto da Boa Vista</div>
+                  <div>• Outros bairros</div>
+                </div>
+                <p className="text-xs text-muted-foreground mt-3 italic">
+                  *Consulte disponibilidade para outros bairros
+                </p>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+
+        {/* FAQ RÁPIDO */}
+        <div className="max-w-4xl mx-auto animate-fade-in">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-foreground mb-4">
+              Dúvidas Frequentes
+            </h2>
+            <p className="text-muted-foreground">
+              Respostas rápidas para as perguntas mais comuns
+            </p>
+          </div>
+
+          <Card className="border-2">
+            <CardContent className="pt-6">
               <Accordion type="single" collapsible className="w-full">
                 <AccordionItem value="item-1">
                   <AccordionTrigger className="text-left text-foreground">
-                    Atende convênio?
+                    Quanto tempo demora para receber resposta?
                   </AccordionTrigger>
                   <AccordionContent className="text-muted-foreground">
-                    O atendimento é particular. Emito recibos que podem ser utilizados para reembolso junto ao seu convênio, 
-                    dependendo da cobertura do seu plano de saúde.
+                    Respondo em até 10 minutos durante horário comercial (segunda a sexta, 8h às 18h). 
+                    Mensagens fora desse horário serão respondidas no próximo dia útil.
                   </AccordionContent>
                 </AccordionItem>
 
                 <AccordionItem value="item-2">
                   <AccordionTrigger className="text-left text-foreground">
-                    Preciso de encaminhamento médico?
+                    Atende aos finais de semana?
                   </AccordionTrigger>
                   <AccordionContent className="text-muted-foreground">
-                    O encaminhamento médico é recomendado para melhor acompanhamento do quadro clínico, 
-                    mas não é obrigatório para iniciar o tratamento. Podemos conversar sobre isso na avaliação inicial.
+                    No momento, atendo apenas de segunda a sexta-feira. Porém, casos específicos podem 
+                    ser avaliados individualmente. Entre em contato para conversarmos sobre sua necessidade.
                   </AccordionContent>
                 </AccordionItem>
 
                 <AccordionItem value="item-3">
                   <AccordionTrigger className="text-left text-foreground">
-                    Quanto tempo dura uma sessão?
+                    Faz atendimento online?
                   </AccordionTrigger>
                   <AccordionContent className="text-muted-foreground">
-                    Cada sessão dura em média 50 minutos, mas o tempo pode variar conforme a necessidade e o plano de tratamento 
-                    individual de cada paciente.
+                    Não, trabalho exclusivamente com atendimento domiciliar presencial em Barretos-SP. 
+                    Acredito que a fisioterapia em casa, com equipamentos adequados e avaliação presencial, 
+                    traz melhores resultados para os pacientes.
                   </AccordionContent>
                 </AccordionItem>
 
                 <AccordionItem value="item-4">
                   <AccordionTrigger className="text-left text-foreground">
-                    Leva os equipamentos necessários?
+                    Quanto custa o atendimento?
                   </AccordionTrigger>
                   <AccordionContent className="text-muted-foreground">
-                    Sim! Levo todos os equipamentos e materiais necessários para o atendimento. 
-                    Você não precisa se preocupar com nada — apenas em estar confortável em casa.
+                    Os valores variam de acordo com o tipo de tratamento, frequência das sessões e localização. 
+                    Entre em contato para solicitar um orçamento personalizado. Trabalho com preços justos 
+                    e acessíveis para atendimento domiciliar de qualidade.
+                  </AccordionContent>
+                </AccordionItem>
+
+                <AccordionItem value="item-5">
+                  <AccordionTrigger className="text-left text-foreground">
+                    Atende convênio?
+                  </AccordionTrigger>
+                  <AccordionContent className="text-muted-foreground">
+                    O atendimento é particular. Emito recibos que podem ser utilizados para reembolso junto 
+                    ao seu convênio, dependendo da cobertura do seu plano de saúde.
                   </AccordionContent>
                 </AccordionItem>
               </Accordion>
             </CardContent>
           </Card>
-
-          <div className="mt-8 p-6 bg-primary/5 rounded-lg text-center animate-fade-in">
-            <CheckCircle className="w-12 h-12 text-primary mx-auto mb-4" />
-            <p className="text-lg text-foreground font-medium mb-2">
-              Toda jornada começa com um primeiro passo.
-            </p>
-            <p className="text-muted-foreground">
-              Será um prazer cuidar de você ou de quem você ama.
-            </p>
-          </div>
         </div>
       </div>
     </section>

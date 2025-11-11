@@ -11,6 +11,7 @@ import Sobre from "./pages/Sobre";
 import Servicos from "./pages/Servicos";
 import Depoimentos from "./pages/Depoimentos";
 import Contato from "./pages/Contato";
+import Obrigado from "./pages/Obrigado";
 import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
 import Agendar from "./pages/Agendar";
@@ -71,6 +72,7 @@ const App = () => {
                 <Route path="/servicos/fisioterapia-respiratoria" element={<FisioterapiaRespiratoria />} />
                 <Route path="/depoimentos" element={<Depoimentos />} />
                 <Route path="/contato" element={<Contato />} />
+                <Route path="/obrigado" element={<Obrigado />} />
                 <Route path="/blog" element={<Blog />} />
                 <Route path="/blog/:id" element={<BlogPost />} />
                 <Route path="/blog/categoria/:categoria" element={<Blog />} />

@@ -10,7 +10,7 @@ import { Activity, Shield, TrendingUp, Heart, CheckCircle2, Phone, Quote, Star, 
 import { Link } from "react-router-dom";
 import SEO from "@/components/SEO";
 import Breadcrumb from "@/components/Breadcrumb";
-import posOperatorioImage from "@/assets/paciente-pos-cirurgia-andador.jpg";
+const posOperatorioImage = "/images/paciente-pos-cirurgia-andador.jpg";
 
 const ReabilitacaoPosOperatoria = () => {
   const serviceSchema = {

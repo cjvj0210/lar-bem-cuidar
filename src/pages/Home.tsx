@@ -18,8 +18,10 @@ const Home = () => {
     "@context": "https://schema.org",
     "@type": ["LocalBusiness", "MedicalBusiness", "Physiotherapist"],
     "name": "Roberta Rocha - Fisioterapia Domiciliar",
-    "description": "Fisioterapia domiciliar premium em Barretos-SP. Especializada em idosos, reabilitação pós-operatória e fisioterapia neurológica. 13 anos de experiência.",
+    "alternateName": "Físio Roberta Domiciliar",
+    "description": "Fisioterapia domiciliar premium em Barretos-SP. Especializada em atendimento para idosos, reabilitação pós-operatória e fisioterapia neurológica. 13 anos de experiência com atendimento humanizado de 60 minutos.",
     "image": "https://www.fisiorobertadomiciliar.com/logo.png",
+    "logo": "https://www.fisiorobertadomiciliar.com/logo.png",
     "url": "https://www.fisiorobertadomiciliar.com",
     "telephone": "+5517982123269",
     "email": "fisiorobertarochadomiciliar@gmail.com",
@@ -44,16 +46,76 @@ const Home = () => {
       "geoRadius": "6000"
     },
     "priceRange": "R$ 140 - R$ 180",
+    "paymentAccepted": "Dinheiro, PIX, Cartão de Crédito, Cartão de Débito",
+    "currenciesAccepted": "BRL",
     "openingHoursSpecification": {
       "@type": "OpeningHoursSpecification",
-      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      "dayOfWeek": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday"
+      ],
       "opens": "08:00",
       "closes": "18:00"
     },
     "aggregateRating": {
       "@type": "AggregateRating",
       "ratingValue": "5.0",
+      "bestRating": "5",
+      "worstRating": "1",
       "reviewCount": "4"
+    },
+    "sameAs": [
+      "https://www.instagram.com/fisiorobertadomiciliar",
+      "https://www.facebook.com/fisiorobertadomiciliar"
+    ],
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Serviços de Fisioterapia Domiciliar",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Avaliação Inicial de Fisioterapia",
+            "description": "Avaliação completa de 60 minutos com anamnese, exame físico e plano de tratamento personalizado"
+          },
+          "price": "150",
+          "priceCurrency": "BRL"
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Sessão Avulsa de Fisioterapia Domiciliar",
+            "description": "Sessão individual de 60 minutos com todos os equipamentos inclusos"
+          },
+          "price": "180",
+          "priceCurrency": "BRL"
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Pacote 8 Sessões/Mês",
+            "description": "2x por semana - Ideal para manutenção e prevenção"
+          },
+          "price": "1200",
+          "priceCurrency": "BRL"
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Pacote 12 Sessões/Mês",
+            "description": "3x por semana - Recomendado para reabilitação intensiva"
+          },
+          "price": "1680",
+          "priceCurrency": "BRL"
+        }
+      ]
     }
   };
 
@@ -66,7 +128,7 @@ const Home = () => {
         "name": "Como funciona o atendimento de fisioterapia domiciliar em Barretos-SP?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "O atendimento domiciliar funciona em 3 etapas: 1) Avaliação inicial (R$ 150, 60 min) onde analiso sua condição e crio um plano personalizado; 2) Sessões regulares (2-3x por semana, 60 min cada) no conforto da sua casa, com todos os equipamentos inclusos; 3) Reavaliações mensais para ajustar o tratamento. Atendo em Barretos-SP em raio de 6km."
+          "text": "O atendimento domiciliar é realizado na casa do paciente, em horários flexíveis. Levo todos os equipamentos necessários e realizo avaliação individualizada para criar um plano personalizado de tratamento focado nas suas necessidades específicas. As sessões têm duração de 60 minutos completos."
         }
       },
       {
@@ -74,8 +136,110 @@ const Home = () => {
         "name": "Qual o valor da avaliação de fisioterapia domiciliar?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "A avaliação inicial custa R$ 150 e tem duração de 60 minutos. Sessões avulsas custam R$ 180. Oferecemos pacotes mensais com desconto: 8 sessões por R$ 1.200 (R$ 150/sessão) ou 12 sessões por R$ 1.680 (R$ 140/sessão). Aceitamos dinheiro, PIX e cartão."
+          "text": "A avaliação inicial custa R$ 150 e tem duração de 60 minutos. Inclui anamnese completa, avaliação física detalhada e orientações personalizadas para o tratamento. Sessões avulsas custam R$ 180. Oferecemos pacotes mensais: 8 sessões por R$ 1.200 (R$ 150/sessão) ou 12 sessões por R$ 1.680 (R$ 140/sessão)."
         }
+      },
+      {
+        "@type": "Question",
+        "name": "Quais condições são tratadas pela fisioterapia domiciliar?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Atendo principalmente idosos com dificuldade de locomoção, pacientes em reabilitação pós-operatória (próteses, fraturas, cirurgias), sequelas de AVC, Parkinson, Alzheimer, condições ortopédicas e respiratórias (DPOC, asma, pós-COVID). Cada tratamento é personalizado conforme as necessidades do paciente."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Atende em quais bairros de Barretos?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Atendo em raio de 6km a partir do centro de Barretos-SP. Bairros prioritários: Primavera, City Barretos, Jardim Botânico, Tamboré, Centro, Jardim Eldorado, Vila Planalto e Jardim Progresso. Não encontrou seu bairro? Entre em contato para confirmar disponibilidade."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Preciso ter equipamentos em casa?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Não. Levo todos os equipamentos profissionais necessários para o atendimento (therabands, halteres, bolas, bastões, etc.). Também utilizo móveis da casa (cadeiras, cama) para tornar os exercícios mais funcionais e adaptados ao seu ambiente."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Quanto tempo dura cada sessão?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Cada sessão tem duração de 60 minutos completos, garantindo tempo adequado para avaliação, exercícios terapêuticos, orientações e atendimento humanizado. Diferente de clínicas que oferecem 30-40 minutos, aqui você tem uma hora inteira dedicada ao seu tratamento."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Como agendar uma avaliação?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Você pode agendar pelo WhatsApp (17) 98212-3269 ou pelo formulário no site. Respondo em até 10 minutos durante horário comercial. A primeira avaliação não tem compromisso e você pode cancelar gratuitamente até 24h antes."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "A fisioterapia domiciliar é indicada para idosos?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Sim! A fisioterapia domiciliar é especialmente indicada para idosos, pois elimina o risco de quedas no deslocamento, oferece maior conforto no ambiente familiar, permite exercícios adaptados ao espaço da casa e aumenta significativamente a adesão ao tratamento. Sou especializada em fisioterapia geriátrica com 13 anos de experiência."
+        }
+      }
+    ]
+  };
+
+  const personSchema = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Roberta Rocha",
+    "jobTitle": "Fisioterapeuta",
+    "description": "Fisioterapeuta com 13 anos de experiência em Barretos-SP, especializada em fisioterapia domiciliar para idosos e pacientes neurológicos. CREFITO-3: 189269-F.",
+    "url": "https://www.fisiorobertadomiciliar.com",
+    "email": "fisiorobertarochadomiciliar@gmail.com",
+    "telephone": "+5517982123269",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Barretos",
+      "addressRegion": "SP",
+      "addressCountry": "BR"
+    },
+    "worksFor": {
+      "@type": "Organization",
+      "name": "Roberta Rocha - Fisioterapia Domiciliar"
+    },
+    "hasCredential": {
+      "@type": "EducationalOccupationalCredential",
+      "credentialCategory": "Professional License",
+      "recognizedBy": {
+        "@type": "Organization",
+        "name": "CREFITO-3"
+      },
+      "identifier": "189269-F"
+    },
+    "knowsAbout": [
+      "Fisioterapia Geriátrica",
+      "Fisioterapia Neurológica",
+      "Reabilitação Pós-Operatória",
+      "Fisioterapia Respiratória",
+      "Fisioterapia Domiciliar"
+    ],
+    "sameAs": [
+      "https://www.instagram.com/fisiorobertadomiciliar",
+      "https://www.facebook.com/fisiorobertadomiciliar"
+    ]
+  };
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Início",
+        "item": "https://www.fisiorobertadomiciliar.com"
       }
     ]
   };
@@ -87,7 +251,7 @@ const Home = () => {
         description="Fisioterapia domiciliar premium em Barretos-SP. 13 anos de experiência em idosos, neurológica e pós-operatória. Avaliação R$ 150. Agende agora!"
         keywords="fisioterapia domiciliar barretos, fisioterapeuta para idosos barretos, fisioterapia geriátrica barretos, reabilitação pós-operatória barretos, fisioterapia neurológica barretos"
         canonicalUrl="https://fisiorobertadomiciliar.com.br/"
-        schema={[localBusinessSchema, faqSchema]}
+        schema={[localBusinessSchema, faqSchema, personSchema, breadcrumbSchema]}
       />
       {/* Hero Section */}
       <UrgencyBanner />

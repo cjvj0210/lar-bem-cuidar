@@ -33,7 +33,7 @@ const FAQ = () => {
     },
     {
       question: "Como agendar uma avaliação?",
-      answer: "Você pode agendar pelo WhatsApp (17) 98212-3269 ou pelo formulário de contato no site. Respondo rapidamente e agendamos um horário conveniente para você ou seu familiar."
+      answer: "Você pode agendar pelo WhatsApp <a href='tel:+5517982123269' class='text-primary hover:underline'>(17) 98212-3269</a> ou pelo formulário de contato no site. Respondo rapidamente e agendamos um horário conveniente para você ou seu familiar."
     },
     {
       question: "A fisioterapia domiciliar é indicada para idosos?",
@@ -66,7 +66,7 @@ const FAQ = () => {
                   {faq.question}
                 </AccordionTrigger>
                 <AccordionContent className="text-muted-foreground">
-                  {faq.answer}
+                  <span dangerouslySetInnerHTML={{ __html: faq.answer }} />
                 </AccordionContent>
               </AccordionItem>
             ))}

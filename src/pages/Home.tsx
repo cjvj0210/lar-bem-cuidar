@@ -153,7 +153,7 @@ const Home = () => {
                   <p className="text-sm text-muted-foreground">Anos de Experiência</p>
                 </div>
                 <div>
-                  <p className="text-3xl font-bold text-primary">250+</p>
+                  <p className="text-3xl font-bold text-primary">287</p>
                   <p className="text-sm text-muted-foreground">Pacientes Atendidos</p>
                 </div>
                 <div>
@@ -213,7 +213,7 @@ const Home = () => {
               </p>
               <div className="space-y-2 text-sm">
                 <p className="text-muted-foreground">
-                  <strong className="text-foreground">CREFITO:</strong> 123456-F/SP
+                  <strong className="text-foreground">CREFITO-3:</strong> 189269-F
                 </p>
                 <p className="text-muted-foreground">
                   <strong className="text-foreground">Especializações:</strong> Fisioterapia Geriátrica, Neurológica e Respiratória
@@ -422,54 +422,6 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Sobre Roberta */}
-      <section className="section-padding">
-        <div className="container-custom">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="relative animate-fade-in">
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-accent/10 rounded-3xl blur-2xl"></div>
-              <img
-                src={robertaPortrait}
-                alt="Roberta Rocha - Fisioterapeuta especializada em atendimento domiciliar em Barretos-SP"
-                className="relative rounded-3xl shadow-elegant w-full h-auto object-cover"
-                loading="lazy"
-              />
-            </div>
-
-            <div className="space-y-6 animate-fade-in">
-              <h2 className="text-3xl md:text-4xl font-bold text-primary">
-                Sobre Roberta Rocha
-              </h2>
-              <p className="text-lg text-foreground leading-relaxed">
-                Sou Roberta Rocha, fisioterapeuta com 13 anos de experiência em Barretos-SP, 
-                especializada em fisioterapia domiciliar para idosos e pacientes neurológicos.
-              </p>
-              <p className="text-muted-foreground leading-relaxed">
-                Minha missão é devolver movimento, autonomia e qualidade de vida para quem mais precisa, 
-                com um atendimento humanizado e baseado em evidências científicas.
-              </p>
-              <div className="space-y-2 text-sm">
-                <p className="text-muted-foreground">
-                  <strong className="text-foreground">CREFITO:</strong> 123456-F/SP
-                </p>
-                <p className="text-muted-foreground">
-                  <strong className="text-foreground">Especializações:</strong> Fisioterapia Geriátrica, Neurológica e Respiratória
-                </p>
-              </div>
-              <Link to="/sobre">
-                <Button 
-                  size="lg"
-                  variant="outline"
-                  className="border-2 border-primary text-primary hover:bg-primary/10"
-                >
-                  Conheça Minha História
-                  <ArrowRight className="ml-2 w-5 h-5" />
-                </Button>
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* Área de Atendimento */}
       <ServiceArea />
@@ -507,7 +459,7 @@ const Home = () => {
               </Button>
             </div>
             <p className="text-sm text-muted-foreground">
-              Atendimento domiciliar premium em Barretos-SP • (17) 98212-3269
+              Atendimento domiciliar premium em Barretos-SP • <a href="tel:+5517982123269" className="hover:text-primary transition-colors">(17) 98212-3269</a>
             </p>
           </div>
         </div>

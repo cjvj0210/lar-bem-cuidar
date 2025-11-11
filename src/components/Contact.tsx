@@ -287,7 +287,7 @@ const Contact = () => {
                 <div>
                   <h4 className="font-semibold text-foreground mb-1">Telefone / WhatsApp</h4>
                   <p className="text-muted-foreground mb-2">
-                    (17) 98212-3269
+                    <a href="tel:+5517982123269" className="text-foreground hover:text-primary transition-colors">(17) 98212-3269</a>
                   </p>
                   <div className="space-y-1">
                     <Button

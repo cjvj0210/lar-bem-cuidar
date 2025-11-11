@@ -457,7 +457,7 @@ const Agendar = () => {
               <AccordionItem value="item-5">
                 <AccordionTrigger>Como faço para agendar?</AccordionTrigger>
                 <AccordionContent>
-                  Você pode agendar pelo formulário acima ou direto pelo WhatsApp (17) 98212-3269. Respondo rapidamente e agendamos um horário conveniente para você.
+                  Você pode agendar pelo formulário acima ou direto pelo WhatsApp <a href="tel:+5517982123269" className="text-primary hover:underline">(17) 98212-3269</a>. Respondo rapidamente e agendamos um horário conveniente para você.
                 </AccordionContent>
               </AccordionItem>
             </Accordion>

@@ -19,7 +19,7 @@ const Home = () => {
     "@type": ["LocalBusiness", "MedicalBusiness", "Physiotherapist"],
     "name": "Roberta Rocha - Fisioterapia Domiciliar",
     "alternateName": "Físio Roberta Domiciliar",
-    "description": "Fisioterapia domiciliar premium em Barretos-SP. Especializada em atendimento para idosos, reabilitação pós-operatória e fisioterapia neurológica. 13 anos de experiência com atendimento humanizado de 60 minutos.",
+    "description": "Fisioterapia domiciliar premium em Barretos-SP. Especializada em atendimento para idosos, reabilitação pós-operatória e fisioterapia neurológica. 13 anos de experiência com atendimento humanizado de 50 minutos.",
     "image": "https://www.fisiorobertadomiciliar.com/logo.png",
     "logo": "https://www.fisiorobertadomiciliar.com/logo.png",
     "url": "https://www.fisiorobertadomiciliar.com",
@@ -80,7 +80,7 @@ const Home = () => {
           "itemOffered": {
             "@type": "Service",
             "name": "Avaliação Inicial de Fisioterapia",
-            "description": "Avaliação completa de 60 minutos com anamnese, exame físico e plano de tratamento personalizado"
+            "description": "Avaliação completa de 50 minutos com anamnese, exame físico e plano de tratamento personalizado"
           },
           "price": "150",
           "priceCurrency": "BRL"
@@ -90,7 +90,7 @@ const Home = () => {
           "itemOffered": {
             "@type": "Service",
             "name": "Sessão Avulsa de Fisioterapia Domiciliar",
-            "description": "Sessão individual de 60 minutos com todos os equipamentos inclusos"
+            "description": "Sessão individual de 50 minutos com todos os equipamentos inclusos"
           },
           "price": "180",
           "priceCurrency": "BRL"
@@ -138,7 +138,7 @@ const Home = () => {
         "name": "Como funciona o atendimento de fisioterapia domiciliar em Barretos-SP?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "O atendimento domiciliar é realizado na casa do paciente, em horários flexíveis. Levo todos os equipamentos necessários e realizo avaliação individualizada para criar um plano personalizado de tratamento focado nas suas necessidades específicas. As sessões têm duração de 60 minutos completos."
+          "text": "O atendimento domiciliar é realizado na casa do paciente, em horários flexíveis. Levo todos os equipamentos necessários e realizo avaliação individualizada para criar um plano personalizado de tratamento focado nas suas necessidades específicas. As sessões têm duração de 50 minutos completos."
         }
       },
       {
@@ -146,7 +146,7 @@ const Home = () => {
         "name": "Qual o valor da avaliação de fisioterapia domiciliar?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "A avaliação inicial custa R$ 150 e tem duração de 60 minutos. Inclui anamnese completa, avaliação física detalhada e orientações personalizadas para o tratamento. Sessões avulsas custam R$ 180. Oferecemos pacotes mensais com valores reduzidos: 1x/semana (R$ 130/sessão), 2x/semana (R$ 120/sessão) ou 3x/semana (R$ 110/sessão). A frequência ideal é definida pela fisioterapeuta após avaliação personalizada."
+          "text": "A avaliação inicial custa R$ 150 e tem duração de 50 minutos. Inclui anamnese completa, avaliação física detalhada e orientações personalizadas para o tratamento. Sessões avulsas custam R$ 180. Oferecemos pacotes mensais com valores reduzidos: 1x/semana (R$ 130/sessão), 2x/semana (R$ 120/sessão) ou 3x/semana (R$ 110/sessão). A frequência ideal é definida pela fisioterapeuta após avaliação personalizada."
         }
       },
       {
@@ -178,7 +178,7 @@ const Home = () => {
         "name": "Quanto tempo dura cada sessão?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Cada sessão tem duração de 60 minutos completos, garantindo tempo adequado para avaliação, exercícios terapêuticos, orientações e atendimento humanizado. Diferente de clínicas que oferecem 30-40 minutos, aqui você tem uma hora inteira dedicada ao seu tratamento."
+          "text": "Cada sessão tem duração de 50 minutos completos, garantindo tempo adequado para avaliação, exercícios terapêuticos, orientações e atendimento humanizado. Diferente de clínicas que oferecem 30-40 minutos, aqui você tem 50 minutos completos dedicados ao seu tratamento."
         }
       },
       {
@@ -603,7 +603,7 @@ const Home = () => {
                   <h3 className="text-xl font-semibold text-foreground mb-4">Avaliação Inicial</h3>
                   <div className="flex items-baseline gap-2 mb-3">
                     <span className="text-4xl font-bold text-primary">R$ 150</span>
-                    <span className="text-muted-foreground">/ 60 minutos</span>
+                    <span className="text-muted-foreground">/ 50 minutos</span>
                   </div>
                   <p className="text-sm text-muted-foreground">
                     Avaliação completa com anamnese, exame físico e plano de tratamento personalizado
@@ -616,7 +616,7 @@ const Home = () => {
                   <h3 className="text-xl font-semibold text-foreground mb-4">Sessão Avulsa</h3>
                   <div className="flex items-baseline gap-2 mb-3">
                     <span className="text-4xl font-bold text-primary">R$ 180</span>
-                    <span className="text-muted-foreground">/ 60 minutos</span>
+                    <span className="text-muted-foreground">/ 50 minutos</span>
                   </div>
                   <p className="text-sm text-muted-foreground">
                     Sessão individual de fisioterapia domiciliar com todos os equipamentos inclusos
@@ -695,7 +695,7 @@ const Home = () => {
                     <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
                       <span className="text-primary font-bold">✓</span>
                     </div>
-                    <span className="text-muted-foreground">Atendimento de 60 minutos completos</span>
+                    <span className="text-muted-foreground">Atendimento de 50 minutos completos</span>
                   </div>
                   <div className="flex items-center gap-3">
                     <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">

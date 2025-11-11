@@ -13,7 +13,7 @@ const FAQ = () => {
     },
     {
       question: "Qual o valor da avaliação de fisioterapia domiciliar?",
-      answer: "A avaliação inicial custa R$ 150 e tem duração de 60 minutos. Inclui anamnese completa, avaliação física detalhada e orientações personalizadas para o tratamento."
+      answer: "A avaliação inicial custa R$ 150 e tem duração de 50 minutos. Inclui anamnese completa, avaliação física detalhada e orientações personalizadas para o tratamento."
     },
     {
       question: "Quais condições são tratadas pela fisioterapia domiciliar?",
@@ -29,7 +29,7 @@ const FAQ = () => {
     },
     {
       question: "Quanto tempo dura cada sessão?",
-      answer: "Cada sessão tem duração de 60 minutos completos, tempo adequado para um atendimento humanizado, personalizado e eficiente, respeitando suas limitações e necessidades."
+      answer: "Cada sessão tem duração de 50 minutos completos, tempo adequado para um atendimento humanizado, personalizado e eficiente, respeitando suas limitações e necessidades."
     },
     {
       question: "Como agendar uma avaliação?",

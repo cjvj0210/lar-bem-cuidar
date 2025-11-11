@@ -221,7 +221,7 @@ const ReabilitacaoPosOperatoria = () => {
               {[
                 { step: "1", title: "Avaliação Pós-Operatória", desc: "Análise da cirurgia realizada, amplitude de movimento, força muscular, dor e edema. Alinhamento com protocolo médico. Valor: R$ 150" },
                 { step: "2", title: "Protocolo Personalizado", desc: "Criação de plano específico respeitando cada fase da recuperação e recomendações médicas, com progressão segura." },
-                { step: "3", title: "Sessões Domiciliares", desc: "Atendimento de 60 minutos com exercícios terapêuticos, mobilizações, fortalecimento e treino funcional progressivo." },
+                { step: "3", title: "Sessões Domiciliares", desc: "Atendimento de 50 minutos com exercícios terapêuticos, mobilizações, fortalecimento e treino funcional progressivo." },
                 { step: "4", title: "Acompanhamento Contínuo", desc: "Reavaliações frequentes com ajustes no protocolo conforme evolução, sempre em comunicação com equipe médica." }
               ].map((item, index) => (
                 <div key={index} className="flex gap-6 items-start">
@@ -248,7 +248,7 @@ const ReabilitacaoPosOperatoria = () => {
                 <CardContent className="pt-8 pb-8 text-center">
                   <p className="text-sm text-muted-foreground mb-2">Avaliação</p>
                   <p className="text-4xl font-bold text-primary mb-2">R$ 150</p>
-                  <p className="text-sm text-muted-foreground">60 minutos</p>
+                  <p className="text-sm text-muted-foreground">50 minutos</p>
                 </CardContent>
               </Card>
 
@@ -256,7 +256,7 @@ const ReabilitacaoPosOperatoria = () => {
                 <CardContent className="pt-8 pb-8 text-center">
                   <p className="text-sm text-muted-foreground mb-2">Sessão Avulsa</p>
                   <p className="text-4xl font-bold text-primary mb-2">R$ 180</p>
-                  <p className="text-sm text-muted-foreground">60 minutos</p>
+                  <p className="text-sm text-muted-foreground">50 minutos</p>
                 </CardContent>
               </Card>
 

@@ -123,7 +123,7 @@ const Agendar = () => {
       "@type": "Offer",
       "price": "150",
       "priceCurrency": "BRL",
-      "description": "Avaliação de fisioterapia domiciliar com duração de 60 minutos"
+      "description": "Avaliação de fisioterapia domiciliar com duração de 50 minutos"
     },
     "aggregateRating": {
       "@type": "AggregateRating",
@@ -136,7 +136,7 @@ const Agendar = () => {
     <>
       <SEO
         title="Agendar Avaliação de Fisioterapia Domiciliar em Barretos | Roberta Rocha"
-        description="Agende sua avaliação de fisioterapia domiciliar em Barretos-SP com Roberta Rocha. R$ 150 por 60 minutos. Resposta em até 10 minutos. WhatsApp: (17) 98212-3269"
+        description="Agende sua avaliação de fisioterapia domiciliar em Barretos-SP com Roberta Rocha. R$ 150 por 50 minutos. Resposta em até 10 minutos. WhatsApp: (17) 98212-3269"
         keywords="agendar fisioterapia barretos, avaliação fisioterapia domiciliar, fisioterapeuta barretos preço"
         canonicalUrl="https://www.fisiorobertadomiciliar.com/agendar"
         schema={serviceSchema}
@@ -402,7 +402,7 @@ const Agendar = () => {
                 <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto">
                   <Heart className="w-8 h-8 text-primary" />
                 </div>
-                <h3 className="text-xl font-semibold">Atendimento Humanizado de 60 Minutos</h3>
+                <h3 className="text-xl font-semibold">Atendimento Humanizado de 50 Minutos</h3>
                 <p className="text-muted-foreground">
                   Cuidado personalizado e dedicado para sua recuperação
                 </p>
@@ -535,7 +535,7 @@ const Agendar = () => {
               <AccordionItem value="item-1">
                 <AccordionTrigger>Quanto custa a avaliação?</AccordionTrigger>
                 <AccordionContent>
-                  A avaliação inicial custa R$ 150 e tem duração de 60 minutos. Inclui anamnese completa, avaliação física e orientações personalizadas.
+                  A avaliação inicial custa R$ 150 e tem duração de 50 minutos. Inclui anamnese completa, avaliação física e orientações personalizadas.
                 </AccordionContent>
               </AccordionItem>
 
@@ -549,7 +549,7 @@ const Agendar = () => {
               <AccordionItem value="item-3">
                 <AccordionTrigger>Qual a duração do atendimento?</AccordionTrigger>
                 <AccordionContent>
-                  Cada sessão tem duração de 60 minutos, tempo ideal para um atendimento completo e personalizado, focado nas suas necessidades específicas.
+                  Cada sessão tem duração de 50 minutos, tempo ideal para um atendimento completo e personalizado, focado nas suas necessidades específicas.
                 </AccordionContent>
               </AccordionItem>
 

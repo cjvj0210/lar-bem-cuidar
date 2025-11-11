@@ -232,7 +232,7 @@ const FisioterapiaGeriatrica = () => {
                 {
                   step: "1",
                   title: "Avaliação Inicial Completa",
-                  description: "Primeira consulta de 60 minutos com anamnese detalhada, avaliação física completa, testes de equilíbrio e força muscular. Valor: R$ 150"
+                  description: "Primeira consulta de 50 minutos com anamnese detalhada, avaliação física completa, testes de equilíbrio e força muscular. Valor: R$ 150"
                 },
                 {
                   step: "2",
@@ -241,7 +241,7 @@ const FisioterapiaGeriatrica = () => {
                 },
                 {
                   step: "3",
-                  title: "Sessões de 60 Minutos em Casa",
+                  title: "Sessões de 50 Minutos em Casa",
                   description: "Atendimento domiciliar com todos os equipamentos necessários. Exercícios terapêuticos, alongamentos, fortalecimento e treino de equilíbrio."
                 },
                 {
@@ -274,7 +274,7 @@ const FisioterapiaGeriatrica = () => {
                 <CardContent className="pt-8 pb-8 text-center">
                   <p className="text-sm text-muted-foreground mb-2">Avaliação</p>
                   <p className="text-4xl font-bold text-primary mb-2">R$ 150</p>
-                  <p className="text-sm text-muted-foreground">60 minutos</p>
+                  <p className="text-sm text-muted-foreground">50 minutos</p>
                 </CardContent>
               </Card>
 
@@ -282,7 +282,7 @@ const FisioterapiaGeriatrica = () => {
                 <CardContent className="pt-8 pb-8 text-center">
                   <p className="text-sm text-muted-foreground mb-2">Sessão Avulsa</p>
                   <p className="text-4xl font-bold text-primary mb-2">R$ 180</p>
-                  <p className="text-sm text-muted-foreground">60 minutos</p>
+                  <p className="text-sm text-muted-foreground">50 minutos</p>
                 </CardContent>
               </Card>
 

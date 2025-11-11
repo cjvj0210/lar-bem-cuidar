@@ -15,7 +15,7 @@ const WhyChooseRoberta = () => {
     },
     {
       icon: Clock,
-      title: "Atendimento Humanizado de 60 Minutos",
+      title: "Atendimento Humanizado de 50 Minutos",
       description: "Sessões completas com tempo adequado para cuidado personalizado e atencioso."
     },
     {

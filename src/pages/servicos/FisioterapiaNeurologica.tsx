@@ -213,7 +213,7 @@ const FisioterapiaNeurologica = () => {
               {[
                 { step: "1", title: "Avaliação Neurológica Completa", desc: "Avaliação detalhada de tônus muscular, força, coordenação, equilíbrio, marcha e funções motoras. Valor: R$ 150" },
                 { step: "2", title: "Plano Terapêutico Individualizado", desc: "Criação de protocolo específico baseado no quadro neurológico, sequelas presentes e objetivos funcionais do paciente e família." },
-                { step: "3", title: "Sessões Especializadas", desc: "Atendimento de 60 minutos com técnicas específicas de reabilitação neurológica, exercícios terapêuticos e treino funcional." },
+                { step: "3", title: "Sessões Especializadas", desc: "Atendimento de 50 minutos com técnicas específicas de reabilitação neurológica, exercícios terapêuticos e treino funcional." },
                 { step: "4", title: "Acompanhamento Evolutivo", desc: "Reavaliações periódicas com ajustes no protocolo conforme progressão e surgimento de novas capacidades motoras." }
               ].map((item, index) => (
                 <div key={index} className="flex gap-6 items-start">
@@ -240,7 +240,7 @@ const FisioterapiaNeurologica = () => {
                 <CardContent className="pt-8 pb-8 text-center">
                   <p className="text-sm text-muted-foreground mb-2">Avaliação</p>
                   <p className="text-4xl font-bold text-primary mb-2">R$ 150</p>
-                  <p className="text-sm text-muted-foreground">60 minutos</p>
+                  <p className="text-sm text-muted-foreground">50 minutos</p>
                 </CardContent>
               </Card>
 
@@ -248,7 +248,7 @@ const FisioterapiaNeurologica = () => {
                 <CardContent className="pt-8 pb-8 text-center">
                   <p className="text-sm text-muted-foreground mb-2">Sessão Avulsa</p>
                   <p className="text-4xl font-bold text-primary mb-2">R$ 180</p>
-                  <p className="text-sm text-muted-foreground">60 minutos</p>
+                  <p className="text-sm text-muted-foreground">50 minutos</p>
                 </CardContent>
               </Card>
 

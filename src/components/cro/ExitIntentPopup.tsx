@@ -77,7 +77,7 @@ const ExitIntentPopup = () => {
                 Não perca esta oportunidade!
               </p>
               <ul className="text-sm text-muted-foreground space-y-1">
-                <li>✓ Avaliação completa de 60 minutos</li>
+                <li>✓ Avaliação completa de 50 minutos</li>
                 <li>✓ Plano personalizado de tratamento</li>
                 <li>✓ Sem compromisso, sem burocracia</li>
               </ul>

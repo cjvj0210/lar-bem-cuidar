@@ -233,7 +233,7 @@ const FisioterapiaRespiratoria = () => {
               {[
                 { step: "1", title: "Avaliação Respiratória Completa", desc: "Análise de padrão respiratório, ausculta pulmonar, saturação, dispneia e capacidade funcional. Valor: R$ 150" },
                 { step: "2", title: "Protocolo Respiratório Personalizado", desc: "Criação de plano específico conforme doença de base, limitações e objetivos respiratórios do paciente." },
-                { step: "3", title: "Sessões Terapêuticas", desc: "Atendimento de 60 minutos com técnicas de higiene brônquica, exercícios respiratórios e fortalecimento muscular." },
+                { step: "3", title: "Sessões Terapêuticas", desc: "Atendimento de 50 minutos com técnicas de higiene brônquica, exercícios respiratórios e fortalecimento muscular." },
                 { step: "4", title: "Monitoramento Contínuo", desc: "Acompanhamento com oximetria, reavaliações e ajustes conforme evolução respiratória e tolerância ao exercício." }
               ].map((item, index) => (
                 <div key={index} className="flex gap-6 items-start">
@@ -260,7 +260,7 @@ const FisioterapiaRespiratoria = () => {
                 <CardContent className="pt-8 pb-8 text-center">
                   <p className="text-sm text-muted-foreground mb-2">Avaliação</p>
                   <p className="text-4xl font-bold text-primary mb-2">R$ 150</p>
-                  <p className="text-sm text-muted-foreground">60 minutos</p>
+                  <p className="text-sm text-muted-foreground">50 minutos</p>
                 </CardContent>
               </Card>
 
@@ -268,7 +268,7 @@ const FisioterapiaRespiratoria = () => {
                 <CardContent className="pt-8 pb-8 text-center">
                   <p className="text-sm text-muted-foreground mb-2">Sessão Avulsa</p>
                   <p className="text-4xl font-bold text-primary mb-2">R$ 180</p>
-                  <p className="text-sm text-muted-foreground">60 minutos</p>
+                  <p className="text-sm text-muted-foreground">50 minutos</p>
                 </CardContent>
               </Card>
 

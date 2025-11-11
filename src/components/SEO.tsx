@@ -151,11 +151,6 @@ const SEO = ({ title, description, keywords, canonicalUrl, ogImage, schema, brea
       <meta name="geo.position" content="-20.5577;-48.5682" />
       <meta name="ICBM" content="-20.5577, -48.5682" />
       
-      {/* Local Business Schema */}
-      <script type="application/ld+json">
-        {JSON.stringify(localBusinessSchema)}
-      </script>
-      
       {/* Breadcrumb Schema */}
       {breadcrumbSchema && (
         <script type="application/ld+json">

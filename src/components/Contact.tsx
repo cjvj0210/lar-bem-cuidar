@@ -8,6 +8,7 @@ import { MapPin, Phone, Mail, Clock, MessageCircle, CheckCircle, Instagram, Face
 import { useState } from "react";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
+import { trackFormSubmit, trackWhatsAppClick, trackPhoneClick } from "@/lib/analytics";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -33,8 +34,12 @@ const Contact = () => {
 
       if (error) throw error;
 
+      // Track form submission
+      trackFormSubmit('contact_form');
+
       // Redirecionar para WhatsApp
       const whatsappMessage = `Olá! Gostaria de agendar uma avaliação.%0A%0ANome: ${formData.name}%0ATelefone: ${formData.phone}%0AEmail: ${formData.email}%0AMensagem: ${formData.message}`;
+      trackWhatsAppClick('contact_form');
       window.open(`https://wa.me/5517982123269?text=${whatsappMessage}`, "_blank");
       
       toast.success("Mensagem enviada! Obrigada pelo contato.");
@@ -111,7 +116,12 @@ const Contact = () => {
                   />
                 </div>
 
-                <Button type="submit" className="w-full bg-primary hover:bg-primary/90">
+                <Button 
+                  type="submit" 
+                  className="w-full bg-primary hover:bg-primary/90"
+                  data-event="form_submit"
+                  data-form-name="contact_form"
+                >
                   Enviar mensagem
                 </Button>
               </form>
@@ -132,7 +142,12 @@ const Contact = () => {
               <Button
                 size="lg"
                 className="w-full bg-primary hover:bg-primary/90"
-                onClick={() => window.open(whatsappLink, "_blank")}
+                onClick={() => {
+                  trackWhatsAppClick('contact_page_card');
+                  window.open(whatsappLink, "_blank");
+                }}
+                data-event="whatsapp_click"
+                data-source="contact_page_card"
               >
                 Falar com Roberta
               </Button>
@@ -170,10 +185,23 @@ const Contact = () => {
                   <Button
                     variant="link"
                     className="p-0 h-auto text-primary"
-                    onClick={() => window.open(whatsappLink, "_blank")}
+                    onClick={() => {
+                      trackWhatsAppClick('contact_phone_link');
+                      window.open(whatsappLink, "_blank");
+                    }}
+                    data-event="whatsapp_click"
+                    data-source="contact_phone_link"
                   >
                     Chamar no WhatsApp
                   </Button>
+                  <a 
+                    href="tel:+5517982123269" 
+                    className="block text-sm text-primary hover:underline mt-1"
+                    onClick={() => trackPhoneClick()}
+                    data-event="phone_click"
+                  >
+                    Ligar agora
+                  </a>
                 </div>
               </CardContent>
             </Card>

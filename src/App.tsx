@@ -4,6 +4,8 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
+import { useEffect } from "react";
+import { initScrollTracking, initTimeTracking } from "@/lib/analytics";
 import Home from "./pages/Home";
 import Sobre from "./pages/Sobre";
 import Servicos from "./pages/Servicos";
@@ -32,39 +34,52 @@ const queryClient = new QueryClient({
   },
 });
 
-const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <HelmetProvider>
-      <TooltipProvider>
-        <Toaster />
-        <Sonner />
-        <BrowserRouter>
-        <ScrollToTop />
-        <Header />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/sobre" element={<Sobre />} />
-          <Route path="/servicos" element={<Servicos />} />
-          <Route path="/servicos/fisioterapia-geriatrica" element={<FisioterapiaGeriatrica />} />
-          <Route path="/servicos/fisioterapia-neurologica" element={<FisioterapiaNeurologica />} />
-          <Route path="/servicos/reabilitacao-pos-operatoria" element={<ReabilitacaoPosOperatoria />} />
-          <Route path="/servicos/fisioterapia-respiratoria" element={<FisioterapiaRespiratoria />} />
-          <Route path="/depoimentos" element={<Depoimentos />} />
-          <Route path="/contato" element={<Contato />} />
-          <Route path="/blog" element={<Blog />} />
-          <Route path="/blog/:id" element={<BlogPost />} />
-          <Route path="/blog/categoria/:categoria" element={<Blog />} />
-          <Route path="/agendar" element={<Agendar />} />
-          <Route path="/admin" element={<Admin />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-        <Footer />
-        <WhatsAppFloating />
-      </BrowserRouter>
-      </TooltipProvider>
-    </HelmetProvider>
-  </QueryClientProvider>
-);
+const App = () => {
+  useEffect(() => {
+    // Initialize scroll and time tracking
+    const cleanupScroll = initScrollTracking();
+    const cleanupTime = initTimeTracking();
+
+    return () => {
+      cleanupScroll?.();
+      cleanupTime?.();
+    };
+  }, []);
+
+  return (
+    <QueryClientProvider client={queryClient}>
+      <HelmetProvider>
+        <TooltipProvider>
+          <Toaster />
+          <Sonner />
+          <BrowserRouter>
+            <ScrollToTop />
+            <Header />
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/sobre" element={<Sobre />} />
+              <Route path="/servicos" element={<Servicos />} />
+              <Route path="/servicos/fisioterapia-geriatrica" element={<FisioterapiaGeriatrica />} />
+              <Route path="/servicos/fisioterapia-neurologica" element={<FisioterapiaNeurologica />} />
+              <Route path="/servicos/reabilitacao-pos-operatoria" element={<ReabilitacaoPosOperatoria />} />
+              <Route path="/servicos/fisioterapia-respiratoria" element={<FisioterapiaRespiratoria />} />
+              <Route path="/depoimentos" element={<Depoimentos />} />
+              <Route path="/contato" element={<Contato />} />
+              <Route path="/blog" element={<Blog />} />
+              <Route path="/blog/:id" element={<BlogPost />} />
+              <Route path="/blog/categoria/:categoria" element={<Blog />} />
+              <Route path="/agendar" element={<Agendar />} />
+              <Route path="/admin" element={<Admin />} />
+              {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+            <Footer />
+            <WhatsAppFloating />
+          </BrowserRouter>
+        </TooltipProvider>
+      </HelmetProvider>
+    </QueryClientProvider>
+  );
+};
 
 export default App;

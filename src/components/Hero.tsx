@@ -1,9 +1,11 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Heart } from "lucide-react";
 import heroImage from "@/assets/hero-image.jpg";
+import { trackCTAClick } from "@/lib/analytics";
 
 const Hero = () => {
   const scrollToContact = () => {
+    trackCTAClick('Agendar Avaliação', 'hero_section');
     const element = document.getElementById("contato");
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
@@ -39,6 +41,9 @@ const Hero = () => {
                 size="lg"
                 className="bg-primary hover:bg-primary/90 text-primary-foreground"
                 onClick={scrollToContact}
+                data-event="cta_click"
+                data-cta-text="Agendar Avaliação"
+                data-cta-location="hero_section"
               >
                 Agendar Avaliação
                 <ArrowRight className="ml-2 w-5 h-5" />
@@ -48,9 +53,13 @@ const Hero = () => {
                 variant="outline"
                 className="border-2 border-primary text-primary hover:bg-primary/10"
                 onClick={() => {
+                  trackCTAClick('Conhecer Roberta', 'hero_section');
                   const element = document.getElementById("sobre");
                   if (element) element.scrollIntoView({ behavior: "smooth" });
                 }}
+                data-event="cta_click"
+                data-cta-text="Conhecer Roberta"
+                data-cta-location="hero_section"
               >
                 Conhecer Roberta
               </Button>

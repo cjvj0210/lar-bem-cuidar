@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Brain, Heart, Stethoscope, UserCircle, Scissors, Target, Calendar, Users, Briefcase, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
+import { trackCTAClick, trackWhatsAppClick } from "@/lib/analytics";
 
 const Services = () => {
   const whatsappLink = "https://wa.me/5517982123269?text=Olá! Gostaria de saber mais sobre os serviços de fisioterapia domiciliar.";
@@ -101,6 +102,10 @@ const Services = () => {
                     <Button 
                       variant="default" 
                       className="w-full"
+                      onClick={() => trackCTAClick('Entenda Melhor', `services_${service.title}`)}
+                      data-event="cta_click"
+                      data-cta-text="Entenda Melhor"
+                      data-cta-location={`services_${service.title}`}
                     >
                       Entenda Melhor
                       <ArrowRight className="ml-2 w-4 h-4" />
@@ -109,6 +114,13 @@ const Services = () => {
                   <Button 
                     variant="outline" 
                     className="w-full border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-colors"
+                    onClick={() => {
+                      trackWhatsAppClick(`services_${service.title}`);
+                      trackCTAClick('Agendar Avaliação', `services_${service.title}`);
+                    }}
+                    data-event="cta_click"
+                    data-cta-text="Agendar Avaliação"
+                    data-cta-location={`services_${service.title}`}
                     asChild
                   >
                     <a href={whatsappLink} target="_blank" rel="noopener noreferrer">
@@ -164,6 +176,13 @@ const Services = () => {
             size="lg" 
             className="min-w-[250px] animate-fade-in"
             style={{ animationDelay: "200ms" }}
+            onClick={() => {
+              trackWhatsAppClick('services_bottom_cta');
+              trackCTAClick('Fale diretamente comigo', 'services_bottom');
+            }}
+            data-event="cta_click"
+            data-cta-text="Fale diretamente comigo"
+            data-cta-location="services_bottom"
             asChild
           >
             <a href={whatsappLink} target="_blank" rel="noopener noreferrer">

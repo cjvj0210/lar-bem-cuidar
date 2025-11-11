@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Menu, Phone, Instagram, Facebook } from "lucide-react";
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
+import { trackWhatsAppClick } from "@/lib/analytics";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -75,8 +76,13 @@ const Header = () => {
               Blog
             </Link>
             <Button
-              onClick={() => window.open("https://wa.me/5517982123269", "_blank")}
+              onClick={() => {
+                trackWhatsAppClick('header_button');
+                window.open("https://wa.me/5517982123269", "_blank");
+              }}
               className="bg-primary hover:bg-primary/90"
+              data-event="whatsapp_click"
+              data-source="header_button"
             >
               <Phone className="w-4 h-4 mr-2" />
               WhatsApp
@@ -169,8 +175,13 @@ const Header = () => {
               Blog
             </Link>
             <Button
-              onClick={() => window.open("https://wa.me/5517982123269", "_blank")}
+              onClick={() => {
+                trackWhatsAppClick('mobile_menu_button');
+                window.open("https://wa.me/5517982123269", "_blank");
+              }}
               className="w-full bg-primary hover:bg-primary/90"
+              data-event="whatsapp_click"
+              data-source="mobile_menu_button"
             >
               <Phone className="w-4 h-4 mr-2" />
               WhatsApp

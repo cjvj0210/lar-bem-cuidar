@@ -76,10 +76,10 @@ const Contact = () => {
   const whatsappLink = "https://wa.me/5517982123269";
 
   return (
-    <section id="contato" className="section-padding">
+    <section id="contato" className="section-padding" aria-labelledby="contact-heading">
       <div className="container-custom">
         <div className="text-center max-w-3xl mx-auto mb-16 animate-fade-in">
-          <h2 className="text-primary mb-4">Vamos conversar com calma?</h2>
+          <h2 id="contact-heading" className="text-primary mb-4">Vamos conversar com calma?</h2>
           <p className="text-lg text-muted-foreground">
             Estou à disposição para tirar dúvidas, explicar os atendimentos e agendar sua avaliação.
           </p>
@@ -91,71 +91,106 @@ const Contact = () => {
               <CardTitle className="text-foreground">Envie sua mensagem</CardTitle>
             </CardHeader>
             <CardContent>
-              <form onSubmit={handleSubmit} className="space-y-4">
+              <form onSubmit={handleSubmit} className="space-y-4" noValidate>
                 <div>
-                  <Label htmlFor="name">Nome completo *</Label>
+                  <Label htmlFor="name">Nome completo <span aria-label="campo obrigatório">*</span></Label>
                   <Input
                     id="name"
+                    name="name"
                     placeholder="Seu nome"
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                     className={errors.name ? "border-red-500" : ""}
                     maxLength={100}
+                    aria-required="true"
+                    aria-invalid={!!errors.name}
+                    aria-describedby={errors.name ? "name-error" : undefined}
+                    autoComplete="name"
                   />
-                  {errors.name && <p className="text-xs text-red-500 mt-1">{errors.name}</p>}
+                  {errors.name && (
+                    <p id="name-error" className="text-xs text-red-500 mt-1" role="alert">
+                      {errors.name}
+                    </p>
+                  )}
                 </div>
 
                 <div>
-                  <Label htmlFor="phone">Telefone *</Label>
+                  <Label htmlFor="phone">Telefone <span aria-label="campo obrigatório">*</span></Label>
                   <Input
                     id="phone"
+                    name="phone"
                     type="tel"
                     placeholder="(17) 99123-4567"
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                     className={errors.phone ? "border-red-500" : ""}
                     maxLength={20}
+                    aria-required="true"
+                    aria-invalid={!!errors.phone}
+                    aria-describedby={errors.phone ? "phone-error" : undefined}
+                    autoComplete="tel"
                   />
-                  {errors.phone && <p className="text-xs text-red-500 mt-1">{errors.phone}</p>}
+                  {errors.phone && (
+                    <p id="phone-error" className="text-xs text-red-500 mt-1" role="alert">
+                      {errors.phone}
+                    </p>
+                  )}
                 </div>
 
                 <div>
                   <Label htmlFor="email">Email (opcional)</Label>
                   <Input
                     id="email"
+                    name="email"
                     type="email"
                     placeholder="seu@email.com"
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     className={errors.email ? "border-red-500" : ""}
                     maxLength={255}
+                    aria-invalid={!!errors.email}
+                    aria-describedby={errors.email ? "email-error" : undefined}
+                    autoComplete="email"
                   />
-                  {errors.email && <p className="text-xs text-red-500 mt-1">{errors.email}</p>}
+                  {errors.email && (
+                    <p id="email-error" className="text-xs text-red-500 mt-1" role="alert">
+                      {errors.email}
+                    </p>
+                  )}
                 </div>
 
                 <div>
-                  <Label htmlFor="message">Mensagem *</Label>
+                  <Label htmlFor="message">Mensagem <span aria-label="campo obrigatório">*</span></Label>
                   <Textarea
                     id="message"
+                    name="message"
                     placeholder="Ex: Gostaria de atendimento para minha mãe, que teve um AVC."
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     className={errors.message ? "border-red-500" : ""}
                     rows={4}
                     maxLength={1000}
+                    aria-required="true"
+                    aria-invalid={!!errors.message}
+                    aria-describedby={errors.message ? "message-error message-counter" : "message-counter"}
                   />
-                  {errors.message && <p className="text-xs text-red-500 mt-1">{errors.message}</p>}
-                  <p className="text-xs text-muted-foreground mt-1">
+                  {errors.message && (
+                    <p id="message-error" className="text-xs text-red-500 mt-1" role="alert">
+                      {errors.message}
+                    </p>
+                  )}
+                  <p id="message-counter" className="text-xs text-muted-foreground mt-1" aria-live="polite">
                     {formData.message.length}/1000 caracteres
                   </p>
                 </div>
 
                 <Button 
-                  type="submit" 
-                  size="lg"
-                  className="w-full h-14 text-base bg-primary hover:bg-primary/90"
+                  type="submit"
+                  size="lg" 
+                  className="w-full h-14 text-base bg-primary hover:bg-primary/90 focus:ring-4 focus:ring-primary/50"
                   data-event="form_submit"
                   data-form-name="contact_form"
+                  aria-label="Enviar mensagem e continuar pelo WhatsApp"
                 >
                   Enviar Mensagem
                 </Button>
@@ -179,13 +214,14 @@ const Contact = () => {
               </p>
               <Button
                 size="lg"
-                className="w-full bg-primary hover:bg-primary/90"
+                className="w-full bg-primary hover:bg-primary/90 focus:ring-4 focus:ring-primary/50"
                 onClick={() => {
                   trackWhatsAppClick('contact_page_card');
                   window.open(whatsappLink, "_blank");
                 }}
                 data-event="whatsapp_click"
                 data-source="contact_page_card"
+                aria-label="Abrir conversa no WhatsApp com Roberta"
               >
                 Falar com Roberta
               </Button>
@@ -232,14 +268,15 @@ const Contact = () => {
                   >
                     Chamar no WhatsApp
                   </Button>
-                  <a 
-                    href="tel:+5517982123269" 
-                    className="block text-sm text-primary hover:underline mt-1"
-                    onClick={() => trackPhoneClick()}
-                    data-event="phone_click"
-                  >
-                    Ligar agora
-                  </a>
+                <a 
+                  href="tel:+5517982123269" 
+                  className="block text-sm text-primary hover:underline mt-1 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded"
+                  onClick={() => trackPhoneClick()}
+                  data-event="phone_click"
+                  aria-label="Ligar para o telefone (17) 98212-3269"
+                >
+                  Ligar agora
+                </a>
                 </div>
               </CardContent>
             </Card>
@@ -277,34 +314,34 @@ const Contact = () => {
               <CardContent className="pt-6">
                 <h4 className="font-semibold text-foreground mb-4 text-center">Siga nas Redes Sociais</h4>
                 <div className="flex justify-center gap-4">
-                  <a 
-                    href="https://www.instagram.com/fisiorobertadomiciliar/" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="flex flex-col items-center gap-2 p-4 rounded-lg bg-background hover:bg-primary/5 transition-smooth group"
-                    aria-label="Instagram da Físio Roberta Domiciliar"
-                  >
-                    <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center group-hover:scale-110 transition-smooth">
-                      <Instagram className="w-6 h-6 text-primary" />
-                    </div>
-                    <span className="text-sm text-muted-foreground group-hover:text-primary transition-smooth">
-                      @fisiorobertadomiciliar
-                    </span>
-                  </a>
-                  <a 
-                    href="https://www.facebook.com/profile.php?id=61553900038660" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="flex flex-col items-center gap-2 p-4 rounded-lg bg-background hover:bg-primary/5 transition-smooth group"
-                    aria-label="Facebook da Físio Roberta Domiciliar"
-                  >
-                    <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center group-hover:scale-110 transition-smooth">
-                      <Facebook className="w-6 h-6 text-primary" />
-                    </div>
-                    <span className="text-sm text-muted-foreground group-hover:text-primary transition-smooth">
-                      Facebook
-                    </span>
-                  </a>
+                <a 
+                  href="https://www.instagram.com/fisiorobertadomiciliar/" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="flex flex-col items-center gap-2 p-4 rounded-lg bg-background hover:bg-primary/5 transition-smooth group focus:outline-none focus:ring-4 focus:ring-primary/50"
+                  aria-label="Visitar perfil no Instagram - @fisiorobertadomiciliar (abre em nova aba)"
+                >
+                  <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center group-hover:scale-110 transition-smooth">
+                    <Instagram className="w-6 h-6 text-primary" aria-hidden="true" />
+                  </div>
+                  <span className="text-sm text-muted-foreground group-hover:text-primary transition-smooth">
+                    @fisiorobertadomiciliar
+                  </span>
+                </a>
+                <a 
+                  href="https://www.facebook.com/profile.php?id=61553900038660" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="flex flex-col items-center gap-2 p-4 rounded-lg bg-background hover:bg-primary/5 transition-smooth group focus:outline-none focus:ring-4 focus:ring-primary/50"
+                  aria-label="Visitar perfil no Facebook - Físio Roberta Domiciliar (abre em nova aba)"
+                >
+                  <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center group-hover:scale-110 transition-smooth">
+                    <Facebook className="w-6 h-6 text-primary" aria-hidden="true" />
+                  </div>
+                  <span className="text-sm text-muted-foreground group-hover:text-primary transition-smooth">
+                    Facebook
+                  </span>
+                </a>
                 </div>
               </CardContent>
             </Card>

@@ -25,12 +25,12 @@ const WhatsAppFloating = () => {
           <Button
             onClick={handleClick}
             size="lg"
-            className="fixed bottom-[15px] right-[15px] md:bottom-5 md:right-5 z-[9999] h-[55px] w-[55px] md:h-[70px] md:w-[70px] rounded-full bg-[#25D366] hover:bg-[#20BA5A] hover:scale-110 p-0 flex items-center justify-center animate-pulse transition-all duration-300 shadow-[0_4px_12px_rgba(0,0,0,0.15)] hover:shadow-[0_6px_20px_rgba(0,0,0,0.25)]"
-            aria-label="Falar conosco no WhatsApp"
+            className="fixed bottom-[15px] right-[15px] md:bottom-5 md:right-5 z-[9999] h-[55px] w-[55px] md:h-[70px] md:w-[70px] rounded-full bg-[#25D366] hover:bg-[#20BA5A] hover:scale-110 p-0 flex items-center justify-center animate-pulse transition-all duration-300 shadow-[0_4px_12px_rgba(0,0,0,0.15)] hover:shadow-[0_6px_20px_rgba(0,0,0,0.25)] focus:outline-none focus:ring-4 focus:ring-green-300"
+            aria-label="Abrir conversa no WhatsApp para agendar avaliação de fisioterapia"
             data-event="whatsapp_click"
             data-source="floating_button"
           >
-            <MessageCircle className="w-7 h-7 md:w-9 md:h-9 text-white" />
+            <MessageCircle className="w-7 h-7 md:w-9 md:h-9 text-white" aria-hidden="true" />
           </Button>
         </TooltipTrigger>
         <TooltipContent side="left" className="bg-foreground text-background">

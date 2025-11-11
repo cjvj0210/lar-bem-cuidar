@@ -27,6 +27,8 @@ import ScrollToTop from "./components/ScrollToTop";
 import OnlineStatus from "./components/cro/OnlineStatus";
 import ExitIntentPopup from "./components/cro/ExitIntentPopup";
 
+import SkipLink from "./components/accessibility/SkipLink";
+
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
@@ -52,29 +54,32 @@ const App = () => {
     <QueryClientProvider client={queryClient}>
       <HelmetProvider>
         <TooltipProvider>
+          <SkipLink />
           <Toaster />
           <Sonner />
           <BrowserRouter>
             <ScrollToTop />
             <Header />
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/sobre" element={<Sobre />} />
-              <Route path="/servicos" element={<Servicos />} />
-              <Route path="/servicos/fisioterapia-geriatrica" element={<FisioterapiaGeriatrica />} />
-              <Route path="/servicos/fisioterapia-neurologica" element={<FisioterapiaNeurologica />} />
-              <Route path="/servicos/reabilitacao-pos-operatoria" element={<ReabilitacaoPosOperatoria />} />
-              <Route path="/servicos/fisioterapia-respiratoria" element={<FisioterapiaRespiratoria />} />
-              <Route path="/depoimentos" element={<Depoimentos />} />
-              <Route path="/contato" element={<Contato />} />
-              <Route path="/blog" element={<Blog />} />
-              <Route path="/blog/:id" element={<BlogPost />} />
-              <Route path="/blog/categoria/:categoria" element={<Blog />} />
-              <Route path="/agendar" element={<Agendar />} />
-              <Route path="/admin" element={<Admin />} />
-              {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-              <Route path="*" element={<NotFound />} />
-            </Routes>
+            <main id="main-content" role="main">
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/sobre" element={<Sobre />} />
+                <Route path="/servicos" element={<Servicos />} />
+                <Route path="/servicos/fisioterapia-geriatrica" element={<FisioterapiaGeriatrica />} />
+                <Route path="/servicos/fisioterapia-neurologica" element={<FisioterapiaNeurologica />} />
+                <Route path="/servicos/reabilitacao-pos-operatoria" element={<ReabilitacaoPosOperatoria />} />
+                <Route path="/servicos/fisioterapia-respiratoria" element={<FisioterapiaRespiratoria />} />
+                <Route path="/depoimentos" element={<Depoimentos />} />
+                <Route path="/contato" element={<Contato />} />
+                <Route path="/blog" element={<Blog />} />
+                <Route path="/blog/:id" element={<BlogPost />} />
+                <Route path="/blog/categoria/:categoria" element={<Blog />} />
+                <Route path="/agendar" element={<Agendar />} />
+                <Route path="/admin" element={<Admin />} />
+                {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+            </main>
             <Footer />
             <WhatsAppFloating />
             <OnlineStatus />

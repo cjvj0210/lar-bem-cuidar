@@ -11,13 +11,13 @@ const Header = () => {
   const isActive = (path: string) => location.pathname === path;
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border shadow-soft">
-      <nav className="container-custom py-4">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border shadow-soft" role="banner">
+      <nav className="container-custom py-4" aria-label="Navegação principal">
         <div className="flex items-center justify-between">
-          <Link to="/" className="flex items-center space-x-2 hover:opacity-80 transition-smooth">
+          <Link to="/" className="flex items-center space-x-2 hover:opacity-80 transition-smooth" aria-label="Voltar para página inicial">
             <img 
               src="/logo.png" 
-              alt="Roberta Rocha Fisioterapeuta" 
+              alt="Logo Roberta Rocha Fisioterapeuta" 
               className="w-16 h-16 md:w-20 md:h-20 object-contain"
             />
             <div>
@@ -112,20 +112,23 @@ const Header = () => {
           <button
             className="md:hidden"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            aria-label="Toggle menu"
+            aria-label={isMenuOpen ? "Fechar menu" : "Abrir menu"}
+            aria-expanded={isMenuOpen}
+            aria-controls="mobile-menu"
           >
-            <Menu className="w-6 h-6" />
+            <Menu className="w-6 h-6" aria-hidden="true" />
           </button>
         </div>
 
         {isMenuOpen && (
-          <div className="md:hidden mt-4 py-4 space-y-4 border-t border-border animate-fade-in">
+          <div id="mobile-menu" className="md:hidden mt-4 py-4 space-y-4 border-t border-border animate-fade-in">
             <Link
               to="/"
               onClick={() => setIsMenuOpen(false)}
               className={`block w-full text-left transition-smooth ${
                 isActive("/") ? "text-primary font-semibold" : "text-foreground hover:text-primary"
               }`}
+              aria-current={isActive("/") ? "page" : undefined}
             >
               Início
             </Link>

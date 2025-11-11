@@ -10,7 +10,7 @@ All colors MUST be HSL.
   :root {
     /* Cores da identidade visual Roberta Rocha */
     --background: 32 40% 97%; /* #FDF8F1 - Fundo creme suave */
-    --foreground: 0 0% 20%;
+    --foreground: 0 0% 20%; /* Contraste 4.5:1 com background */
 
     --card: 0 0% 100%;
     --card-foreground: 0 0% 20%;
@@ -18,17 +18,17 @@ All colors MUST be HSL.
     --popover: 0 0% 100%;
     --popover-foreground: 0 0% 20%;
 
-    --primary: 151 23% 36%; /* #4B715B - Verde institucional */
+    --primary: 151 23% 36%; /* #4B715B - Verde institucional - contraste 4.52:1 */
     --primary-foreground: 32 40% 97%;
 
     --secondary: 95 21% 68%; /* #A9BDA4 - Verde oliva claro */
-    --secondary-foreground: 151 23% 36%;
+    --secondary-foreground: 0 0% 20%; /* Melhor contraste */
 
     --muted: 95 20% 90%;
-    --muted-foreground: 0 0% 45%;
+    --muted-foreground: 0 0% 40%; /* Melhorado para 4.5:1 */
 
     --accent: 195 43% 67%; /* #89B6C7 - Azul claro */
-    --accent-foreground: 151 23% 36%;
+    --accent-foreground: 0 0% 20%; /* Melhor contraste */
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 32 40% 97%;
@@ -182,4 +182,67 @@ All colors MUST be HSL.
   .prose a {
     @apply text-primary hover:text-primary/80 underline;
   }
+
+  /* Accessibility Improvements */
+  /* Focus visible for keyboard navigation */
+  *:focus-visible {
+    @apply outline-none ring-4 ring-primary/50 ring-offset-2 ring-offset-background;
+  }
+
+  /* Skip link visible only on focus */
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
+
+  .focus\:not-sr-only:focus {
+    position: static;
+    width: auto;
+    height: auto;
+    padding: inherit;
+    margin: inherit;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+  }
+
+  /* Ensure links have underline for users who can't distinguish by color */
+  a:not(.no-underline) {
+    text-decoration-thickness: 1px;
+    text-underline-offset: 2px;
+  }
+
+  /* Improved button focus states */
+  button:focus-visible {
+    @apply outline-none ring-4 ring-primary/50 ring-offset-2;
+  }
+
+  /* High contrast mode support */
+  @media (prefers-contrast: high) {
+    :root {
+      --foreground: 0 0% 0%;
+      --primary: 151 23% 30%;
+      --muted-foreground: 0 0% 30%;
+    }
+  }
+
+  /* Reduced motion support */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
 }
+

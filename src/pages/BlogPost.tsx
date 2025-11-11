@@ -2,38 +2,52 @@ import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import { Calendar, Clock, ArrowLeft, MessageCircle } from "lucide-react";
+import { Calendar, Clock, ArrowLeft, MessageCircle, User } from "lucide-react";
 import { Skeleton } from "@/components/ui/skeleton";
 import SEO from "@/components/SEO";
 import Breadcrumb from "@/components/Breadcrumb";
+import SocialShare from "@/components/blog/SocialShare";
+import RelatedPosts from "@/components/blog/RelatedPosts";
 
 interface BlogPost {
   id: string;
+  slug: string;
   title: string;
   subtitle: string | null;
   content: string;
   created_at: string;
   image_url: string | null;
+  category: string;
+  read_time: number;
 }
 
 const BlogPost = () => {
   const { id } = useParams<{ id: string }>();
   const [post, setPost] = useState<BlogPost | null>(null);
   const [loading, setLoading] = useState(true);
-  const whatsappLink = "https://wa.me/5517982123269";
+  const whatsappLink = "https://wa.me/5517982123269?text=Olá! Gostaria de agendar uma avaliação de fisioterapia domiciliar em Barretos.";
 
   useEffect(() => {
     const fetchPost = async () => {
       if (!id) return;
       
       try {
-        const { data, error } = await supabase
+        // Try to fetch by slug first, then by ID for backward compatibility
+        let query = supabase
           .from('blog_posts')
           .select('*')
-          .eq('id', id)
-          .eq('published', true)
-          .single();
+          .eq('published', true);
+        
+        // Check if id looks like a UUID
+        const isUUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(id);
+        
+        if (isUUID) {
+          query = query.eq('id', id);
+        } else {
+          query = query.eq('slug', id);
+        }
+
+        const { data, error } = await query.maybeSingle();
 
         if (error) throw error;
         setPost(data);
@@ -54,10 +68,6 @@ const BlogPost = () => {
       month: 'long', 
       year: 'numeric' 
     });
-  };
-
-  const calculateReadTime = (content: string) => {
-    return Math.ceil(content.split(' ').length / 200);
   };
 
   if (loading) {
@@ -99,22 +109,54 @@ const BlogPost = () => {
     );
   }
 
+  const articleSchema = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": post.title,
+    "description": post.subtitle || post.content.substring(0, 155),
+    "image": post.image_url || "https://fisiorobertadomiciliar.com.br/logo.png",
+    "author": {
+      "@type": "Person",
+      "name": "Roberta Rocha",
+      "url": "https://fisiorobertadomiciliar.com.br/sobre"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Físio Roberta Domiciliar",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://fisiorobertadomiciliar.com.br/logo.png"
+      }
+    },
+    "datePublished": post.created_at,
+    "dateModified": post.created_at,
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": `https://fisiorobertadomiciliar.com.br/blog/${post.slug}`
+    }
+  };
+
   return (
     <div className="min-h-screen pt-20 animate-fade-in">
-      {post && (
-        <>
-          <SEO 
-            title={`${post.title} - Blog Fisioterapia Barretos-SP`}
-            description={post.subtitle || post.content.substring(0, 155)}
-            keywords="fisioterapia domiciliar barretos, blog fisioterapia, dicas cuidados idosos, reabilitação em casa"
-            canonicalUrl={`https://fisiorobertadomiciliar.com.br/blog/${id}`}
-          />
-          <Breadcrumb items={[
-            { label: "Blog", href: "/blog" },
-            { label: post.title }
-          ]} />
-        </>
-      )}
+      <SEO 
+        title={`${post.title} - Blog Fisioterapia Barretos-SP`}
+        description={post.subtitle || post.content.substring(0, 155)}
+        keywords={`${post.category}, fisioterapia domiciliar barretos, blog fisioterapia, dicas cuidados idosos`}
+        canonicalUrl={`https://fisiorobertadomiciliar.com.br/blog/${post.slug}`}
+      />
+      
+      {/* Article Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+      />
+
+      <Breadcrumb items={[
+        { label: "Blog", href: "/blog" },
+        { label: post.category, href: `/blog/categoria/${post.category.toLowerCase().replace(/\s+/g, '-')}` },
+        { label: post.title }
+      ]} />
+
       <article className="section-padding">
         <div className="container mx-auto max-w-4xl">
           {/* Back Button */}
@@ -127,6 +169,12 @@ const BlogPost = () => {
 
           {/* Article Header */}
           <header className="mb-12">
+            <div className="flex items-center gap-2 mb-4">
+              <span className="text-sm font-medium text-primary bg-primary/10 px-3 py-1 rounded-full">
+                {post.category}
+              </span>
+            </div>
+            
             <h1 className="text-foreground mb-4 text-3xl md:text-4xl lg:text-5xl">
               {post.title}
             </h1>
@@ -137,16 +185,23 @@ const BlogPost = () => {
               </p>
             )}
 
-            <div className="flex items-center gap-6 text-sm text-muted-foreground">
+            <div className="flex items-center gap-6 text-sm text-muted-foreground mb-6">
+              <div className="flex items-center gap-2">
+                <User className="w-4 h-4" />
+                <span>Roberta Rocha</span>
+              </div>
               <div className="flex items-center gap-2">
                 <Calendar className="w-4 h-4" />
                 <span>{formatDate(post.created_at)}</span>
               </div>
               <div className="flex items-center gap-2">
                 <Clock className="w-4 h-4" />
-                <span>{calculateReadTime(post.content)} min de leitura</span>
+                <span>{post.read_time} min de leitura</span>
               </div>
             </div>
+
+            {/* Social Share */}
+            <SocialShare title={post.title} url={`/blog/${post.slug}`} />
           </header>
 
           {/* Featured Image */}
@@ -170,61 +225,37 @@ const BlogPost = () => {
               prose-h2:text-3xl prose-h2:text-primary prose-h2:mt-12 prose-h2:mb-6 prose-h2:leading-tight
               prose-h3:text-2xl prose-h3:text-foreground prose-h3:mt-8 prose-h3:mb-4 prose-h3:leading-snug
               prose-p:text-foreground/90 prose-p:leading-relaxed prose-p:mb-6 prose-p:text-base
-              prose-strong:text-foreground prose-strong:font-semibold
-              prose-ul:my-6 prose-ul:space-y-3 prose-ul:pl-6 prose-ul:list-disc
-              prose-li:text-foreground/90 prose-li:leading-relaxed prose-li:text-base
               prose-a:text-primary prose-a:no-underline hover:prose-a:underline
-              [&>h2]:scroll-mt-24 [&>h3]:scroll-mt-24
-              [&>p]:max-w-none [&>ul]:max-w-none"
-            dangerouslySetInnerHTML={{ 
-              __html: post.content
-                // Headers
-                .replace(/## (.*?)(\n|$)/g, '<h2 class="text-3xl text-primary font-bold mt-12 mb-6 leading-tight">$1</h2>')
-                .replace(/### (.*?)(\n|$)/g, '<h3 class="text-2xl text-foreground font-bold mt-8 mb-4 leading-snug">$1</h3>')
-                // Bold text
-                .replace(/\*\*(.*?)\*\*/g, '<strong class="font-semibold text-foreground">$1</strong>')
-                // Lists - capture multiple list items together
-                .replace(/^- (.+)$/gm, '<li class="text-foreground/90 leading-relaxed mb-2">$1</li>')
-                .replace(/(<li>.*?<\/li>\s*)+/g, (match) => `<ul class="list-disc pl-6 my-6 space-y-3">${match}</ul>`)
-                // Paragraphs - wrap text that's not already in tags
-                .replace(/^(?!<[hul])([\s\S]+?)(?=\n<|$)/gm, (match) => {
-                  if (match.trim() && !match.includes('<')) {
-                    return `<p class="text-foreground/90 leading-relaxed mb-6 text-base">${match}</p>`;
-                  }
-                  return match;
-                })
-                // Clean up extra spacing
-                .replace(/<\/p>\s*<p/g, '</p><p')
-                .replace(/<p[^>]*>\s*<\/p>/g, '')
-            }}
+              prose-strong:text-foreground prose-strong:font-semibold
+              prose-ul:my-6 prose-ul:text-foreground/90
+              prose-ol:my-6 prose-ol:text-foreground/90
+              prose-li:my-2 prose-li:text-base
+              prose-img:rounded-xl prose-img:shadow-md"
+            dangerouslySetInnerHTML={{ __html: post.content }}
           />
 
           {/* CTA Section */}
-          <Card className="border-2 bg-primary/5 animate-fade-in">
-            <CardContent className="pt-8 pb-8 text-center space-y-6">
-              <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto">
-                <MessageCircle className="w-8 h-8 text-primary" />
-              </div>
-              <div className="space-y-2">
-                <h3 className="text-2xl font-semibold text-foreground">
-                  Gostou do conteúdo?
-                </h3>
-                <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                  Vamos conversar sobre como posso te ajudar.
-                </p>
-              </div>
-              <Button
-                size="lg"
-                className="bg-primary hover:bg-primary/90"
-                onClick={() => window.open(whatsappLink, "_blank")}
+          <div className="bg-gradient-to-br from-primary/5 to-accent/5 rounded-2xl p-8 md:p-12 text-center mb-16 border border-primary/10">
+            <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
+              Precisa de Fisioterapia Domiciliar em Barretos?
+            </h3>
+            <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
+              Agende sua avaliação personalizada no conforto do seu lar. Atendimento humanizado com foco em resultados.
+            </p>
+            <Button asChild size="lg">
+              <a 
+                href={whatsappLink}
+                target="_blank"
+                rel="noopener noreferrer"
               >
-                Agendar avaliação
-              </Button>
-              <p className="text-sm text-muted-foreground italic">
-                Será um prazer aplicar esse conhecimento no seu dia a dia.
-              </p>
-            </CardContent>
-          </Card>
+                <MessageCircle className="w-5 h-5 mr-2" />
+                Agendar Avaliação
+              </a>
+            </Button>
+          </div>
+
+          {/* Related Posts */}
+          <RelatedPosts currentSlug={post.slug} category={post.category} />
         </div>
       </article>
     </div>

@@ -16,34 +16,46 @@ export type Database = {
     Tables: {
       blog_posts: {
         Row: {
+          category: string
           content: string
           created_at: string
           id: string
           image_url: string | null
           published: boolean
+          read_time: number | null
+          slug: string
           subtitle: string | null
           title: string
           updated_at: string
+          views: number | null
         }
         Insert: {
+          category?: string
           content: string
           created_at?: string
           id?: string
           image_url?: string | null
           published?: boolean
+          read_time?: number | null
+          slug: string
           subtitle?: string | null
           title: string
           updated_at?: string
+          views?: number | null
         }
         Update: {
+          category?: string
           content?: string
           created_at?: string
           id?: string
           image_url?: string | null
           published?: boolean
+          read_time?: number | null
+          slug?: string
           subtitle?: string | null
           title?: string
           updated_at?: string
+          views?: number | null
         }
         Relationships: []
       }

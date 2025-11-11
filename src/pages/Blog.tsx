@@ -112,7 +112,7 @@ const Blog = () => {
     <div className="min-h-screen pt-20 animate-fade-in">
       <SEO 
         title={categoria ? `${selectedCategory} - Blog Fisioterapia Barretos-SP` : "Blog de Fisioterapia - Dicas e Informações | Barretos-SP"}
-        description="Artigos sobre fisioterapia domiciliar, cuidados com idosos e reabilitação em Barretos-SP. Dicas da fisioterapeuta Roberta Rocha."
+        description="Artigos sobre fisioterapia domiciliar, cuidados com idosos e reabilitação em Barretos-SP. Dicas práticas da fisioterapeuta Roberta Rocha. Leia agora!"
         keywords="blog fisioterapia barretos, artigos fisioterapia, dicas cuidados idosos, reabilitação domiciliar"
         canonicalUrl={categoria ? `https://fisiorobertadomiciliar.com.br/blog/categoria/${categoria}` : "https://fisiorobertadomiciliar.com.br/blog"}
       />

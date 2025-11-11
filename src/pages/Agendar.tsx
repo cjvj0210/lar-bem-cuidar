@@ -136,7 +136,7 @@ const Agendar = () => {
     <>
       <SEO
         title="Agendar Avaliação de Fisioterapia Domiciliar em Barretos | Roberta Rocha"
-        description="Agende sua avaliação de fisioterapia domiciliar em Barretos-SP. R$ 150. Atendimento premium com 13 anos de experiência. WhatsApp: (17) 98212-3269"
+        description="Agende sua avaliação de fisioterapia domiciliar em Barretos-SP com Roberta Rocha. R$ 150 por 60 minutos. Resposta em até 10 minutos. WhatsApp: (17) 98212-3269"
         keywords="agendar fisioterapia barretos, avaliação fisioterapia domiciliar, fisioterapeuta barretos preço"
         canonicalUrl="https://www.fisiorobertadomiciliar.com/agendar"
         schema={serviceSchema}

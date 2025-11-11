@@ -21,6 +21,21 @@ const ComparisonTable = () => {
     { feature: "Familiares presentes", clinic: false, home: true }
   ];
 
+  const renderValue = (value: boolean | string, isHome: boolean = false) => {
+    if (typeof value === "boolean") {
+      return value ? (
+        <Check className="w-5 h-5 text-green-600 mx-auto" />
+      ) : (
+        <X className="w-5 h-5 text-red-400 mx-auto" />
+      );
+    }
+    return (
+      <span className={isHome ? "font-medium text-primary" : "text-muted-foreground"}>
+        {value}
+      </span>
+    );
+  };
+
   return (
     <section className="section-padding bg-muted/30">
       <div className="container-custom max-w-4xl">
@@ -33,7 +48,8 @@ const ComparisonTable = () => {
           </p>
         </div>
 
-        <Card className="border-2">
+        {/* Desktop Table View */}
+        <Card className="border-2 hidden md:block">
           <CardHeader>
             <CardTitle className="text-center text-2xl">Comparação de Atendimento</CardTitle>
           </CardHeader>
@@ -53,26 +69,10 @@ const ComparisonTable = () => {
                   <TableRow key={index}>
                     <TableCell className="font-medium">{item.feature}</TableCell>
                     <TableCell className="text-center">
-                      {typeof item.clinic === "boolean" ? (
-                        item.clinic ? (
-                          <Check className="w-5 h-5 text-green-600 mx-auto" />
-                        ) : (
-                          <X className="w-5 h-5 text-red-400 mx-auto" />
-                        )
-                      ) : (
-                        <span className="text-muted-foreground">{item.clinic}</span>
-                      )}
+                      {renderValue(item.clinic)}
                     </TableCell>
                     <TableCell className="text-center bg-primary/5">
-                      {typeof item.home === "boolean" ? (
-                        item.home ? (
-                          <Check className="w-5 h-5 text-green-600 mx-auto" />
-                        ) : (
-                          <X className="w-5 h-5 text-red-400 mx-auto" />
-                        )
-                      ) : (
-                        <span className="font-medium text-primary">{item.home}</span>
-                      )}
+                      {renderValue(item.home, true)}
                     </TableCell>
                   </TableRow>
                 ))}
@@ -80,6 +80,34 @@ const ComparisonTable = () => {
             </Table>
           </CardContent>
         </Card>
+
+        {/* Mobile Card View */}
+        <div className="md:hidden space-y-4">
+          <h3 className="text-xl font-bold text-center mb-6">Comparação de Atendimento</h3>
+          {comparisons.map((item, index) => (
+            <Card key={index} className="border-2">
+              <CardContent className="p-4">
+                <h4 className="font-bold text-lg mb-3 text-center text-primary">
+                  {item.feature}
+                </h4>
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="text-center">
+                    <p className="text-sm text-muted-foreground mb-2">Clínica</p>
+                    <div className="flex justify-center">
+                      {renderValue(item.clinic)}
+                    </div>
+                  </div>
+                  <div className="text-center bg-primary/5 rounded-lg p-2">
+                    <p className="text-sm font-semibold text-primary mb-2">Domiciliar</p>
+                    <div className="flex justify-center">
+                      {renderValue(item.home, true)}
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
 
         <div className="mt-8 p-6 bg-green-50 dark:bg-green-900/10 border-2 border-green-200 dark:border-green-900 rounded-lg">
           <div className="flex items-start gap-4">

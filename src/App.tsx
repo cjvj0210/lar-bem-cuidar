@@ -11,6 +11,7 @@ import Depoimentos from "./pages/Depoimentos";
 import Contato from "./pages/Contato";
 import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
+import Agendar from "./pages/Agendar";
 import Admin from "./pages/Admin";
 import NotFound from "./pages/NotFound";
 import Header from "./components/Header";
@@ -45,6 +46,7 @@ const App = () => (
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/:id" element={<BlogPost />} />
           <Route path="/blog/categoria/:categoria" element={<Blog />} />
+          <Route path="/agendar" element={<Agendar />} />
           <Route path="/admin" element={<Admin />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />

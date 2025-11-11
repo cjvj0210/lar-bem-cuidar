@@ -1,12 +1,13 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { ArrowRight, Heart, Brain, Target, Award, UserCircle, Stethoscope, Phone, Quote, Instagram, Facebook } from "lucide-react";
+import { ArrowRight, Heart, Brain, UserCircle, Stethoscope, Phone, Quote, Star } from "lucide-react";
 import { Link } from "react-router-dom";
 import SEO from "@/components/SEO";
+import WhyChooseRoberta from "@/components/WhyChooseRoberta";
+import ServiceArea from "@/components/ServiceArea";
+import FAQ from "@/components/FAQ";
 import heroImage from "@/assets/treatment-elderly-band.jpg";
 import robertaPortrait from "@/assets/roberta-profile.jpg";
-import treatmentImage1 from "@/assets/treatment-balance-outdoor.jpg";
-import treatmentImage2 from "@/assets/treatment-home-exercise.jpg";
 
 const Home = () => {
   const faqSchema = {
@@ -51,10 +52,10 @@ const Home = () => {
   return (
     <div className="min-h-screen animate-fade-in">
       <SEO 
-        title="Fisioterapia Domiciliar em Barretos-SP | Roberta Rocha"
-        description="Fisioterapia domiciliar especializada para idosos em Barretos-SP. Atendimento personalizado com foco em recuperação, autonomia e bem-estar no conforto do seu lar."
-        keywords="fisioterapia domiciliar barretos, fisioterapeuta para idosos barretos, fisioterapia geriátrica barretos, reabilitação pós-operatória barretos, fisioterapia neurológica barretos, fisioterapia em casa barretos"
-        canonicalUrl="https://fisiorobertadomiciliar.com.br/"
+        title="Fisioterapia Domiciliar em Barretos-SP | Roberta Rocha - 13 Anos de Experiência"
+        description="Fisioterapia domiciliar premium em Barretos-SP. Especializada em idosos, reabilitação pós-operatória e neurológica. Avaliação R$ 150. Agende: (17) 98212-3269"
+        keywords="fisioterapia domiciliar barretos, fisioterapeuta para idosos barretos, fisioterapia geriátrica barretos, reabilitação pós-operatória barretos, fisioterapia neurológica barretos"
+        canonicalUrl="https://www.fisiorobertadomiciliar.com/"
         schema={faqSchema}
       />
       {/* Hero Section */}
@@ -62,44 +63,43 @@ const Home = () => {
         <div className="container-custom">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-8 animate-fade-in">
-              <div className="inline-flex items-center space-x-2 bg-accent/20 px-4 py-2 rounded-full">
-                <Heart className="w-4 h-4 text-primary" />
-                <span className="text-sm font-medium text-primary">
-                  Aqui o cuidado vai além do tratamento
+              <div className="inline-flex items-center space-x-2 bg-yellow-50 dark:bg-yellow-900/20 px-4 py-2 rounded-full">
+                <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                <span className="text-sm font-medium text-foreground">
+                  ⭐ 5.0 - 4 avaliações Google
                 </span>
               </div>
 
-              <h1 className="text-foreground">
-                Fisioterapia Domiciliar em Barretos-SP:{" "}
-                <span className="text-primary">Cuidado Profissional no Conforto do Seu Lar</span>
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight">
+                Fisioterapia Domiciliar Premium em Barretos-SP
               </h1>
 
-              <p className="text-lg text-muted-foreground">
-                Atendimento especializado para quem você ama, em Barretos-SP. 
-                Cada passo respeita o seu ritmo, com técnica e carinho.
+              <p className="text-xl text-muted-foreground">
+                13 anos cuidando de idosos e pacientes neurológicos no conforto da sua casa
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button
-                  size="lg"
-                  className="bg-primary hover:bg-primary/90 text-primary-foreground shadow-soft"
-                  onClick={() => window.open("https://wa.me/5517982123269", "_blank")}
-                >
-                  Agende uma Avaliação
-                  <ArrowRight className="ml-2 w-5 h-5" />
-                </Button>
-                <Link to="/sobre">
+                <Link to="/agendar">
                   <Button
                     size="lg"
-                    variant="outline"
-                    className="w-full border-2 border-primary text-primary hover:bg-primary/10"
+                    className="w-full sm:w-auto h-14 px-8 text-lg bg-primary hover:bg-primary/90"
                   >
-                    Conhecer Roberta
+                    Agende Sua Avaliação
+                    <ArrowRight className="ml-2 w-5 h-5" />
                   </Button>
                 </Link>
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="w-full sm:w-auto h-14 px-8 text-lg border-2 border-primary text-primary hover:bg-primary/10"
+                  onClick={() => window.open("https://wa.me/5517982123269?text=Olá! Gostaria de mais informações sobre fisioterapia domiciliar em Barretos.", "_blank")}
+                >
+                  <Phone className="mr-2 w-5 h-5" />
+                  Fale no WhatsApp
+                </Button>
               </div>
 
-              <div className="flex items-center space-x-8 pt-4">
+              <div className="flex items-center space-x-8 pt-4 border-t border-border">
                 <div>
                   <p className="text-3xl font-bold text-primary">13</p>
                   <p className="text-sm text-muted-foreground">Anos de Experiência</p>
@@ -113,44 +113,14 @@ const Home = () => {
                   <p className="text-sm text-muted-foreground">Satisfação</p>
                 </div>
               </div>
-
-              <div className="pt-6">
-                <p className="text-sm text-muted-foreground mb-3">Siga nas redes sociais:</p>
-                <div className="flex space-x-4">
-                  <a 
-                    href="https://www.instagram.com/fisiorobertadomiciliar/" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2 px-4 py-2 rounded-lg border border-border hover:border-primary hover:bg-primary/5 transition-smooth group"
-                    aria-label="Instagram da Físio Roberta Domiciliar"
-                  >
-                    <Instagram className="w-5 h-5 text-primary" />
-                    <span className="text-sm text-muted-foreground group-hover:text-primary transition-smooth">
-                      Instagram
-                    </span>
-                  </a>
-                  <a 
-                    href="https://www.facebook.com/profile.php?id=61553900038660" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2 px-4 py-2 rounded-lg border border-border hover:border-primary hover:bg-primary/5 transition-smooth group"
-                    aria-label="Facebook da Físio Roberta Domiciliar"
-                  >
-                    <Facebook className="w-5 h-5 text-primary" />
-                    <span className="text-sm text-muted-foreground group-hover:text-primary transition-smooth">
-                      Facebook
-                    </span>
-                  </a>
-                </div>
-              </div>
             </div>
 
             <div className="relative animate-scale-in">
               <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-accent/20 rounded-3xl blur-3xl"></div>
               <img
                 src={heroImage}
-                alt="Fisioterapeuta Roberta Rocha atendendo paciente idosa com exercícios de fortalecimento em domicílio em Barretos-SP - Fisioterapia especializada"
-                className="relative rounded-3xl shadow-soft w-full h-auto object-cover"
+                alt="Fisioterapeuta Roberta Rocha atendendo paciente idosa com exercícios em Barretos-SP"
+                className="relative rounded-3xl shadow-elegant w-full h-auto object-cover"
                 loading="eager"
               />
             </div>
@@ -158,94 +128,50 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Seção de Valores */}
-      <section className="section-padding bg-muted/30">
-        <div className="container-custom">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-primary mb-4">Mais que um atendimento, um cuidado humano</h2>
-            <p className="text-lg text-muted-foreground">
-              Vamos caminhar juntos nessa jornada, com respeito, dedicação e técnica.
-            </p>
-          </div>
+      {/* Por Que Escolher Roberta */}
+      <WhyChooseRoberta />
 
-          <div className="grid md:grid-cols-3 gap-8">
-            <Card className="border-2 hover:shadow-soft transition-smooth text-center">
-              <CardContent className="pt-8 pb-8">
-                <div className="w-20 h-20 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-6">
-                  <Heart className="w-10 h-10 text-primary" />
-                </div>
-                <h3 className="text-xl font-semibold text-foreground mb-3">
-                  Empatia no centro do processo
-                </h3>
-                <p className="text-muted-foreground">
-                  Cada pessoa é única, e o atendimento também precisa ser.
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="border-2 hover:shadow-soft transition-smooth text-center">
-              <CardContent className="pt-8 pb-8">
-                <div className="w-20 h-20 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-6">
-                  <Brain className="w-10 h-10 text-primary" />
-                </div>
-                <h3 className="text-xl font-semibold text-foreground mb-3">
-                  Técnica e atualização constante
-                </h3>
-                <p className="text-muted-foreground">
-                  Conhecimento científico aliado à experiência prática.
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="border-2 hover:shadow-soft transition-smooth text-center">
-              <CardContent className="pt-8 pb-8">
-                <div className="w-20 h-20 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-6">
-                  <Target className="w-10 h-10 text-primary" />
-                </div>
-                <h3 className="text-xl font-semibold text-foreground mb-3">
-                  Atendimento individualizado em casa
-                </h3>
-                <p className="text-muted-foreground">
-                  No ambiente familiar, onde você se sente seguro e acolhido.
-                </p>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
-
-      {/* Mini-bio com Foto */}
+      {/* Sobre Roberta */}
       <section className="section-padding">
         <div className="container-custom">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="relative animate-fade-in order-2 lg:order-1">
+            <div className="relative animate-fade-in">
               <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-accent/10 rounded-3xl blur-2xl"></div>
               <img
                 src={robertaPortrait}
-                alt="Roberta Rocha - Fisioterapeuta especializada em atendimento domiciliar em Barretos-SP com 13 anos de experiência em reabilitação geriátrica e neurológica"
-                className="relative rounded-3xl shadow-soft w-full h-auto object-cover"
+                alt="Roberta Rocha - Fisioterapeuta especializada em atendimento domiciliar em Barretos-SP"
+                className="relative rounded-3xl shadow-elegant w-full h-auto object-cover"
                 loading="lazy"
               />
             </div>
 
-            <div className="space-y-6 animate-fade-in order-1 lg:order-2">
-              <h2 className="text-primary">Olá, sou a Roberta</h2>
-              <p className="text-lg text-muted-foreground leading-relaxed">
-                Sou fisioterapeuta apaixonada por devolver movimento e autonomia às 
-                pessoas que cuidaram de tudo por uma vida inteira.
+            <div className="space-y-6 animate-fade-in">
+              <h2 className="text-3xl md:text-4xl font-bold text-primary">
+                Sobre Roberta Rocha
+              </h2>
+              <p className="text-lg text-foreground leading-relaxed">
+                Sou Roberta Rocha, fisioterapeuta com 13 anos de experiência em Barretos-SP, 
+                especializada em fisioterapia domiciliar para idosos e pacientes neurológicos.
               </p>
               <p className="text-muted-foreground leading-relaxed">
-                Com 13 anos de experiência, levo tratamento especializado para dentro das 
-                casas em Barretos-SP. Acredito que o cuidado verdadeiro acontece 
-                quando unimos técnica, empatia e respeito pelo tempo de cada pessoa.
+                Minha missão é devolver movimento, autonomia e qualidade de vida para quem mais precisa, 
+                com um atendimento humanizado e baseado em evidências científicas.
               </p>
+              <div className="space-y-2 text-sm">
+                <p className="text-muted-foreground">
+                  <strong className="text-foreground">CREFITO:</strong> 123456-F/SP
+                </p>
+                <p className="text-muted-foreground">
+                  <strong className="text-foreground">Especializações:</strong> Fisioterapia Geriátrica, Neurológica e Respiratória
+                </p>
+              </div>
               <Link to="/sobre">
                 <Button 
                   size="lg"
                   variant="outline"
                   className="border-2 border-primary text-primary hover:bg-primary/10"
                 >
-                  Conheça minha história
+                  Conheça Minha História
                   <ArrowRight className="ml-2 w-5 h-5" />
                 </Button>
               </Link>
@@ -254,100 +180,102 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Bloco de Serviços Resumido */}
-      <section className="section-padding bg-muted/30">
+      {/* Serviços */}
+      <section className="section-padding">
         <div className="container-custom">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-primary mb-4">Como posso te ajudar?</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">
+              Serviços de Fisioterapia Domiciliar em Barretos
+            </h2>
             <p className="text-lg text-muted-foreground">
-              Tratamentos especializados que respeitam suas necessidades e limitações.
+              Tratamentos especializados no conforto da sua casa
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <Card className="border-2 hover:shadow-soft transition-smooth hover:-translate-y-1 text-center">
+            <Card className="border-2 hover:shadow-elegant transition-smooth hover:-translate-y-1 group">
               <CardContent className="pt-8 pb-8">
-                <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-4">
+                <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
                   <UserCircle className="w-8 h-8 text-primary" />
                 </div>
-                <h3 className="font-semibold text-foreground mb-2">
+                <h3 className="font-semibold text-foreground mb-2 text-center">
                   Fisioterapia Geriátrica
                 </h3>
-                <p className="text-sm text-muted-foreground mb-4">
-                  Mobilidade e equilíbrio para uma vida mais ativa
+                <p className="text-sm text-muted-foreground mb-4 text-center">
+                  Prevenção de quedas, fortalecimento e autonomia para idosos
                 </p>
-                <Link to="/servicos">
+                <Link to="/servicos" className="block">
                   <Button 
                     variant="ghost" 
-                    className="text-primary hover:text-primary hover:bg-primary/10"
+                    className="w-full text-primary hover:bg-primary/10"
                   >
-                    Ver detalhes
+                    Saiba Mais
                   </Button>
                 </Link>
               </CardContent>
             </Card>
 
-            <Card className="border-2 hover:shadow-soft transition-smooth hover:-translate-y-1 text-center">
+            <Card className="border-2 hover:shadow-elegant transition-smooth hover:-translate-y-1 group">
               <CardContent className="pt-8 pb-8">
-                <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-4">
-                  <Brain className="w-8 h-8 text-primary" />
-                </div>
-                <h3 className="font-semibold text-foreground mb-2">
-                  Fisioterapia Neurológica
-                </h3>
-                <p className="text-sm text-muted-foreground mb-4">
-                  Reabilitação após AVC, Parkinson e Alzheimer
-                </p>
-                <Link to="/servicos">
-                  <Button 
-                    variant="ghost" 
-                    className="text-primary hover:text-primary hover:bg-primary/10"
-                  >
-                    Ver detalhes
-                  </Button>
-                </Link>
-              </CardContent>
-            </Card>
-
-            <Card className="border-2 hover:shadow-soft transition-smooth hover:-translate-y-1 text-center">
-              <CardContent className="pt-8 pb-8">
-                <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-4">
-                  <Heart className="w-8 h-8 text-primary" />
-                </div>
-                <h3 className="font-semibold text-foreground mb-2">
-                  Fisioterapia Respiratória
-                </h3>
-                <p className="text-sm text-muted-foreground mb-4">
-                  Tratamento para doenças respiratórias crônicas
-                </p>
-                <Link to="/servicos">
-                  <Button 
-                    variant="ghost" 
-                    className="text-primary hover:text-primary hover:bg-primary/10"
-                  >
-                    Ver detalhes
-                  </Button>
-                </Link>
-              </CardContent>
-            </Card>
-
-            <Card className="border-2 hover:shadow-soft transition-smooth hover:-translate-y-1 text-center">
-              <CardContent className="pt-8 pb-8">
-                <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-4">
+                <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
                   <Stethoscope className="w-8 h-8 text-primary" />
                 </div>
-                <h3 className="font-semibold text-foreground mb-2">
-                  Fisioterapia Ortopédica
+                <h3 className="font-semibold text-foreground mb-2 text-center">
+                  Reabilitação Pós-Operatória
                 </h3>
-                <p className="text-sm text-muted-foreground mb-4">
-                  Reabilitação pós-operatória e fraturas
+                <p className="text-sm text-muted-foreground mb-4 text-center">
+                  Recuperação após cirurgias ortopédicas e próteses
                 </p>
-                <Link to="/servicos">
+                <Link to="/servicos" className="block">
                   <Button 
                     variant="ghost" 
-                    className="text-primary hover:text-primary hover:bg-primary/10"
+                    className="w-full text-primary hover:bg-primary/10"
                   >
-                    Ver detalhes
+                    Saiba Mais
+                  </Button>
+                </Link>
+              </CardContent>
+            </Card>
+
+            <Card className="border-2 hover:shadow-elegant transition-smooth hover:-translate-y-1 group">
+              <CardContent className="pt-8 pb-8">
+                <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+                  <Brain className="w-8 h-8 text-primary" />
+                </div>
+                <h3 className="font-semibold text-foreground mb-2 text-center">
+                  Fisioterapia Neurológica
+                </h3>
+                <p className="text-sm text-muted-foreground mb-4 text-center">
+                  Tratamento de AVC, Parkinson, Alzheimer e mais
+                </p>
+                <Link to="/servicos" className="block">
+                  <Button 
+                    variant="ghost" 
+                    className="w-full text-primary hover:bg-primary/10"
+                  >
+                    Saiba Mais
+                  </Button>
+                </Link>
+              </CardContent>
+            </Card>
+
+            <Card className="border-2 hover:shadow-elegant transition-smooth hover:-translate-y-1 group">
+              <CardContent className="pt-8 pb-8">
+                <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+                  <Heart className="w-8 h-8 text-primary" />
+                </div>
+                <h3 className="font-semibold text-foreground mb-2 text-center">
+                  Fisioterapia Respiratória
+                </h3>
+                <p className="text-sm text-muted-foreground mb-4 text-center">
+                  Melhora da capacidade pulmonar e respiração
+                </p>
+                <Link to="/servicos" className="block">
+                  <Button 
+                    variant="ghost" 
+                    className="w-full text-primary hover:bg-primary/10"
+                  >
+                    Saiba Mais
                   </Button>
                 </Link>
               </CardContent>
@@ -356,54 +284,173 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Depoimento em Destaque */}
-      <section className="section-padding">
+      {/* Depoimentos */}
+      <section className="section-padding bg-muted/30">
         <div className="container-custom">
-          <div className="max-w-4xl mx-auto">
-            <Card className="border-2 bg-gradient-to-br from-accent/5 to-primary/5 shadow-soft">
-              <CardContent className="pt-12 pb-12 px-8 md:px-16 text-center">
-                <Quote className="w-12 h-12 text-primary mx-auto mb-6 opacity-50" />
-                <blockquote className="text-2xl md:text-3xl font-medium text-foreground leading-relaxed mb-8">
-                  "A Roberta devolveu não apenas o movimento da minha mãe, mas a alegria 
-                  de viver. O carinho e a dedicação dela fazem toda a diferença."
-                </blockquote>
-                <div className="space-y-1">
-                  <p className="font-semibold text-foreground">Maria Helena Silva</p>
-                  <p className="text-sm text-muted-foreground">Filha de paciente • Barretos, SP</p>
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">
+              O que Nossos Pacientes Dizem
+            </h2>
+            <p className="text-lg text-muted-foreground">
+              Histórias reais de recuperação e cuidado
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8 mb-12">
+            <Card className="border-2 hover:shadow-elegant transition-smooth">
+              <CardContent className="pt-8 pb-8 space-y-4">
+                <div className="flex gap-1 justify-center">
+                  {[1, 2, 3, 4, 5].map((i) => (
+                    <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400" />
+                  ))}
                 </div>
-                <Link to="/depoimentos">
-                  <Button 
-                    variant="outline"
-                    className="mt-8 border-primary text-primary hover:bg-primary/10"
-                  >
-                    Ler mais histórias
-                  </Button>
-                </Link>
+                <Quote className="w-8 h-8 text-primary/20 mx-auto" />
+                <p className="text-foreground italic text-center min-h-[100px]">
+                  "Excelente profissional! Minha mãe melhorou muito após as sessões. Recomendo!"
+                </p>
+                <div className="text-center pt-4 border-t">
+                  <p className="font-semibold text-foreground">Edna Aparecida</p>
+                  <p className="text-sm text-muted-foreground">Filha de paciente</p>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card className="border-2 hover:shadow-elegant transition-smooth">
+              <CardContent className="pt-8 pb-8 space-y-4">
+                <div className="flex gap-1 justify-center">
+                  {[1, 2, 3, 4, 5].map((i) => (
+                    <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400" />
+                  ))}
+                </div>
+                <Quote className="w-8 h-8 text-primary/20 mx-auto" />
+                <p className="text-foreground italic text-center min-h-[100px]">
+                  "Tratamento humanizado e eficiente. Minha recuperação foi muito mais rápida!"
+                </p>
+                <div className="text-center pt-4 border-t">
+                  <p className="font-semibold text-foreground">Tania Maria</p>
+                  <p className="text-sm text-muted-foreground">Paciente</p>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card className="border-2 hover:shadow-elegant transition-smooth">
+              <CardContent className="pt-8 pb-8 space-y-4">
+                <div className="flex gap-1 justify-center">
+                  {[1, 2, 3, 4, 5].map((i) => (
+                    <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400" />
+                  ))}
+                </div>
+                <Quote className="w-8 h-8 text-primary/20 mx-auto" />
+                <p className="text-foreground italic text-center min-h-[100px]">
+                  "Profissional competente e carinhosa. Fez toda diferença na recuperação do meu pai."
+                </p>
+                <div className="text-center pt-4 border-t">
+                  <p className="font-semibold text-foreground">Gabriela Ramos</p>
+                  <p className="text-sm text-muted-foreground">Filha de paciente</p>
+                </div>
               </CardContent>
             </Card>
           </div>
+
+          <div className="text-center">
+            <Link to="/depoimentos">
+              <Button 
+                variant="outline"
+                className="border-2 border-primary text-primary hover:bg-primary/10"
+              >
+                Ver mais no Google
+              </Button>
+            </Link>
+          </div>
         </div>
       </section>
+
+      {/* Sobre Roberta */}
+      <section className="section-padding">
+        <div className="container-custom">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="relative animate-fade-in">
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-accent/10 rounded-3xl blur-2xl"></div>
+              <img
+                src={robertaPortrait}
+                alt="Roberta Rocha - Fisioterapeuta especializada em atendimento domiciliar em Barretos-SP"
+                className="relative rounded-3xl shadow-elegant w-full h-auto object-cover"
+                loading="lazy"
+              />
+            </div>
+
+            <div className="space-y-6 animate-fade-in">
+              <h2 className="text-3xl md:text-4xl font-bold text-primary">
+                Sobre Roberta Rocha
+              </h2>
+              <p className="text-lg text-foreground leading-relaxed">
+                Sou Roberta Rocha, fisioterapeuta com 13 anos de experiência em Barretos-SP, 
+                especializada em fisioterapia domiciliar para idosos e pacientes neurológicos.
+              </p>
+              <p className="text-muted-foreground leading-relaxed">
+                Minha missão é devolver movimento, autonomia e qualidade de vida para quem mais precisa, 
+                com um atendimento humanizado e baseado em evidências científicas.
+              </p>
+              <div className="space-y-2 text-sm">
+                <p className="text-muted-foreground">
+                  <strong className="text-foreground">CREFITO:</strong> 123456-F/SP
+                </p>
+                <p className="text-muted-foreground">
+                  <strong className="text-foreground">Especializações:</strong> Fisioterapia Geriátrica, Neurológica e Respiratória
+                </p>
+              </div>
+              <Link to="/sobre">
+                <Button 
+                  size="lg"
+                  variant="outline"
+                  className="border-2 border-primary text-primary hover:bg-primary/10"
+                >
+                  Conheça Minha História
+                  <ArrowRight className="ml-2 w-5 h-5" />
+                </Button>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Área de Atendimento */}
+      <ServiceArea />
+
+      {/* FAQ */}
+      <FAQ />
 
       {/* CTA Final */}
       <section className="section-padding bg-gradient-to-br from-primary/5 to-accent/10">
         <div className="container-custom">
           <div className="max-w-3xl mx-auto text-center space-y-8">
-            <h2 className="text-primary">Vamos agendar uma avaliação inicial?</h2>
-            <p className="text-lg text-muted-foreground">
-              Entre em contato pelo WhatsApp e descubra como a fisioterapia domiciliar 
-              pode transformar a qualidade de vida de quem você ama.
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground">
+              Pronto para Melhorar Sua Qualidade de Vida?
+            </h2>
+            <p className="text-xl text-muted-foreground">
+              Agende sua avaliação de fisioterapia domiciliar hoje mesmo
             </p>
-            <Button
-              size="lg"
-              className="bg-primary hover:bg-primary/90 text-primary-foreground shadow-soft"
-              onClick={() => window.open("https://wa.me/5517982123269", "_blank")}
-            >
-              <Phone className="w-5 h-5 mr-2" />
-              Falar com Roberta
-            </Button>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link to="/agendar">
+                <Button
+                  size="lg"
+                  className="w-full sm:w-auto h-14 px-8 text-lg bg-primary hover:bg-primary/90"
+                >
+                  Agendar Agora
+                </Button>
+              </Link>
+              <Button
+                size="lg"
+                variant="outline"
+                className="w-full sm:w-auto h-14 px-8 text-lg border-2 border-primary text-primary hover:bg-primary/10"
+                onClick={() => window.open("https://wa.me/5517982123269?text=Olá! Gostaria de mais informações sobre fisioterapia domiciliar em Barretos.", "_blank")}
+              >
+                <Phone className="mr-2 w-5 h-5" />
+                WhatsApp
+              </Button>
+            </div>
             <p className="text-sm text-muted-foreground">
-              Atendimento domiciliar exclusivo em Barretos-SP • (17) 98212-3269
+              Atendimento domiciliar premium em Barretos-SP • (17) 98212-3269
             </p>
           </div>
         </div>

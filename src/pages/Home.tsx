@@ -45,7 +45,7 @@ const Home = () => {
       },
       "geoRadius": "6000"
     },
-    "priceRange": "R$ 140 - R$ 180",
+    "priceRange": "R$ 110 - R$ 180",
     "paymentAccepted": "Dinheiro, PIX, Cartão de Crédito, Cartão de Débito",
     "currenciesAccepted": "BRL",
     "openingHoursSpecification": {
@@ -99,10 +99,20 @@ const Home = () => {
           "@type": "Offer",
           "itemOffered": {
             "@type": "Service",
-            "name": "Pacote 8 Sessões/Mês",
-            "description": "2x por semana - Ideal para manutenção e prevenção"
+            "name": "Pacote 4 Sessões/Mês",
+            "description": "1x por semana - Ideal para manutenção"
           },
-          "price": "1200",
+          "price": "520",
+          "priceCurrency": "BRL"
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Pacote 8 Sessões/Mês",
+            "description": "2x por semana - Ideal para prevenção e fortalecimento"
+          },
+          "price": "960",
           "priceCurrency": "BRL"
         },
         {
@@ -112,7 +122,7 @@ const Home = () => {
             "name": "Pacote 12 Sessões/Mês",
             "description": "3x por semana - Recomendado para reabilitação intensiva"
           },
-          "price": "1680",
+          "price": "1320",
           "priceCurrency": "BRL"
         }
       ]
@@ -136,7 +146,7 @@ const Home = () => {
         "name": "Qual o valor da avaliação de fisioterapia domiciliar?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "A avaliação inicial custa R$ 150 e tem duração de 60 minutos. Inclui anamnese completa, avaliação física detalhada e orientações personalizadas para o tratamento. Sessões avulsas custam R$ 180. Oferecemos pacotes mensais: 8 sessões por R$ 1.200 (R$ 150/sessão) ou 12 sessões por R$ 1.680 (R$ 140/sessão)."
+          "text": "A avaliação inicial custa R$ 150 e tem duração de 60 minutos. Inclui anamnese completa, avaliação física detalhada e orientações personalizadas para o tratamento. Sessões avulsas custam R$ 180. Oferecemos pacotes mensais com valores reduzidos: 1x/semana (R$ 130/sessão), 2x/semana (R$ 120/sessão) ou 3x/semana (R$ 110/sessão). A frequência ideal é definida pela fisioterapeuta após avaliação personalizada."
         }
       },
       {
@@ -614,6 +624,22 @@ const Home = () => {
                 </CardContent>
               </Card>
 
+              <Card className="border-2 hover:shadow-lg transition-shadow">
+                <CardContent className="p-6">
+                  <h3 className="text-xl font-semibold text-foreground mb-4">Pacote 4 Sessões/Mês</h3>
+                  <div className="flex items-baseline gap-2 mb-1">
+                    <span className="text-4xl font-bold text-primary">R$ 130</span>
+                    <span className="text-muted-foreground">/ sessão</span>
+                  </div>
+                  <p className="text-sm font-semibold text-primary mb-3">
+                    Total: R$ 520/mês
+                  </p>
+                  <p className="text-sm text-muted-foreground">
+                    1x por semana - Ideal para manutenção
+                  </p>
+                </CardContent>
+              </Card>
+
               <Card className="border-2 border-primary hover:shadow-lg transition-shadow">
                 <CardContent className="p-6">
                   <div className="bg-primary text-primary-foreground inline-block px-3 py-1 rounded-full text-xs font-semibold mb-3">
@@ -621,14 +647,14 @@ const Home = () => {
                   </div>
                   <h3 className="text-xl font-semibold text-foreground mb-4">Pacote 8 Sessões/Mês</h3>
                   <div className="flex items-baseline gap-2 mb-1">
-                    <span className="text-4xl font-bold text-primary">R$ 150</span>
+                    <span className="text-4xl font-bold text-primary">R$ 120</span>
                     <span className="text-muted-foreground">/ sessão</span>
                   </div>
                   <p className="text-sm font-semibold text-primary mb-3">
-                    Total: R$ 1.200/mês
+                    Total: R$ 960/mês
                   </p>
                   <p className="text-sm text-muted-foreground">
-                    2x por semana - Ideal para manutenção e prevenção
+                    2x por semana - Ideal para prevenção e fortalecimento
                   </p>
                 </CardContent>
               </Card>
@@ -640,11 +666,11 @@ const Home = () => {
                   </div>
                   <h3 className="text-xl font-semibold text-foreground mb-4">Pacote 12 Sessões/Mês</h3>
                   <div className="flex items-baseline gap-2 mb-1">
-                    <span className="text-4xl font-bold text-primary">R$ 140</span>
+                    <span className="text-4xl font-bold text-primary">R$ 110</span>
                     <span className="text-muted-foreground">/ sessão</span>
                   </div>
                   <p className="text-sm font-semibold text-primary mb-3">
-                    Total: R$ 1.680/mês
+                    Total: R$ 1.320/mês
                   </p>
                   <p className="text-sm text-muted-foreground">
                     3x por semana - Recomendado para reabilitação intensiva
@@ -697,7 +723,7 @@ const Home = () => {
                 </Button>
               </Link>
               <p className="text-sm text-muted-foreground mt-3">
-                Condições especiais para pacotes personalizados
+                *A frequência ideal será indicada pela fisioterapeuta após avaliação personalizada, considerando suas necessidades e disponibilidade de agenda.
               </p>
             </div>
           </div>

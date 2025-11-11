@@ -416,9 +416,9 @@ const Contact = () => {
                 <div className="flex items-start space-x-3 mb-4">
                   <MapPin className="w-5 h-5 text-primary flex-shrink-0 mt-1" />
                   <div>
-                    <h4 className="font-semibold text-foreground mb-2">Centro de Referência</h4>
+                    <h4 className="font-semibold text-foreground mb-2">Área de Atendimento</h4>
                     <p className="text-sm text-muted-foreground">
-                      Churrascaria Estrela do Sul, Barretos-SP<br />
+                      Centro de Barretos-SP<br />
                       <span className="text-primary">Raio de atendimento: 6km</span>
                     </p>
                   </div>

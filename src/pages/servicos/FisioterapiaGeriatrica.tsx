@@ -286,31 +286,38 @@ const FisioterapiaGeriatrica = () => {
                 </CardContent>
               </Card>
 
+              <Card className="border-2">
+                <CardContent className="pt-8 pb-8 text-center">
+                  <p className="text-sm text-muted-foreground mb-2">1x/Semana</p>
+                  <p className="text-4xl font-bold text-primary mb-2">R$ 130</p>
+                  <p className="text-sm text-muted-foreground">por sessão</p>
+                </CardContent>
+              </Card>
+
               <Card className="border-2 bg-primary/5">
                 <CardContent className="pt-8 pb-8 text-center">
-                  <p className="text-sm text-muted-foreground mb-2">8 Sessões/Mês</p>
-                  <p className="text-4xl font-bold text-primary mb-2">R$ 150</p>
+                  <p className="text-sm text-muted-foreground mb-2">2x/Semana</p>
+                  <p className="text-4xl font-bold text-primary mb-2">R$ 120</p>
                   <p className="text-sm text-muted-foreground">por sessão</p>
-                  <p className="text-xs text-primary mt-2 font-semibold">Recomendado</p>
+                  <p className="text-xs text-primary mt-2 font-semibold">Mais Popular</p>
                 </CardContent>
               </Card>
 
               <Card className="border-2">
                 <CardContent className="pt-8 pb-8 text-center">
-                  <p className="text-sm text-muted-foreground mb-2">12 Sessões/Mês</p>
-                  <p className="text-4xl font-bold text-primary mb-2">R$ 140</p>
+                  <p className="text-sm text-muted-foreground mb-2">3x/Semana</p>
+                  <p className="text-4xl font-bold text-primary mb-2">R$ 110</p>
                   <p className="text-sm text-muted-foreground">por sessão</p>
+                  <p className="text-xs text-primary mt-2 font-semibold">Melhor Valor</p>
                 </CardContent>
               </Card>
             </div>
 
-            <p className="text-center text-sm text-muted-foreground mt-8">
-              * Todos os equipamentos estão inclusos no valor da sessão
+            <p className="text-sm text-muted-foreground text-center mt-8">
+              *A frequência ideal será indicada pela fisioterapeuta após avaliação personalizada, considerando suas necessidades e disponibilidade de agenda.
             </p>
           </div>
         </section>
-
-        {/* FAQ */}
         <section className="section-padding">
           <div className="container-custom max-w-3xl">
             <h2 className="text-3xl font-bold text-primary mb-12 text-center">Perguntas Frequentes</h2>

@@ -33,10 +33,11 @@ import SEO from "@/components/SEO";
 import robertaProfile from "@/assets/roberta-profile.jpg";
 
 const formSchema = z.object({
-  name: z.string().min(3, "Nome deve ter pelo menos 3 caracteres").max(100, "Nome muito longo"),
-  phone: z.string().min(10, "Telefone inválido").max(20, "Telefone inválido"),
+  name: z.string().trim().min(3, "Nome deve ter pelo menos 3 caracteres").max(100, "Nome muito longo"),
+  phone: z.string().trim().min(10, "Telefone inválido").max(20, "Telefone inválido"),
+  serviceType: z.string().min(1, "Selecione o tipo de atendimento"),
   time: z.string().min(1, "Selecione o melhor horário"),
-  message: z.string().max(500, "Mensagem muito longa").optional(),
+  message: z.string().trim().max(500, "Mensagem muito longa").optional(),
 });
 
 const Agendar = () => {
@@ -47,6 +48,7 @@ const Agendar = () => {
     defaultValues: {
       name: "",
       phone: "",
+      serviceType: "",
       time: "",
       message: "",
     },
@@ -64,7 +66,7 @@ const Agendar = () => {
     }
 
     // Format WhatsApp message
-    const message = `Olá! Gostaria de agendar uma avaliação de fisioterapia domiciliar em Barretos.\n\n*Nome:* ${values.name}\n*Telefone:* ${values.phone}\n*Melhor horário:* ${values.time}${values.message ? `\n*Observações:* ${values.message}` : ''}`;
+    const message = `Olá! Gostaria de agendar uma avaliação de fisioterapia domiciliar em Barretos.\n\n*Nome:* ${values.name}\n*Telefone:* ${values.phone}\n*Tipo de atendimento:* ${values.serviceType}\n*Melhor horário:* ${values.time}${values.message ? `\n*Observações:* ${values.message}` : ''}`;
     
     const whatsappNumber = "5517982123269";
     const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
@@ -174,7 +176,7 @@ const Agendar = () => {
                     Agende Sua Avaliação de Fisioterapia Domiciliar em Barretos
                   </h1>
                   <p className="text-xl text-muted-foreground">
-                    Atendimento Premium | 13 Anos de Experiência | <span className="text-primary font-semibold">R$ 150</span>
+                    Preencha o formulário abaixo ou chame no WhatsApp. <span className="text-primary font-semibold">Resposta em até 10 minutos.</span>
                   </p>
                 </div>
 
@@ -220,20 +222,45 @@ const Agendar = () => {
 
                         <FormField
                           control={form.control}
-                          name="time"
+                          name="serviceType"
                           render={({ field }) => (
                             <FormItem>
-                              <FormLabel>Melhor horário para contato *</FormLabel>
+                              <FormLabel>Tipo de Atendimento *</FormLabel>
                               <Select onValueChange={field.onChange} defaultValue={field.value}>
                                 <FormControl>
                                   <SelectTrigger>
-                                    <SelectValue placeholder="Selecione o horário" />
+                                    <SelectValue placeholder="Selecione o tipo de atendimento" />
+                                  </SelectTrigger>
+                                </FormControl>
+                                <SelectContent>
+                                  <SelectItem value="geriatrica">Fisioterapia Geriátrica</SelectItem>
+                                  <SelectItem value="neurologica">Fisioterapia Neurológica</SelectItem>
+                                  <SelectItem value="pos-operatoria">Reabilitação Pós-Operatória</SelectItem>
+                                  <SelectItem value="respiratoria">Fisioterapia Respiratória</SelectItem>
+                                  <SelectItem value="outro">Outro</SelectItem>
+                                </SelectContent>
+                              </Select>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+
+                        <FormField
+                          control={form.control}
+                          name="time"
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel>Melhor dia e horário *</FormLabel>
+                              <Select onValueChange={field.onChange} defaultValue={field.value}>
+                                <FormControl>
+                                  <SelectTrigger>
+                                    <SelectValue placeholder="Selecione o melhor horário" />
                                   </SelectTrigger>
                                 </FormControl>
                                 <SelectContent>
                                   <SelectItem value="manha">Manhã (8h - 12h)</SelectItem>
                                   <SelectItem value="tarde">Tarde (12h - 18h)</SelectItem>
-                                  <SelectItem value="noite">Noite (18h - 21h)</SelectItem>
+                                  <SelectItem value="qualquer">Qualquer horário</SelectItem>
                                 </SelectContent>
                               </Select>
                               <FormMessage />
@@ -264,10 +291,24 @@ const Agendar = () => {
                           className="w-full h-12 text-lg"
                           disabled={isSubmitting}
                         >
-                          {isSubmitting ? "Enviando..." : "Agendar Avaliação"}
+                          {isSubmitting ? "Enviando..." : "Solicitar Agendamento"}
                         </Button>
                       </form>
                     </Form>
+
+                    {/* CTA Alternativo WhatsApp */}
+                    <div className="mt-6 pt-6 border-t">
+                      <p className="text-center text-sm text-muted-foreground mb-3">
+                        Prefere agendar pelo WhatsApp?
+                      </p>
+                      <Button
+                        onClick={handleWhatsAppClick}
+                        className="w-full h-12 text-lg bg-[#25D366] hover:bg-[#20BA5A]"
+                      >
+                        <Phone className="mr-2 h-5 w-5" />
+                        Chamar no WhatsApp
+                      </Button>
+                    </div>
                   </CardContent>
                 </Card>
               </div>
@@ -275,9 +316,67 @@ const Agendar = () => {
           </div>
         </section>
 
-        {/* Benefits */}
+        {/* Benefícios Visuais */}
+        <section className="section-padding bg-muted/30">
+          <div className="container-custom">
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+              <Card className="text-center">
+                <CardContent className="pt-6">
+                  <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <CheckCircle2 className="w-6 h-6 text-primary" />
+                  </div>
+                  <h3 className="font-semibold mb-2">Resposta em até 10 minutos</h3>
+                  <p className="text-sm text-muted-foreground">
+                    Atendimento rápido durante horário comercial
+                  </p>
+                </CardContent>
+              </Card>
+
+              <Card className="text-center">
+                <CardContent className="pt-6">
+                  <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <CheckCircle2 className="w-6 h-6 text-primary" />
+                  </div>
+                  <h3 className="font-semibold mb-2">Primeira avaliação sem compromisso</h3>
+                  <p className="text-sm text-muted-foreground">
+                    Conheça o serviço antes de fechar pacote
+                  </p>
+                </CardContent>
+              </Card>
+
+              <Card className="text-center">
+                <CardContent className="pt-6">
+                  <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <CheckCircle2 className="w-6 h-6 text-primary" />
+                  </div>
+                  <h3 className="font-semibold mb-2">Cancelamento gratuito até 24h antes</h3>
+                  <p className="text-sm text-muted-foreground">
+                    Flexibilidade total para reagendar
+                  </p>
+                </CardContent>
+              </Card>
+
+              <Card className="text-center">
+                <CardContent className="pt-6">
+                  <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <CheckCircle2 className="w-6 h-6 text-primary" />
+                  </div>
+                  <h3 className="font-semibold mb-2">Atendimento em Barretos e região</h3>
+                  <p className="text-sm text-muted-foreground">
+                    Raio de 6km a partir do centro
+                  </p>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+        </section>
+
+        {/* Benefits (antiga seção mantida) */}
         <section className="section-padding">
           <div className="container-custom">
+            <h2 className="text-3xl font-bold text-center mb-12">
+              Por Que Escolher Nosso Atendimento
+            </h2>
             <div className="grid md:grid-cols-3 gap-8">
               <div className="text-center space-y-4">
                 <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto">
@@ -319,7 +418,7 @@ const Agendar = () => {
               O que dizem nossos pacientes
             </h2>
             
-            <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
               <Card>
                 <CardContent className="p-6 space-y-4">
                   <div className="flex">
@@ -327,17 +426,12 @@ const Agendar = () => {
                       <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400" />
                     ))}
                   </div>
-                  <p className="text-foreground">
-                    "Excelente profissional! A Roberta é muito atenciosa e dedicada. Minha mãe melhorou muito depois de algumas sessões. Recomendo!"
+                  <p className="text-foreground italic">
+                    "Excelente profissional! Muito atenciosa e dedicada. Minha mãe melhorou muito!"
                   </p>
-                  <div className="flex items-center gap-3">
-                    <div className="w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center">
-                      <span className="text-lg font-semibold">EA</span>
-                    </div>
-                    <div>
-                      <p className="font-semibold">Edna Aparecida</p>
-                      <p className="text-sm text-muted-foreground">Filha de paciente</p>
-                    </div>
+                  <div>
+                    <p className="font-semibold">Edna Aparecida</p>
+                    <p className="text-sm text-muted-foreground">Filha de paciente</p>
                   </div>
                 </CardContent>
               </Card>
@@ -349,17 +443,29 @@ const Agendar = () => {
                       <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400" />
                     ))}
                   </div>
-                  <p className="text-foreground">
-                    "Profissional excepcional! Tratamento humanizado e eficiente. Minha recuperação foi muito mais rápida graças aos cuidados da Roberta."
+                  <p className="text-foreground italic">
+                    "Tratamento humanizado e eficiente. Minha recuperação foi muito mais rápida!"
                   </p>
-                  <div className="flex items-center gap-3">
-                    <div className="w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center">
-                      <span className="text-lg font-semibold">TM</span>
-                    </div>
-                    <div>
-                      <p className="font-semibold">Tania Maria</p>
-                      <p className="text-sm text-muted-foreground">Paciente</p>
-                    </div>
+                  <div>
+                    <p className="font-semibold">Tania Maria</p>
+                    <p className="text-sm text-muted-foreground">Paciente</p>
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardContent className="p-6 space-y-4">
+                  <div className="flex">
+                    {[1, 2, 3, 4, 5].map((i) => (
+                      <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400" />
+                    ))}
+                  </div>
+                  <p className="text-foreground italic">
+                    "Profissional competente e carinhosa. Fez toda diferença na recuperação do meu pai."
+                  </p>
+                  <div>
+                    <p className="font-semibold">Gabriela Ramos</p>
+                    <p className="text-sm text-muted-foreground">Filha de paciente</p>
                   </div>
                 </CardContent>
               </Card>

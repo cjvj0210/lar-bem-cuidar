@@ -186,7 +186,7 @@ const Home = () => {
         "name": "Como agendar uma avaliação?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Você pode agendar pelo WhatsApp (17) 98212-3269 ou pelo formulário no site. Respondo em até 10 minutos durante horário comercial. A primeira avaliação não tem compromisso e você pode cancelar gratuitamente até 24h antes."
+          "text": "Você pode agendar pelo WhatsApp (17) 98212-3269 ou pelo formulário no site. Respondo em até 3 horas durante horário comercial. A primeira avaliação não tem compromisso e você pode cancelar gratuitamente até 24h antes."
         }
       },
       {

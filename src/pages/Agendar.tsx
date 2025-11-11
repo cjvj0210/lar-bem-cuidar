@@ -136,7 +136,7 @@ const Agendar = () => {
     <>
       <SEO
         title="Agendar Avaliação de Fisioterapia Domiciliar em Barretos | Roberta Rocha"
-        description="Agende sua avaliação de fisioterapia domiciliar em Barretos-SP com Roberta Rocha. R$ 150 por 50 minutos. Resposta em até 10 minutos. WhatsApp: (17) 98212-3269"
+        description="Agende sua avaliação de fisioterapia domiciliar em Barretos-SP com Roberta Rocha. R$ 150 por 50 minutos. Resposta em até 3 horas. WhatsApp: (17) 98212-3269"
         keywords="agendar fisioterapia barretos, avaliação fisioterapia domiciliar, fisioterapeuta barretos preço"
         canonicalUrl="https://www.fisiorobertadomiciliar.com/agendar"
         schema={serviceSchema}
@@ -176,7 +176,7 @@ const Agendar = () => {
                     Agende Sua Avaliação de Fisioterapia Domiciliar em Barretos
                   </h1>
                   <p className="text-xl text-muted-foreground">
-                    Preencha o formulário abaixo ou chame no WhatsApp. <span className="text-primary font-semibold">Resposta em até 10 minutos.</span>
+                    Preencha o formulário abaixo ou chame no WhatsApp. <span className="text-primary font-semibold">Resposta em até 3 horas.</span>
                   </p>
                 </div>
 
@@ -325,7 +325,7 @@ const Agendar = () => {
                   <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
                     <CheckCircle2 className="w-6 h-6 text-primary" />
                   </div>
-                  <h3 className="font-semibold mb-2">Resposta em até 10 minutos</h3>
+                  <h3 className="font-semibold mb-2">Resposta em até 3 horas</h3>
                   <p className="text-sm text-muted-foreground">
                     Atendimento rápido durante horário comercial
                   </p>

@@ -13,7 +13,7 @@ const OnlineStatus = () => {
           <div className="absolute inset-0 w-2 h-2 bg-white rounded-full animate-ping"></div>
         </div>
         <MessageCircle className="w-4 h-4" />
-        <span className="text-sm font-medium">Online - Respondo em 10 min</span>
+        <span className="text-sm font-medium">Online - Respondo em até 3h</span>
       </Badge>
     </div>
   );

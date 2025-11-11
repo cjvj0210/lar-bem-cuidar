@@ -99,7 +99,7 @@ const Contact = () => {
             Entre em Contato - Fisioterapia Domiciliar em Barretos
           </h1>
           <p className="text-xl text-muted-foreground">
-            Estamos prontos para ajudar você. <strong className="text-primary">Resposta em até 10 minutos.</strong>
+            Estamos prontos para ajudar você. <strong className="text-primary">Resposta em até 3 horas.</strong>
           </p>
         </div>
 
@@ -245,7 +245,7 @@ const Contact = () => {
                   {isSubmitting ? "Enviando..." : "Enviar Mensagem"}
                 </Button>
                 <p className="text-xs text-center text-muted-foreground">
-                  ✓ Resposta em até 10 minutos • Sem compromisso
+                  ✓ Resposta em até 3 horas • Sem compromisso
                 </p>
               </form>
             </CardContent>
@@ -339,7 +339,7 @@ const Contact = () => {
                   <h4 className="font-semibold text-foreground mb-1">Horário de Atendimento</h4>
                   <p className="text-muted-foreground">
                     Segunda a Sexta: 8h às 18h<br />
-                    <span className="text-sm">Tempo de resposta: Até 10 minutos (horário comercial)</span>
+                    <span className="text-sm">Tempo de resposta: Até 3 horas (horário comercial)</span>
                   </p>
                 </div>
               </CardContent>
@@ -475,7 +475,7 @@ const Contact = () => {
                     Quanto tempo demora para receber resposta?
                   </AccordionTrigger>
                   <AccordionContent className="text-muted-foreground">
-                    Respondo em até 10 minutos durante horário comercial (segunda a sexta, 8h às 18h). 
+                    Respondo em até 3 horas durante horário comercial (segunda a sexta, 8h às 18h). 
                     Mensagens fora desse horário serão respondidas no próximo dia útil.
                   </AccordionContent>
                 </AccordionItem>

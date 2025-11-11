@@ -15,7 +15,7 @@ const Obrigado = () => {
     <>
       <SEO 
         title="Mensagem Enviada - Fisioterapia Domiciliar Barretos"
-        description="Obrigada pelo contato! Responderemos em até 10 minutos durante horário comercial."
+        description="Obrigada pelo contato! Responderemos em até 3 horas durante horário comercial."
         canonicalUrl="https://fisiorobertadomiciliar.com.br/obrigado"
       />
       <div className="min-h-screen pt-32 pb-20 animate-fade-in">
@@ -32,7 +32,7 @@ const Obrigado = () => {
               
               <div className="space-y-4 text-muted-foreground">
                 <p className="text-lg">
-                  Obrigada pelo contato! Responderemos em até <strong className="text-foreground">10 minutos</strong> durante horário comercial.
+                  Obrigada pelo contato! Responderemos em até <strong className="text-foreground">3 horas</strong> durante horário comercial.
                 </p>
                 <p className="text-base">
                   Já recebi sua mensagem e em breve entrarei em contato para conversarmos sobre como posso ajudar você ou seu familiar.

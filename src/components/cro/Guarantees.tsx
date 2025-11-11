@@ -10,7 +10,7 @@ const Guarantees = () => {
     },
     {
       icon: Clock,
-      title: "Resposta em até 10 Minutos",
+      title: "Resposta em até 3 Horas",
       description: "Atendimento rápido pelo WhatsApp"
     },
     {

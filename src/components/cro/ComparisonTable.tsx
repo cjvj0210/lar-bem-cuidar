@@ -12,7 +12,7 @@ import {
 const ComparisonTable = () => {
   const comparisons = [
     { feature: "Deslocamento", clinic: false, home: true, homeText: "Não necessário" },
-    { feature: "Tempo de sessão", clinic: "40 min", home: "60 min" },
+    { feature: "Tempo de sessão", clinic: "40 min", home: "50 min" },
     { feature: "Equipamentos", clinic: "Compartilhados", home: "Exclusivos" },
     { feature: "Personalização", clinic: "Limitada", home: "100% personalizado" },
     { feature: "Ambiente", clinic: "Clínico", home: "Confortável" },

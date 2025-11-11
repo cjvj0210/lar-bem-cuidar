@@ -34,10 +34,13 @@ const Blog = () => {
   const categories = [
     "Fisioterapia Geriátrica",
     "Fisioterapia Neurológica",
+    "Dicas de Saúde",
+    "Reabilitação",
+    "Prevenção de Quedas",
     "Fisioterapia Ortopédica",
     "Fisioterapia Respiratória",
-    "Dicas de Saúde",
-    "Reabilitação"
+    "Preços e Orçamentos",
+    "Comparativos"
   ];
 
   // Set category from URL param

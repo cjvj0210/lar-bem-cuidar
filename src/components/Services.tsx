@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Brain, Heart, Stethoscope, UserCircle, Scissors, Target, Calendar, Users, Briefcase } from "lucide-react";
+import { Brain, Heart, Stethoscope, UserCircle, Scissors, Target, Calendar, Users, Briefcase, ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Services = () => {
   const whatsappLink = "https://wa.me/5517982123269?text=Olá! Gostaria de saber mais sobre os serviços de fisioterapia domiciliar.";
@@ -10,31 +11,29 @@ const Services = () => {
       icon: UserCircle,
       title: "Fisioterapia Geriátrica",
       description: "Prevenção de quedas, fortalecimento muscular e manutenção da autonomia em idosos.",
-      emoji: "🧓"
+      emoji: "🧓",
+      link: "/servicos/fisioterapia-geriatrica"
     },
     {
       icon: Brain,
       title: "Fisioterapia Neurológica",
       description: "Tratamento para AVC, Parkinson, Alzheimer e outras condições que afetam o sistema nervoso.",
-      emoji: "🧠"
+      emoji: "🧠",
+      link: "/servicos/fisioterapia-neurologica"
     },
     {
       icon: Stethoscope,
-      title: "Fisioterapia Ortopédica",
+      title: "Reabilitação Pós-Operatória",
       description: "Reabilitação de lesões e cirurgias ortopédicas (joelho, quadril, coluna).",
-      emoji: "🦴"
+      emoji: "🦴",
+      link: "/servicos/reabilitacao-pos-operatoria"
     },
     {
       icon: Heart,
       title: "Fisioterapia Respiratória",
       description: "Auxílio em doenças pulmonares crônicas ou pós-Covid, com foco em qualidade da respiração.",
-      emoji: "🫁"
-    },
-    {
-      icon: Scissors,
-      title: "Fisioterapia Pós-operatória Domiciliar",
-      description: "Cuidados após cirurgias que exigem atenção especial no retorno à mobilidade.",
-      emoji: "🏠"
+      emoji: "🫁",
+      link: "/servicos/fisioterapia-respiratoria"
     }
   ];
 
@@ -97,7 +96,16 @@ const Services = () => {
                     {service.description}
                   </CardDescription>
                 </CardHeader>
-                <CardContent>
+                <CardContent className="space-y-3">
+                  <Link to={service.link}>
+                    <Button 
+                      variant="default" 
+                      className="w-full"
+                    >
+                      Entenda Melhor
+                      <ArrowRight className="ml-2 w-4 h-4" />
+                    </Button>
+                  </Link>
                   <Button 
                     variant="outline" 
                     className="w-full border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-colors"

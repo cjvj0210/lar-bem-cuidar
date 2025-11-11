@@ -426,6 +426,136 @@ const Home = () => {
       {/* Área de Atendimento */}
       <ServiceArea />
 
+      {/* Investimento / Preços */}
+      <section className="section-padding bg-background">
+        <div className="container-custom">
+          <div className="text-center max-w-3xl mx-auto mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+              Investimento em Fisioterapia Domiciliar
+            </h2>
+            <p className="text-lg text-muted-foreground">
+              Transparência e clareza nos valores. Confira nossos preços e escolha o melhor plano para você.
+            </p>
+          </div>
+
+          <div className="max-w-5xl mx-auto">
+            <div className="grid md:grid-cols-2 gap-6 mb-8">
+              <Card className="border-2 hover:shadow-lg transition-shadow">
+                <CardContent className="p-6">
+                  <h3 className="text-xl font-semibold text-foreground mb-4">Avaliação Inicial</h3>
+                  <div className="flex items-baseline gap-2 mb-3">
+                    <span className="text-4xl font-bold text-primary">R$ 150</span>
+                    <span className="text-muted-foreground">/ 60 minutos</span>
+                  </div>
+                  <p className="text-sm text-muted-foreground">
+                    Avaliação completa com anamnese, exame físico e plano de tratamento personalizado
+                  </p>
+                </CardContent>
+              </Card>
+
+              <Card className="border-2 hover:shadow-lg transition-shadow">
+                <CardContent className="p-6">
+                  <h3 className="text-xl font-semibold text-foreground mb-4">Sessão Avulsa</h3>
+                  <div className="flex items-baseline gap-2 mb-3">
+                    <span className="text-4xl font-bold text-primary">R$ 180</span>
+                    <span className="text-muted-foreground">/ 60 minutos</span>
+                  </div>
+                  <p className="text-sm text-muted-foreground">
+                    Sessão individual de fisioterapia domiciliar com todos os equipamentos inclusos
+                  </p>
+                </CardContent>
+              </Card>
+
+              <Card className="border-2 border-primary hover:shadow-lg transition-shadow">
+                <CardContent className="p-6">
+                  <div className="bg-primary text-primary-foreground inline-block px-3 py-1 rounded-full text-xs font-semibold mb-3">
+                    Mais Popular
+                  </div>
+                  <h3 className="text-xl font-semibold text-foreground mb-4">Pacote 8 Sessões/Mês</h3>
+                  <div className="flex items-baseline gap-2 mb-1">
+                    <span className="text-4xl font-bold text-primary">R$ 150</span>
+                    <span className="text-muted-foreground">/ sessão</span>
+                  </div>
+                  <p className="text-sm font-semibold text-primary mb-3">
+                    Total: R$ 1.200/mês
+                  </p>
+                  <p className="text-sm text-muted-foreground">
+                    2x por semana - Ideal para manutenção e prevenção
+                  </p>
+                </CardContent>
+              </Card>
+
+              <Card className="border-2 border-primary hover:shadow-lg transition-shadow">
+                <CardContent className="p-6">
+                  <div className="bg-primary text-primary-foreground inline-block px-3 py-1 rounded-full text-xs font-semibold mb-3">
+                    Melhor Custo-Benefício
+                  </div>
+                  <h3 className="text-xl font-semibold text-foreground mb-4">Pacote 12 Sessões/Mês</h3>
+                  <div className="flex items-baseline gap-2 mb-1">
+                    <span className="text-4xl font-bold text-primary">R$ 140</span>
+                    <span className="text-muted-foreground">/ sessão</span>
+                  </div>
+                  <p className="text-sm font-semibold text-primary mb-3">
+                    Total: R$ 1.680/mês
+                  </p>
+                  <p className="text-sm text-muted-foreground">
+                    3x por semana - Recomendado para reabilitação intensiva
+                  </p>
+                </CardContent>
+              </Card>
+            </div>
+
+            <Card className="bg-muted/50 border-2">
+              <CardContent className="p-6">
+                <h3 className="text-lg font-semibold text-foreground mb-4 text-center">
+                  O que está incluso?
+                </h3>
+                <div className="grid md:grid-cols-2 gap-4">
+                  <div className="flex items-center gap-3">
+                    <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+                      <span className="text-primary font-bold">✓</span>
+                    </div>
+                    <span className="text-muted-foreground">Equipamentos profissionais inclusos</span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+                      <span className="text-primary font-bold">✓</span>
+                    </div>
+                    <span className="text-muted-foreground">Atendimento de 60 minutos completos</span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+                      <span className="text-primary font-bold">✓</span>
+                    </div>
+                    <span className="text-muted-foreground">Relatório de evolução mensal</span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+                      <span className="text-primary font-bold">✓</span>
+                    </div>
+                    <span className="text-muted-foreground">Dinheiro, PIX ou cartão de crédito/débito</span>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            <div className="text-center mt-8">
+              <Link to="/agendar">
+                <Button
+                  size="lg"
+                  className="h-14 px-8 text-lg"
+                >
+                  Solicitar Orçamento Personalizado
+                </Button>
+              </Link>
+              <p className="text-sm text-muted-foreground mt-3">
+                Condições especiais para pacotes personalizados
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* FAQ */}
       <FAQ />
 

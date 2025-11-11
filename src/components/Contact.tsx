@@ -428,17 +428,28 @@ const Contact = () => {
 
             <Card className="border-2">
               <CardContent className="pt-6">
-                <h4 className="font-semibold text-foreground mb-3">Principais Bairros Atendidos</h4>
-                <div className="grid grid-cols-2 gap-2 text-sm text-muted-foreground">
-                  <div>• Centro</div>
-                  <div>• Jardim América</div>
-                  <div>• Vila Boa Vista</div>
-                  <div>• Jardim Eldorado</div>
-                  <div>• Alto da Boa Vista</div>
-                  <div>• Outros bairros</div>
+                <h4 className="font-semibold text-foreground mb-3">Bairros Atendidos</h4>
+                <div className="mb-4">
+                  <p className="text-xs font-semibold text-primary mb-2">Bairros Prioritários:</p>
+                  <div className="grid grid-cols-2 gap-2 text-sm text-muted-foreground">
+                    <div>• Primavera</div>
+                    <div>• City Barretos</div>
+                    <div>• Jardim Botânico</div>
+                    <div>• Tamboré</div>
+                  </div>
                 </div>
-                <p className="text-xs text-muted-foreground mt-3 italic">
-                  *Consulte disponibilidade para outros bairros
+                <div>
+                  <p className="text-xs font-semibold text-foreground mb-2">Outros Bairros:</p>
+                  <div className="grid grid-cols-2 gap-2 text-sm text-muted-foreground">
+                    <div>• Centro</div>
+                    <div>• Jardim Eldorado</div>
+                    <div>• Vila Planalto</div>
+                    <div>• Jardim Progresso</div>
+                  </div>
+                </div>
+                <p className="text-xs text-muted-foreground mt-4 p-3 bg-muted/30 rounded">
+                  <strong>Atendimento em raio de 6km a partir do centro de Barretos.</strong><br />
+                  Não encontrou seu bairro? Consulte disponibilidade pelo WhatsApp.
                 </p>
               </CardContent>
             </Card>

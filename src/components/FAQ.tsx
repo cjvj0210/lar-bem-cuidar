@@ -54,7 +54,7 @@ const FAQ = () => {
         </div>
 
         <div className="max-w-3xl mx-auto">
-          <Accordion type="single" collapsible className="space-y-4">
+          <Accordion type="multiple" defaultValue={["item-0", "item-1", "item-2"]} className="space-y-4">
             {faqs.map((faq, index) => (
               <AccordionItem 
                 key={index} 

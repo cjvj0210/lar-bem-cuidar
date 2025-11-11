@@ -25,13 +25,6 @@ export default defineConfig(({ mode }) => ({
         },
       },
     },
-    // Minimize assets
-    minify: 'terser',
-    terserOptions: {
-      compress: {
-        drop_console: mode === 'production',
-      },
-    },
     // Optimize chunk size limit
     chunkSizeWarningLimit: 1000,
   },

@@ -36,7 +36,12 @@ const FisioterapiaNeurologica = () => {
         title="Fisioterapia Neurológica Domiciliar em Barretos | AVC, Parkinson, Alzheimer"
         description="Reabilitação neurológica em casa em Barretos-SP. Especialista em AVC, Parkinson, Alzheimer. Atendimento humanizado. WhatsApp: (17) 98212-3269"
         keywords="fisioterapia neurologica barretos, reabilitação avc barretos, fisioterapia parkinson barretos, fisioterapia alzheimer barretos"
-        canonicalUrl="https://www.fisiorobertadomiciliar.com/servicos/fisioterapia-neurologica"
+        canonicalUrl="https://fisiorobertadomiciliar.com.br/servicos/fisioterapia-neurologica"
+        breadcrumbs={[
+          { name: "Home", url: "/" },
+          { name: "Serviços", url: "/servicos" },
+          { name: "Fisioterapia Neurológica" }
+        ]}
         schema={serviceSchema}
       />
 

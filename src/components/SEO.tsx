@@ -6,15 +6,28 @@ interface SEOProps {
   keywords?: string;
   canonicalUrl?: string;
   ogImage?: string;
-  schema?: Record<string, any>;
+  schema?: Record<string, any> | Record<string, any>[];
+  breadcrumbs?: Array<{ name: string; url?: string }>;
 }
 
-const SEO = ({ title, description, keywords, canonicalUrl, ogImage, schema }: SEOProps) => {
+const SEO = ({ title, description, keywords, canonicalUrl, ogImage, schema, breadcrumbs }: SEOProps) => {
   const siteName = "Físio Roberta Domiciliar";
   const siteUrl = "https://fisiorobertadomiciliar.com.br";
   const fullTitle = title.includes(siteName) ? title : `${title} | ${siteName}`;
   const defaultImage = `${siteUrl}/logo.png`;
   const finalCanonicalUrl = canonicalUrl || siteUrl;
+
+  // Breadcrumb Schema
+  const breadcrumbSchema = breadcrumbs ? {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": breadcrumbs.map((crumb, index) => ({
+      "@type": "ListItem",
+      "position": index + 1,
+      "name": crumb.name,
+      ...(crumb.url && { "item": `${siteUrl}${crumb.url}` })
+    }))
+  } : null;
 
   // Schema LocalBusiness/Physiotherapist principal
   const localBusinessSchema = {
@@ -143,11 +156,26 @@ const SEO = ({ title, description, keywords, canonicalUrl, ogImage, schema }: SE
         {JSON.stringify(localBusinessSchema)}
       </script>
       
-      {/* Additional Schema if provided */}
-      {schema && (
+      {/* Breadcrumb Schema */}
+      {breadcrumbSchema && (
         <script type="application/ld+json">
-          {JSON.stringify(schema)}
+          {JSON.stringify(breadcrumbSchema)}
         </script>
+      )}
+      
+      {/* Additional Schema(s) if provided */}
+      {schema && (
+        Array.isArray(schema) ? (
+          schema.map((s, index) => (
+            <script key={index} type="application/ld+json">
+              {JSON.stringify(s)}
+            </script>
+          ))
+        ) : (
+          <script type="application/ld+json">
+            {JSON.stringify(schema)}
+          </script>
+        )
       )}
     </Helmet>
   );

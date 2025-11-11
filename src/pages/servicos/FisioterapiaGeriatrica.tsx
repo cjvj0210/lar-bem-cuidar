@@ -63,7 +63,12 @@ const FisioterapiaGeriatrica = () => {
         title="Fisioterapia Geriátrica Domiciliar em Barretos-SP | Roberta Rocha"
         description="Fisioterapia para idosos em casa em Barretos. Prevenção de quedas, fortalecimento muscular, mobilidade. 13 anos de experiência. Agende: (17) 98212-3269"
         keywords="fisioterapia geriátrica barretos, fisioterapia para idosos barretos, prevenção de quedas barretos, fisioterapeuta domiciliar idosos"
-        canonicalUrl="https://www.fisiorobertadomiciliar.com/servicos/fisioterapia-geriatrica"
+        canonicalUrl="https://fisiorobertadomiciliar.com.br/servicos/fisioterapia-geriatrica"
+        breadcrumbs={[
+          { name: "Home", url: "/" },
+          { name: "Serviços", url: "/servicos" },
+          { name: "Fisioterapia Geriátrica" }
+        ]}
         schema={serviceSchema}
       />
 

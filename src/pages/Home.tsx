@@ -10,6 +10,49 @@ import heroImage from "@/assets/treatment-elderly-band.jpg";
 import robertaPortrait from "@/assets/roberta-profile.jpg";
 
 const Home = () => {
+  const medicalBusinessSchema = {
+    "@context": "https://schema.org",
+    "@type": "MedicalBusiness",
+    "name": "Roberta Rocha - Fisioterapia Domiciliar",
+    "image": "https://fisiorobertadomiciliar.com.br/logo.png",
+    "description": "Fisioterapia domiciliar premium em Barretos-SP com 13 anos de experiência",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Barretos",
+      "addressRegion": "SP",
+      "addressCountry": "BR"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": -20.5577,
+      "longitude": -48.5682
+    },
+    "url": "https://fisiorobertadomiciliar.com.br",
+    "telephone": "+55-17-98212-3269",
+    "priceRange": "R$ 150 - R$ 200",
+    "openingHoursSpecification": [{
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      "opens": "08:00",
+      "closes": "18:00"
+    }],
+    "areaServed": {
+      "@type": "GeoCircle",
+      "geoMidpoint": {
+        "@type": "GeoCoordinates",
+        "latitude": -20.5577,
+        "longitude": -48.5682
+      },
+      "geoRadius": "6000"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "5.0",
+      "reviewCount": "4"
+    },
+    "medicalSpecialty": "Physiotherapy"
+  };
+
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -55,8 +98,8 @@ const Home = () => {
         title="Fisioterapia Domiciliar em Barretos-SP | Roberta Rocha - 13 Anos de Experiência"
         description="Fisioterapia domiciliar premium em Barretos-SP. Especializada em idosos, reabilitação pós-operatória e neurológica. Avaliação R$ 150. Agende: (17) 98212-3269"
         keywords="fisioterapia domiciliar barretos, fisioterapeuta para idosos barretos, fisioterapia geriátrica barretos, reabilitação pós-operatória barretos, fisioterapia neurológica barretos"
-        canonicalUrl="https://www.fisiorobertadomiciliar.com/"
-        schema={faqSchema}
+        canonicalUrl="https://fisiorobertadomiciliar.com.br/"
+        schema={[medicalBusinessSchema, faqSchema]}
       />
       {/* Hero Section */}
       <section className="relative pt-24 min-h-screen flex items-center">

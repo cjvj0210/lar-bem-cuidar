@@ -69,6 +69,10 @@ const Depoimentos = () => {
         description="Leia depoimentos reais de pacientes e familiares sobre a fisioterapia domiciliar em Barretos-SP. Histórias de recuperação e qualidade de vida."
         keywords="depoimentos fisioterapia barretos, avaliações fisioterapeuta domiciliar, testemunhos pacientes barretos"
         canonicalUrl="https://fisiorobertadomiciliar.com.br/depoimentos"
+        breadcrumbs={[
+          { name: "Home", url: "/" },
+          { name: "Depoimentos" }
+        ]}
         schema={reviewsSchema}
       />
       <div className="min-h-screen pt-20 animate-fade-in">

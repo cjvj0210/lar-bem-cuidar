@@ -36,7 +36,12 @@ const FisioterapiaRespiratoria = () => {
         title="Fisioterapia Respiratória Domiciliar em Barretos | Reabilitação Pulmonar"
         description="Fisioterapia respiratória em casa em Barretos-SP. DPOC, asma, doenças pulmonares. Melhore sua respiração. WhatsApp: (17) 98212-3269"
         keywords="fisioterapia respiratória barretos, reabilitação pulmonar barretos, fisioterapia dpoc barretos, fisioterapia asma barretos"
-        canonicalUrl="https://www.fisiorobertadomiciliar.com/servicos/fisioterapia-respiratoria"
+        canonicalUrl="https://fisiorobertadomiciliar.com.br/servicos/fisioterapia-respiratoria"
+        breadcrumbs={[
+          { name: "Home", url: "/" },
+          { name: "Serviços", url: "/servicos" },
+          { name: "Fisioterapia Respiratória" }
+        ]}
         schema={serviceSchema}
       />
 

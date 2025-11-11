@@ -36,7 +36,12 @@ const ReabilitacaoPosOperatoria = () => {
         title="Reabilitação Pós-Operatória Domiciliar em Barretos | Fisioterapia Pós-Cirurgia"
         description="Fisioterapia pós-operatória em casa em Barretos-SP. Próteses, fraturas, cirurgias ortopédicas. Recuperação segura. Agende: (17) 98212-3269"
         keywords="fisioterapia pós-operatória barretos, reabilitação pós-cirurgia barretos, fisioterapia prótese quadril barretos, fisioterapia prótese joelho barretos"
-        canonicalUrl="https://www.fisiorobertadomiciliar.com/servicos/reabilitacao-pos-operatoria"
+        canonicalUrl="https://fisiorobertadomiciliar.com.br/servicos/reabilitacao-pos-operatoria"
+        breadcrumbs={[
+          { name: "Home", url: "/" },
+          { name: "Serviços", url: "/servicos" },
+          { name: "Reabilitação Pós-Operatória" }
+        ]}
         schema={serviceSchema}
       />
 

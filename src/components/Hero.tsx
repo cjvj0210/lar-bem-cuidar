@@ -79,6 +79,9 @@ const Hero = () => {
               alt="Fisioterapeuta Roberta Rocha atendendo paciente idosa em domicílio em Barretos-SP - Fisioterapia especializada para recuperação e autonomia"
               className="relative rounded-3xl shadow-soft w-full h-auto object-cover"
               loading="eager"
+              width="600"
+              height="800"
+              fetchPriority="high"
             />
           </div>
         </div>

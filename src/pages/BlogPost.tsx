@@ -157,6 +157,8 @@ const BlogPost = () => {
                 alt={`${post.title} - Artigo sobre fisioterapia domiciliar em Barretos-SP por Roberta Rocha, fisioterapeuta especializada`}
                 className="w-full h-auto object-cover"
                 loading="lazy"
+                width="1200"
+                height="630"
               />
             </div>
           )}

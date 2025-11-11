@@ -6,6 +6,10 @@ import SEO from "@/components/SEO";
 import WhyChooseRoberta from "@/components/WhyChooseRoberta";
 import ServiceArea from "@/components/ServiceArea";
 import FAQ from "@/components/FAQ";
+import UrgencyBanner from "@/components/cro/UrgencyBanner";
+import SocialProof from "@/components/cro/SocialProof";
+import Guarantees from "@/components/cro/Guarantees";
+import ComparisonTable from "@/components/cro/ComparisonTable";
 import heroImage from "@/assets/treatment-elderly-band.jpg";
 import robertaPortrait from "@/assets/roberta-profile.jpg";
 
@@ -102,6 +106,7 @@ const Home = () => {
         schema={[medicalBusinessSchema, faqSchema]}
       />
       {/* Hero Section */}
+      <UrgencyBanner />
       <section className="relative pt-24 min-h-screen flex items-center">
         <div className="container-custom">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -122,7 +127,7 @@ const Home = () => {
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4">
-                <Link to="/agendar">
+                <Link to="/agendar" className="w-full sm:w-auto">
                   <Button
                     size="lg"
                     className="w-full sm:w-auto h-14 px-8 text-lg bg-primary hover:bg-primary/90"
@@ -173,6 +178,12 @@ const Home = () => {
 
       {/* Por Que Escolher Roberta */}
       <WhyChooseRoberta />
+
+      {/* Prova Social */}
+      <SocialProof />
+
+      {/* Garantias */}
+      <Guarantees />
 
       {/* Sobre Roberta */}
       <section className="section-padding">
@@ -247,7 +258,7 @@ const Home = () => {
                 <p className="text-sm text-muted-foreground mb-4 text-center">
                   Prevenção de quedas, fortalecimento e autonomia para idosos
                 </p>
-                <Link to="/servicos" className="block">
+                <Link to="/servicos/fisioterapia-geriatrica" className="block">
                   <Button 
                     variant="ghost" 
                     className="w-full text-primary hover:bg-primary/10"
@@ -269,7 +280,7 @@ const Home = () => {
                 <p className="text-sm text-muted-foreground mb-4 text-center">
                   Recuperação após cirurgias ortopédicas e próteses
                 </p>
-                <Link to="/servicos" className="block">
+                <Link to="/servicos/reabilitacao-pos-operatoria" className="block">
                   <Button 
                     variant="ghost" 
                     className="w-full text-primary hover:bg-primary/10"
@@ -291,7 +302,7 @@ const Home = () => {
                 <p className="text-sm text-muted-foreground mb-4 text-center">
                   Tratamento de AVC, Parkinson, Alzheimer e mais
                 </p>
-                <Link to="/servicos" className="block">
+                <Link to="/servicos/fisioterapia-neurologica" className="block">
                   <Button 
                     variant="ghost" 
                     className="w-full text-primary hover:bg-primary/10"
@@ -313,7 +324,7 @@ const Home = () => {
                 <p className="text-sm text-muted-foreground mb-4 text-center">
                   Melhora da capacidade pulmonar e respiração
                 </p>
-                <Link to="/servicos" className="block">
+                <Link to="/servicos/fisioterapia-respiratoria" className="block">
                   <Button 
                     variant="ghost" 
                     className="w-full text-primary hover:bg-primary/10"
@@ -326,6 +337,9 @@ const Home = () => {
           </div>
         </div>
       </section>
+
+      {/* Tabela de Comparação */}
+      <ComparisonTable />
 
       {/* Depoimentos */}
       <section className="section-padding bg-muted/30">

@@ -9,6 +9,14 @@ import { useState } from "react";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
 import { trackFormSubmit, trackWhatsAppClick, trackPhoneClick } from "@/lib/analytics";
+import { z } from "zod";
+
+const contactSchema = z.object({
+  name: z.string().trim().min(1, "Nome é obrigatório").max(100, "Nome muito longo"),
+  phone: z.string().trim().min(10, "Telefone inválido").max(20, "Telefone muito longo"),
+  email: z.string().trim().email("Email inválido").max(255, "Email muito longo").optional().or(z.literal("")),
+  message: z.string().trim().min(1, "Mensagem é obrigatória").max(1000, "Mensagem muito longa")
+});
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -17,19 +25,24 @@ const Contact = () => {
     email: "",
     message: ""
   });
+  const [errors, setErrors] = useState<Record<string, string>>({});
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setErrors({});
     
     try {
+      // Validate form data
+      const validatedData = contactSchema.parse(formData);
+
       // Salvar mensagem no banco de dados
       const { error } = await supabase
         .from('contact_messages')
         .insert({
-          name: formData.name,
-          phone: formData.phone,
-          email: formData.email || null,
-          message: formData.message
+          name: validatedData.name,
+          phone: validatedData.phone,
+          email: validatedData.email || null,
+          message: validatedData.message
         });
 
       if (error) throw error;
@@ -37,16 +50,26 @@ const Contact = () => {
       // Track form submission
       trackFormSubmit('contact_form');
 
-      // Redirecionar para WhatsApp
-      const whatsappMessage = `Olá! Gostaria de agendar uma avaliação.%0A%0ANome: ${formData.name}%0ATelefone: ${formData.phone}%0AEmail: ${formData.email}%0AMensagem: ${formData.message}`;
+      // Redirecionar para WhatsApp com dados validados e encoded
+      const whatsappMessage = `Olá! Gostaria de agendar uma avaliação.%0A%0ANome: ${encodeURIComponent(validatedData.name)}%0ATelefone: ${encodeURIComponent(validatedData.phone)}%0AEmail: ${encodeURIComponent(validatedData.email || '')}%0AMensagem: ${encodeURIComponent(validatedData.message)}`;
       trackWhatsAppClick('contact_form');
       window.open(`https://wa.me/5517982123269?text=${whatsappMessage}`, "_blank");
       
       toast.success("Mensagem enviada! Obrigada pelo contato.");
       setFormData({ name: "", phone: "", email: "", message: "" });
     } catch (error) {
-      console.error('Erro ao salvar mensagem:', error);
-      toast.error("Erro ao enviar mensagem. Por favor, tente novamente.");
+      if (error instanceof z.ZodError) {
+        const fieldErrors: Record<string, string> = {};
+        error.errors.forEach((err) => {
+          if (err.path[0]) {
+            fieldErrors[err.path[0].toString()] = err.message;
+          }
+        });
+        setErrors(fieldErrors);
+        toast.error("Por favor, corrija os erros no formulário.");
+      } else {
+        toast.error("Erro ao enviar mensagem. Por favor, tente novamente.");
+      }
     }
   };
 
@@ -70,60 +93,75 @@ const Contact = () => {
             <CardContent>
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div>
-                  <Label htmlFor="name">Nome completo</Label>
+                  <Label htmlFor="name">Nome completo *</Label>
                   <Input
                     id="name"
                     placeholder="Seu nome"
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    required
+                    className={errors.name ? "border-red-500" : ""}
+                    maxLength={100}
                   />
+                  {errors.name && <p className="text-xs text-red-500 mt-1">{errors.name}</p>}
                 </div>
 
                 <div>
-                  <Label htmlFor="phone">Telefone</Label>
+                  <Label htmlFor="phone">Telefone *</Label>
                   <Input
                     id="phone"
                     type="tel"
                     placeholder="(17) 99123-4567"
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                    required
+                    className={errors.phone ? "border-red-500" : ""}
+                    maxLength={20}
                   />
+                  {errors.phone && <p className="text-xs text-red-500 mt-1">{errors.phone}</p>}
                 </div>
 
                 <div>
-                  <Label htmlFor="email">Email</Label>
+                  <Label htmlFor="email">Email (opcional)</Label>
                   <Input
                     id="email"
                     type="email"
                     placeholder="seu@email.com"
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    required
+                    className={errors.email ? "border-red-500" : ""}
+                    maxLength={255}
                   />
+                  {errors.email && <p className="text-xs text-red-500 mt-1">{errors.email}</p>}
                 </div>
 
                 <div>
-                  <Label htmlFor="message">Mensagem</Label>
+                  <Label htmlFor="message">Mensagem *</Label>
                   <Textarea
                     id="message"
                     placeholder="Ex: Gostaria de atendimento para minha mãe, que teve um AVC."
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    required
+                    className={errors.message ? "border-red-500" : ""}
                     rows={4}
+                    maxLength={1000}
                   />
+                  {errors.message && <p className="text-xs text-red-500 mt-1">{errors.message}</p>}
+                  <p className="text-xs text-muted-foreground mt-1">
+                    {formData.message.length}/1000 caracteres
+                  </p>
                 </div>
 
                 <Button 
                   type="submit" 
-                  className="w-full bg-primary hover:bg-primary/90"
+                  size="lg"
+                  className="w-full h-14 text-base bg-primary hover:bg-primary/90"
                   data-event="form_submit"
                   data-form-name="contact_form"
                 >
-                  Enviar mensagem
+                  Enviar Mensagem
                 </Button>
+                <p className="text-xs text-center text-muted-foreground">
+                  ✓ Resposta em até 10 minutos • Sem compromisso
+                </p>
               </form>
             </CardContent>
           </Card>

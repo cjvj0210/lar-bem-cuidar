@@ -24,6 +24,8 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import WhatsAppFloating from "./components/WhatsAppFloating";
 import ScrollToTop from "./components/ScrollToTop";
+import OnlineStatus from "./components/cro/OnlineStatus";
+import ExitIntentPopup from "./components/cro/ExitIntentPopup";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -75,6 +77,8 @@ const App = () => {
             </Routes>
             <Footer />
             <WhatsAppFloating />
+            <OnlineStatus />
+            <ExitIntentPopup />
           </BrowserRouter>
         </TooltipProvider>
       </HelmetProvider>

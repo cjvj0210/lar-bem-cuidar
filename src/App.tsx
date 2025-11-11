@@ -14,6 +14,10 @@ import BlogPost from "./pages/BlogPost";
 import Agendar from "./pages/Agendar";
 import Admin from "./pages/Admin";
 import NotFound from "./pages/NotFound";
+import FisioterapiaGeriatrica from "./pages/servicos/FisioterapiaGeriatrica";
+import FisioterapiaNeurologica from "./pages/servicos/FisioterapiaNeurologica";
+import ReabilitacaoPosOperatoria from "./pages/servicos/ReabilitacaoPosOperatoria";
+import FisioterapiaRespiratoria from "./pages/servicos/FisioterapiaRespiratoria";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import WhatsAppFloating from "./components/WhatsAppFloating";
@@ -41,6 +45,10 @@ const App = () => (
           <Route path="/" element={<Home />} />
           <Route path="/sobre" element={<Sobre />} />
           <Route path="/servicos" element={<Servicos />} />
+          <Route path="/servicos/fisioterapia-geriatrica" element={<FisioterapiaGeriatrica />} />
+          <Route path="/servicos/fisioterapia-neurologica" element={<FisioterapiaNeurologica />} />
+          <Route path="/servicos/reabilitacao-pos-operatoria" element={<ReabilitacaoPosOperatoria />} />
+          <Route path="/servicos/fisioterapia-respiratoria" element={<FisioterapiaRespiratoria />} />
           <Route path="/depoimentos" element={<Depoimentos />} />
           <Route path="/contato" element={<Contato />} />
           <Route path="/blog" element={<Blog />} />

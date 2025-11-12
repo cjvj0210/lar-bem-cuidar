@@ -1,20 +1,35 @@
 import { Star, Users, Award, TrendingUp } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
+import { trackEvent } from "@/lib/analytics";
 
 const SocialProof = () => {
+  const handleGoogleReviewClick = () => {
+    trackEvent('google_reviews_click', {
+      source: 'social_proof_section'
+    });
+  };
+
   return (
     <section className="section-padding bg-muted/30">
       <div className="container-custom">
         <div className="grid md:grid-cols-4 gap-6">
-          <Card className="border-2 hover:shadow-elegant transition-smooth">
-            <CardContent className="pt-6 text-center">
-              <div className="w-12 h-12 rounded-full bg-yellow-100 dark:bg-yellow-900/20 flex items-center justify-center mx-auto mb-3">
-                <Star className="w-6 h-6 fill-yellow-400 text-yellow-400" />
-              </div>
-              <p className="text-3xl font-bold text-foreground mb-1">5.0</p>
-              <p className="text-sm text-muted-foreground">⭐ 4 avaliações Google</p>
-            </CardContent>
-          </Card>
+          <a
+            href="https://www.google.com/maps/place/Roberta+Fisio+Domiciliar/@-20.5529167,-48.5422778,17z/data=!4m8!3m7!1s0x94bec3e8f5e5e5e5:0x5e5e5e5e5e5e5e5e!8m2!3d-20.5529167!4d-48.5422778!9m1!1b1!16s%2Fg%2F11y3y3y3y3y"
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={handleGoogleReviewClick}
+            className="block"
+          >
+            <Card className="border-2 hover:shadow-elegant transition-smooth cursor-pointer hover:border-primary/50">
+              <CardContent className="pt-6 text-center">
+                <div className="w-12 h-12 rounded-full bg-yellow-100 dark:bg-yellow-900/20 flex items-center justify-center mx-auto mb-3">
+                  <Star className="w-6 h-6 fill-yellow-400 text-yellow-400" />
+                </div>
+                <p className="text-3xl font-bold text-foreground mb-1">5.0</p>
+                <p className="text-sm text-muted-foreground">⭐ 4 avaliações Google</p>
+              </CardContent>
+            </Card>
+          </a>
 
           <Card className="border-2 hover:shadow-elegant transition-smooth">
             <CardContent className="pt-6 text-center">

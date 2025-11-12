@@ -39,7 +39,7 @@ const SEO = ({ title, description, keywords, canonicalUrl, ogImage, schema, brea
     "image": defaultImage,
     "url": siteUrl,
     "telephone": "+5517982123269",
-    "priceRange": "R$ 150 - R$ 200",
+    
     "address": {
       "@type": "PostalAddress",
       "addressLocality": "Barretos",

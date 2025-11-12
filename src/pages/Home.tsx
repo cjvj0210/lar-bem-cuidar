@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import { ArrowRight, Heart, Brain, UserCircle, Stethoscope, Phone, Quote, Star } from "lucide-react";
+import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from "@/components/ui/card";
+import { ArrowRight, Heart, Brain, UserCircle, Stethoscope, Phone, Quote, Star, Check, Calendar, Shield, MessageCircle } from "lucide-react";
+import { trackWhatsAppClick, trackCTAClick } from "@/lib/analytics";
 import { Link } from "react-router-dom";
 import SEO from "@/components/SEO";
 import WhyChooseRoberta from "@/components/WhyChooseRoberta";
@@ -45,7 +46,7 @@ const Home = () => {
       },
       "geoRadius": "6000"
     },
-    "priceRange": "R$ 110 - R$ 180",
+    
     "paymentAccepted": "Dinheiro, PIX, Cartão de Crédito, Cartão de Débito",
     "currenciesAccepted": "BRL",
     "openingHoursSpecification": {
@@ -91,39 +92,7 @@ const Home = () => {
             "@type": "Service",
             "name": "Sessão Avulsa de Fisioterapia Domiciliar",
             "description": "Sessão individual de 50 minutos com todos os equipamentos inclusos"
-          },
-          "price": "180",
-          "priceCurrency": "BRL"
-        },
-        {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "Service",
-            "name": "Pacote 4 Sessões/Mês",
-            "description": "1x por semana - Ideal para manutenção"
-          },
-          "price": "520",
-          "priceCurrency": "BRL"
-        },
-        {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "Service",
-            "name": "Pacote 8 Sessões/Mês",
-            "description": "2x por semana - Ideal para prevenção e fortalecimento"
-          },
-          "price": "960",
-          "priceCurrency": "BRL"
-        },
-        {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "Service",
-            "name": "Pacote 12 Sessões/Mês",
-            "description": "3x por semana - Recomendado para reabilitação intensiva"
-          },
-          "price": "1320",
-          "priceCurrency": "BRL"
+          }
         }
       ]
     }
@@ -141,14 +110,14 @@ const Home = () => {
           "text": "O atendimento domiciliar é realizado na casa do paciente, em horários flexíveis. Levo todos os equipamentos necessários e realizo avaliação individualizada para criar um plano personalizado de tratamento focado nas suas necessidades específicas. As sessões têm duração de 50 minutos completos."
         }
       },
-      {
-        "@type": "Question",
-        "name": "Qual o valor da avaliação de fisioterapia domiciliar?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "A avaliação inicial custa R$ 150 e tem duração de 50 minutos. Inclui anamnese completa, avaliação física detalhada e orientações personalizadas para o tratamento. Sessões avulsas custam R$ 180. Oferecemos pacotes mensais com valores reduzidos: 1x/semana (R$ 130/sessão), 2x/semana (R$ 120/sessão) ou 3x/semana (R$ 110/sessão). A frequência ideal é definida pela fisioterapeuta após avaliação personalizada."
-        }
-      },
+        {
+          "@type": "Question",
+          "name": "Como funciona o investimento na fisioterapia domiciliar?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Os valores variam de acordo com o tipo de tratamento, frequência das sessões e necessidades específicas de cada paciente. Oferecemos diferentes opções de frequência e condições facilitadas de pagamento. Entre em contato via WhatsApp para receber informações personalizadas sobre investimento e planos disponíveis."
+          }
+        },
       {
         "@type": "Question",
         "name": "Quais condições são tratadas pela fisioterapia domiciliar?",
@@ -258,7 +227,7 @@ const Home = () => {
     <div className="min-h-screen animate-fade-in">
       <SEO 
         title="Fisioterapia Domiciliar em Barretos-SP | Roberta Rocha - 13 Anos de Experiência"
-        description="Fisioterapia domiciliar premium em Barretos-SP. 13 anos de experiência em idosos, neurológica e pós-operatória. Avaliação R$ 150. Agende agora!"
+        description="Fisioterapia domiciliar premium em Barretos-SP. 13 anos de experiência em idosos, neurológica e pós-operatória. Atendimento personalizado. Agende agora!"
         keywords="fisioterapia domiciliar barretos, fisioterapeuta para idosos barretos, fisioterapia geriátrica barretos, reabilitação pós-operatória barretos, fisioterapia neurológica barretos"
         canonicalUrl="https://fisiorobertadomiciliar.com.br/"
         schema={[localBusinessSchema, faqSchema, personSchema, breadcrumbSchema]}
@@ -584,7 +553,7 @@ const Home = () => {
       {/* Área de Atendimento */}
       <ServiceArea />
 
-      {/* Investimento / Preços */}
+      {/* Investimento */}
       <section className="section-padding bg-background">
         <div className="container-custom">
           <div className="text-center max-w-3xl mx-auto mb-12">
@@ -592,140 +561,153 @@ const Home = () => {
               Investimento em Fisioterapia Domiciliar
             </h2>
             <p className="text-lg text-muted-foreground">
-              Transparência e clareza nos valores. Confira nossos preços e escolha o melhor plano para você.
+              Oferecemos diferentes opções de frequência e condições facilitadas de pagamento para que você tenha acesso ao melhor tratamento.
             </p>
           </div>
 
-          <div className="max-w-5xl mx-auto">
-            <div className="grid md:grid-cols-2 gap-6 mb-8">
-              <Card className="border-2 hover:shadow-lg transition-shadow">
-                <CardContent className="p-6">
-                  <h3 className="text-xl font-semibold text-foreground mb-4">Avaliação Inicial</h3>
-                  <div className="flex items-baseline gap-2 mb-3">
-                    <span className="text-4xl font-bold text-primary">R$ 150</span>
-                    <span className="text-muted-foreground">/ 50 minutos</span>
-                  </div>
-                  <p className="text-sm text-muted-foreground">
-                    Avaliação completa com anamnese, exame físico e plano de tratamento personalizado
-                  </p>
-                </CardContent>
-              </Card>
-
-              <Card className="border-2 hover:shadow-lg transition-shadow">
-                <CardContent className="p-6">
-                  <h3 className="text-xl font-semibold text-foreground mb-4">Sessão Avulsa</h3>
-                  <div className="flex items-baseline gap-2 mb-3">
-                    <span className="text-4xl font-bold text-primary">R$ 180</span>
-                    <span className="text-muted-foreground">/ 50 minutos</span>
-                  </div>
-                  <p className="text-sm text-muted-foreground">
-                    Sessão individual de fisioterapia domiciliar com todos os equipamentos inclusos
-                  </p>
-                </CardContent>
-              </Card>
-
-              <Card className="border-2 hover:shadow-lg transition-shadow">
-                <CardContent className="p-6">
-                  <h3 className="text-xl font-semibold text-foreground mb-4">Pacote 4 Sessões/Mês</h3>
-                  <div className="flex items-baseline gap-2 mb-1">
-                    <span className="text-4xl font-bold text-primary">R$ 130</span>
-                    <span className="text-muted-foreground">/ sessão</span>
-                  </div>
-                  <p className="text-sm font-semibold text-primary mb-3">
-                    Total: R$ 520/mês
-                  </p>
-                  <p className="text-sm text-muted-foreground">
-                    1x por semana - Ideal para manutenção
-                  </p>
-                </CardContent>
-              </Card>
-
-              <Card className="border-2 border-primary hover:shadow-lg transition-shadow">
-                <CardContent className="p-6">
-                  <div className="bg-primary text-primary-foreground inline-block px-3 py-1 rounded-full text-xs font-semibold mb-3">
-                    Mais Popular
-                  </div>
-                  <h3 className="text-xl font-semibold text-foreground mb-4">Pacote 8 Sessões/Mês</h3>
-                  <div className="flex items-baseline gap-2 mb-1">
-                    <span className="text-4xl font-bold text-primary">R$ 120</span>
-                    <span className="text-muted-foreground">/ sessão</span>
-                  </div>
-                  <p className="text-sm font-semibold text-primary mb-3">
-                    Total: R$ 960/mês
-                  </p>
-                  <p className="text-sm text-muted-foreground">
-                    2x por semana - Ideal para prevenção e fortalecimento
-                  </p>
-                </CardContent>
-              </Card>
-
-              <Card className="border-2 border-primary hover:shadow-lg transition-shadow">
-                <CardContent className="p-6">
-                  <div className="bg-primary text-primary-foreground inline-block px-3 py-1 rounded-full text-xs font-semibold mb-3">
-                    Melhor Custo-Benefício
-                  </div>
-                  <h3 className="text-xl font-semibold text-foreground mb-4">Pacote 12 Sessões/Mês</h3>
-                  <div className="flex items-baseline gap-2 mb-1">
-                    <span className="text-4xl font-bold text-primary">R$ 110</span>
-                    <span className="text-muted-foreground">/ sessão</span>
-                  </div>
-                  <p className="text-sm font-semibold text-primary mb-3">
-                    Total: R$ 1.320/mês
-                  </p>
-                  <p className="text-sm text-muted-foreground">
-                    3x por semana - Recomendado para reabilitação intensiva
-                  </p>
-                </CardContent>
-              </Card>
-            </div>
-
-            <Card className="bg-muted/50 border-2">
-              <CardContent className="p-6">
-                <h3 className="text-lg font-semibold text-foreground mb-4 text-center">
-                  O que está incluso?
-                </h3>
-                <div className="grid md:grid-cols-2 gap-4">
-                  <div className="flex items-center gap-3">
-                    <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-                      <span className="text-primary font-bold">✓</span>
-                    </div>
-                    <span className="text-muted-foreground">Equipamentos profissionais inclusos</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-                      <span className="text-primary font-bold">✓</span>
-                    </div>
-                    <span className="text-muted-foreground">Atendimento de 50 minutos completos</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-                      <span className="text-primary font-bold">✓</span>
-                    </div>
-                    <span className="text-muted-foreground">Relatório de evolução mensal</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-                      <span className="text-primary font-bold">✓</span>
-                    </div>
-                    <span className="text-muted-foreground">Dinheiro, PIX ou cartão de crédito/débito</span>
-                  </div>
+          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+            <Card className="border-2 hover:shadow-lg transition-shadow">
+              <CardHeader>
+                <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-4">
+                  <Check className="w-6 h-6 text-primary" />
                 </div>
+                <CardTitle>Avaliação Inicial</CardTitle>
+                <CardDescription>
+                  Conheça o serviço antes de fechar plano
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <ul className="space-y-3 text-sm text-muted-foreground">
+                  <li className="flex items-start gap-2">
+                    <Check className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                    <span>Duração de 50 minutos</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <Check className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                    <span>Anamnese completa</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <Check className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                    <span>Avaliação física detalhada</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <Check className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                    <span>Plano de tratamento personalizado</span>
+                  </li>
+                </ul>
               </CardContent>
+              <CardFooter>
+                <Button asChild className="w-full">
+                  <Link to="/agendar">Agendar Avaliação</Link>
+                </Button>
+              </CardFooter>
             </Card>
 
-            <div className="text-center mt-8">
-              <Link to="/agendar">
-                <Button
-                  size="lg"
-                  className="h-14 px-8 text-lg"
+            <Card className="border-2 border-primary shadow-lg hover:shadow-xl transition-shadow">
+              <div className="absolute -top-3 left-1/2 -translate-x-1/2">
+                <span className="bg-primary text-primary-foreground text-xs font-bold px-4 py-1 rounded-full">
+                  Mais Popular
+                </span>
+              </div>
+              <CardHeader>
+                <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-4">
+                  <Calendar className="w-6 h-6 text-primary" />
+                </div>
+                <CardTitle>Planos Mensais</CardTitle>
+                <CardDescription>
+                  Frequência adaptada às suas necessidades
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <ul className="space-y-3 text-sm text-muted-foreground">
+                  <li className="flex items-start gap-2">
+                    <Check className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                    <span>Opções de 1x, 2x ou 3x por semana</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <Check className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                    <span>Valores diferenciados por frequência</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <Check className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                    <span>Maior economia em planos intensivos</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <Check className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                    <span>Flexibilidade de horários</span>
+                  </li>
+                </ul>
+              </CardContent>
+              <CardFooter>
+                <Button 
+                  asChild 
+                  className="w-full"
+                  onClick={() => {
+                    trackWhatsAppClick('investimento-planos');
+                    trackCTAClick('investimento-planos');
+                  }}
                 >
-                  Solicitar Orçamento Personalizado
+                  <a href="https://wa.me/5517982123269?text=Olá! Gostaria de informações sobre os planos mensais de fisioterapia domiciliar." target="_blank" rel="noopener noreferrer">
+                    <MessageCircle className="w-4 h-4 mr-2" />
+                    Consultar Valores
+                  </a>
                 </Button>
-              </Link>
-              <p className="text-sm text-muted-foreground mt-3">
-                *A frequência ideal será indicada pela fisioterapeuta após avaliação personalizada, considerando suas necessidades e disponibilidade de agenda.
-              </p>
-            </div>
+              </CardFooter>
+            </Card>
+
+            <Card className="border-2 hover:shadow-lg transition-shadow">
+              <CardHeader>
+                <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-4">
+                  <Shield className="w-6 h-6 text-primary" />
+                </div>
+                <CardTitle>Condições Facilitadas</CardTitle>
+                <CardDescription>
+                  Formas de pagamento acessíveis
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <ul className="space-y-3 text-sm text-muted-foreground">
+                  <li className="flex items-start gap-2">
+                    <Check className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                    <span>Diversas opções de pagamento</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <Check className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                    <span>Nota Fiscal Paulista</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <Check className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                    <span>Pagamento mensal facilitado</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <Check className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                    <span>Sem taxas ocultas</span>
+                  </li>
+                </ul>
+              </CardContent>
+              <CardFooter>
+                <Button 
+                  asChild 
+                  variant="outline"
+                  className="w-full"
+                  onClick={() => {
+                    trackWhatsAppClick('investimento-info');
+                    trackCTAClick('investimento-info');
+                  }}
+                >
+                  <a href="https://wa.me/5517982123269?text=Olá! Gostaria de informações sobre as condições de pagamento." target="_blank" rel="noopener noreferrer">
+                    <MessageCircle className="w-4 h-4 mr-2" />
+                    Saiba Mais
+                  </a>
+                </Button>
+              </CardFooter>
+            </Card>
+          </div>
+
+          <div className="mt-12 text-center">
+            <p className="text-sm text-muted-foreground max-w-2xl mx-auto">
+              *Os valores variam de acordo com o tipo de tratamento e frequência das sessões. Entre em contato para receber um orçamento personalizado e conhecer as condições de pagamento disponíveis.
+            </p>
           </div>
         </div>
       </section>

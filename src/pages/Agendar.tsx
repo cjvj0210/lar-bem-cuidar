@@ -136,7 +136,7 @@ const Agendar = () => {
     <>
       <SEO
         title="Agendar Avaliação de Fisioterapia Domiciliar em Barretos | Roberta Rocha"
-        description="Agende sua avaliação de fisioterapia domiciliar em Barretos-SP com Roberta Rocha. R$ 150 por 50 minutos. Resposta em até 3 horas. WhatsApp: (17) 98212-3269"
+        description="Agende sua avaliação de fisioterapia domiciliar em Barretos-SP com Roberta Rocha. Avaliação de 50 minutos. Resposta em até 3 horas. WhatsApp: (17) 98212-3269"
         keywords="agendar fisioterapia barretos, avaliação fisioterapia domiciliar, fisioterapeuta barretos preço"
         canonicalUrl="https://www.fisiorobertadomiciliar.com/agendar"
         schema={serviceSchema}
@@ -535,7 +535,7 @@ const Agendar = () => {
               <AccordionItem value="item-1">
                 <AccordionTrigger>Quanto custa a avaliação?</AccordionTrigger>
                 <AccordionContent>
-                  A avaliação inicial custa R$ 150 e tem duração de 50 minutos. Inclui anamnese completa, avaliação física e orientações personalizadas.
+                  A avaliação inicial tem duração de 50 minutos e inclui anamnese completa, avaliação física e orientações personalizadas. Entre em contato via WhatsApp para informações sobre investimento.
                 </AccordionContent>
               </AccordionItem>
 

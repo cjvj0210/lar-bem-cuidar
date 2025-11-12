@@ -6,7 +6,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { Activity, Shield, TrendingUp, Heart, CheckCircle2, Phone, Quote, Star, ArrowRight } from "lucide-react";
+import { Activity, Shield, TrendingUp, Heart, CheckCircle2, Phone, Quote, Star, ArrowRight, Check, Calendar } from "lucide-react";
 import { Link } from "react-router-dom";
 import SEO from "@/components/SEO";
 import Breadcrumb from "@/components/Breadcrumb";
@@ -238,57 +238,91 @@ const ReabilitacaoPosOperatoria = () => {
           </div>
         </section>
 
-        {/* Preços */}
+        {/* Investimento */}
         <section className="section-padding">
           <div className="container-custom max-w-4xl">
-            <h2 className="text-3xl font-bold text-primary mb-12 text-center">Preços Transparentes</h2>
+            <h2 className="text-3xl font-bold text-primary mb-12 text-center">Investimento e Condições</h2>
             
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid md:grid-cols-3 gap-6">
               <Card className="border-2">
-                <CardContent className="pt-8 pb-8 text-center">
-                  <p className="text-sm text-muted-foreground mb-2">Avaliação</p>
-                  <p className="text-4xl font-bold text-primary mb-2">R$ 150</p>
-                  <p className="text-sm text-muted-foreground">50 minutos</p>
+                <CardContent className="pt-8 pb-8">
+                  <div className="text-center mb-4">
+                    <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-3">
+                      <Check className="w-6 h-6 text-primary" />
+                    </div>
+                    <h3 className="text-lg font-semibold">Avaliação Inicial</h3>
+                  </div>
+                  <ul className="space-y-2 text-sm text-muted-foreground">
+                    <li className="flex items-start gap-2">
+                      <Check className="w-4 h-4 text-green-600 flex-shrink-0 mt-0.5" />
+                      <span>Duração de 50 minutos</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <Check className="w-4 h-4 text-green-600 flex-shrink-0 mt-0.5" />
+                      <span>Avaliação pós-operatória</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <Check className="w-4 h-4 text-green-600 flex-shrink-0 mt-0.5" />
+                      <span>Protocolo de recuperação</span>
+                    </li>
+                  </ul>
+                </CardContent>
+              </Card>
+
+              <Card className="border-2 border-primary bg-primary/5">
+                <CardContent className="pt-8 pb-8">
+                  <div className="text-center mb-4">
+                    <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-3">
+                      <Calendar className="w-6 h-6 text-primary" />
+                    </div>
+                    <h3 className="text-lg font-semibold">Planos Mensais</h3>
+                    <p className="text-xs text-primary mt-1 font-semibold">Mais Popular</p>
+                  </div>
+                  <ul className="space-y-2 text-sm text-muted-foreground">
+                    <li className="flex items-start gap-2">
+                      <Check className="w-4 h-4 text-green-600 flex-shrink-0 mt-0.5" />
+                      <span>Frequência ajustável</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <Check className="w-4 h-4 text-green-600 flex-shrink-0 mt-0.5" />
+                      <span>Condições facilitadas</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <Check className="w-4 h-4 text-green-600 flex-shrink-0 mt-0.5" />
+                      <span>Recuperação otimizada</span>
+                    </li>
+                  </ul>
                 </CardContent>
               </Card>
 
               <Card className="border-2">
-                <CardContent className="pt-8 pb-8 text-center">
-                  <p className="text-sm text-muted-foreground mb-2">Sessão Avulsa</p>
-                  <p className="text-4xl font-bold text-primary mb-2">R$ 180</p>
-                  <p className="text-sm text-muted-foreground">50 minutos</p>
-                </CardContent>
-              </Card>
-
-              <Card className="border-2">
-                <CardContent className="pt-8 pb-8 text-center">
-                  <p className="text-sm text-muted-foreground mb-2">1x/Semana</p>
-                  <p className="text-4xl font-bold text-primary mb-2">R$ 130</p>
-                  <p className="text-sm text-muted-foreground">por sessão</p>
-                </CardContent>
-              </Card>
-
-              <Card className="border-2 bg-primary/5">
-                <CardContent className="pt-8 pb-8 text-center">
-                  <p className="text-sm text-muted-foreground mb-2">2x/Semana</p>
-                  <p className="text-4xl font-bold text-primary mb-2">R$ 120</p>
-                  <p className="text-sm text-muted-foreground">por sessão</p>
-                  <p className="text-xs text-primary mt-2 font-semibold">Mais Popular</p>
-                </CardContent>
-              </Card>
-
-              <Card className="border-2">
-                <CardContent className="pt-8 pb-8 text-center">
-                  <p className="text-sm text-muted-foreground mb-2">3x/Semana</p>
-                  <p className="text-4xl font-bold text-primary mb-2">R$ 110</p>
-                  <p className="text-sm text-muted-foreground">por sessão</p>
-                  <p className="text-xs text-primary mt-2 font-semibold">Melhor Valor</p>
+                <CardContent className="pt-8 pb-8">
+                  <div className="text-center mb-4">
+                    <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-3">
+                      <Shield className="w-6 h-6 text-primary" />
+                    </div>
+                    <h3 className="text-lg font-semibold">Pagamento Facilitado</h3>
+                  </div>
+                  <ul className="space-y-2 text-sm text-muted-foreground">
+                    <li className="flex items-start gap-2">
+                      <Check className="w-4 h-4 text-green-600 flex-shrink-0 mt-0.5" />
+                      <span>Opções acessíveis</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <Check className="w-4 h-4 text-green-600 flex-shrink-0 mt-0.5" />
+                      <span>Nota Fiscal Paulista</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <Check className="w-4 h-4 text-green-600 flex-shrink-0 mt-0.5" />
+                      <span>Transparência total</span>
+                    </li>
+                  </ul>
                 </CardContent>
               </Card>
             </div>
 
             <p className="text-sm text-muted-foreground text-center mt-8">
-              *A frequência ideal será indicada pela fisioterapeuta após avaliação personalizada, considerando suas necessidades e disponibilidade de agenda.
+              *Entre em contato via WhatsApp para informações personalizadas sobre investimento e planos de tratamento.
             </p>
           </div>
         </section>

@@ -507,7 +507,7 @@ const Contact = () => {
                   </AccordionTrigger>
                   <AccordionContent className="text-muted-foreground">
                     Os valores variam de acordo com o tipo de tratamento, frequência das sessões e localização. 
-                    Entre em contato para solicitar um orçamento personalizado. Trabalho com preços justos 
+                    Entre em contato para solicitar um orçamento personalizado. Trabalho com valores acessíveis
                     e acessíveis para atendimento domiciliar de qualidade.
                   </AccordionContent>
                 </AccordionItem>

@@ -12,8 +12,8 @@ const FAQ = () => {
       answer: "O atendimento domiciliar é realizado na casa do paciente, em horários flexíveis. Levo todos os equipamentos necessários e realizo avaliação individualizada para criar um plano personalizado de tratamento focado nas suas necessidades específicas."
     },
     {
-      question: "Qual o valor da avaliação de fisioterapia domiciliar?",
-      answer: "A avaliação inicial custa R$ 150 e tem duração de 50 minutos. Inclui anamnese completa, avaliação física detalhada e orientações personalizadas para o tratamento."
+      question: "Como funciona o investimento na fisioterapia domiciliar?",
+      answer: "Os valores variam de acordo com o tipo de tratamento, frequência das sessões e necessidades específicas de cada paciente. Oferecemos diferentes opções de frequência e condições facilitadas de pagamento. Entre em contato via WhatsApp para receber informações personalizadas sobre investimento e planos disponíveis."
     },
     {
       question: "Quais condições são tratadas pela fisioterapia domiciliar?",

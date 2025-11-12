@@ -39,7 +39,7 @@ const WhatsAppFloating = () => {
           </Button>
         </TooltipTrigger>
         <TooltipContent side="left" className="bg-foreground text-background">
-          <p>Fale conosco no WhatsApp</p>
+          <p>Respondo em até 3h</p>
         </TooltipContent>
       </Tooltip>
     </TooltipProvider>

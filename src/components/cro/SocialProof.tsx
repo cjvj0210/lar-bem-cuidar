@@ -14,7 +14,7 @@ const SocialProof = () => {
       <div className="container-custom">
         <div className="grid md:grid-cols-4 gap-6">
           <a
-            href="https://www.google.com/maps/place/Roberta+Fisio+Domiciliar/@-20.5529167,-48.5422778,17z/data=!4m8!3m7!1s0x94bec3e8f5e5e5e5:0x5e5e5e5e5e5e5e5e!8m2!3d-20.5529167!4d-48.5422778!9m1!1b1!16s%2Fg%2F11y3y3y3y3y"
+            href="https://www.google.com/search?q=roberta+rocha+fisioterapia+barretos&rlz=1C1CHBD_pt-PTBR1168BR1168&oq=roberta+rocha+fisioterapia+barretos&gs_lcrp=EgZjaHJvbWUyCQgAEEUYORigATIGCAEQRRg8MgYIAhBFGDzSAQg3MDI2ajBqN6gCALACAA&sourceid=chrome&ie=UTF-8#mpd=~17066499652436838690/customers/reviews"
             target="_blank"
             rel="noopener noreferrer"
             onClick={handleGoogleReviewClick}

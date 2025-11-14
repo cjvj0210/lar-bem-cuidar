@@ -337,10 +337,10 @@ const Contact = () => {
                 <div>
                   <h4 className="font-semibold text-foreground mb-1">Email</h4>
                   <a 
-                    href="mailto:contato@fisiorobertadomiciliar.com"
+                    href="mailto:fisiorobertarochadomiciliar@gmail.com"
                     className="text-muted-foreground hover:text-primary transition-colors"
                   >
-                    contato@fisiorobertadomiciliar.com
+                    fisiorobertarochadomiciliar@gmail.com
                   </a>
                 </div>
               </CardContent>

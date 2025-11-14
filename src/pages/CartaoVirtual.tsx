@@ -2,7 +2,7 @@ import { Phone, Mail, MapPin, Award, Clock, Share2, MessageCircle } from "lucide
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import SEO from "@/components/SEO";
-import profileImage from "@/assets/roberta-professional.jpg";
+import profileImage from "@/assets/roberta-professional-clean.jpg";
 import { FaWhatsapp, FaInstagram, FaFacebook } from "react-icons/fa";
 import { trackEvent } from "@/lib/analytics";
 
@@ -125,12 +125,12 @@ const CartaoVirtual = () => {
                 href="mailto:fisiorobertarochadomiciliar@gmail.com"
                 className="flex items-center gap-3 text-foreground hover:text-primary transition-colors"
               >
-                <div className="bg-primary/10 p-2 rounded-lg">
+                <div className="bg-primary/10 p-2 rounded-lg flex-shrink-0">
                   <Mail className="h-5 w-5 text-primary" />
                 </div>
-                <div>
+                <div className="min-w-0 flex-1">
                   <p className="text-sm text-muted-foreground">E-mail</p>
-                  <p className="font-medium break-all">fisiorobertarochadomiciliar@gmail.com</p>
+                  <p className="font-medium break-words text-sm sm:text-base">fisiorobertarochadomiciliar@gmail.com</p>
                 </div>
               </a>
 
@@ -190,6 +190,21 @@ const CartaoVirtual = () => {
                 <FaWhatsapp className="mr-2 h-5 w-5" />
                 Agendar Avaliação pelo WhatsApp
               </Button>
+              
+              <a
+                href="/images/cartao-virtual-roberta-hd.jpg"
+                download="cartao-roberta-rocha.jpg"
+                className="block w-full"
+              >
+                <Button
+                  variant="outline"
+                  className="w-full"
+                  size="lg"
+                >
+                  <Share2 className="mr-2 h-5 w-5" />
+                  Baixar Cartão em Alta Qualidade
+                </Button>
+              </a>
               
               <p className="text-center text-sm text-muted-foreground">
                 Atendimento domiciliar com todo conforto e segurança

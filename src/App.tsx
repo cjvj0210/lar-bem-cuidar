@@ -8,6 +8,7 @@ import { useEffect } from "react";
 import { initScrollTracking, initTimeTracking } from "@/lib/analytics";
 import Home from "./pages/Home";
 import Sobre from "./pages/Sobre";
+import CartaoVirtual from "./pages/CartaoVirtual";
 import Servicos from "./pages/Servicos";
 import Depoimentos from "./pages/Depoimentos";
 import Contato from "./pages/Contato";
@@ -63,8 +64,9 @@ const App = () => {
             <main id="main-content" role="main">
               <Routes>
                 <Route path="/" element={<Home />} />
-                <Route path="/sobre" element={<Sobre />} />
-                <Route path="/servicos" element={<Servicos />} />
+          <Route path="/sobre" element={<Sobre />} />
+          <Route path="/cartao-virtual" element={<CartaoVirtual />} />
+          <Route path="/servicos" element={<Servicos />} />
                 <Route path="/servicos/fisioterapia-geriatrica" element={<FisioterapiaGeriatrica />} />
                 <Route path="/servicos/fisioterapia-neurologica" element={<FisioterapiaNeurologica />} />
                 <Route path="/servicos/reabilitacao-pos-operatoria" element={<ReabilitacaoPosOperatoria />} />

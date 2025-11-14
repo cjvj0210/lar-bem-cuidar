@@ -1,4 +1,4 @@
-import { Phone, Mail, MapPin, Award, Clock, Share2 } from "lucide-react";
+import { Phone, Mail, MapPin, Award, Clock, Share2, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import SEO from "@/components/SEO";
@@ -112,30 +112,17 @@ const CartaoVirtual = () => {
                 rel="noopener noreferrer"
                 className="flex items-center gap-3 text-foreground hover:text-primary transition-colors"
               >
-                <div className="bg-primary/10 p-2 rounded-lg">
-                  <FaWhatsapp className="h-5 w-5 text-primary" />
+                <div className="bg-green-500/10 p-2 rounded-lg">
+                  <FaWhatsapp className="h-5 w-5 text-green-600" />
                 </div>
                 <div>
-                  <p className="text-sm text-muted-foreground">WhatsApp</p>
+                  <p className="text-sm text-muted-foreground">WhatsApp / Telefone</p>
                   <p className="font-medium">(17) 98212-3269</p>
                 </div>
               </a>
 
               <a
-                href="tel:+5517982123269"
-                className="flex items-center gap-3 text-foreground hover:text-primary transition-colors"
-              >
-                <div className="bg-primary/10 p-2 rounded-lg">
-                  <Phone className="h-5 w-5 text-primary" />
-                </div>
-                <div>
-                  <p className="text-sm text-muted-foreground">Telefone</p>
-                  <p className="font-medium">(17) 98212-3269</p>
-                </div>
-              </a>
-
-              <a
-                href="mailto:contato@fisiorobertadomiciliar.com.br"
+                href="mailto:fisiorobertarochadomiciliar@gmail.com"
                 className="flex items-center gap-3 text-foreground hover:text-primary transition-colors"
               >
                 <div className="bg-primary/10 p-2 rounded-lg">
@@ -143,7 +130,7 @@ const CartaoVirtual = () => {
                 </div>
                 <div>
                   <p className="text-sm text-muted-foreground">E-mail</p>
-                  <p className="font-medium">contato@fisiorobertadomiciliar.com.br</p>
+                  <p className="font-medium break-all">fisiorobertarochadomiciliar@gmail.com</p>
                 </div>
               </a>
 

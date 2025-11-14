@@ -6,7 +6,8 @@ import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { MapPin, Phone, Mail, Clock, MessageCircle, Instagram, Facebook } from "lucide-react";
+import { MapPin, Phone, Mail, Clock, MessageCircle, Instagram, Facebook, CreditCard } from "lucide-react";
+import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
@@ -98,8 +99,23 @@ const Contact = () => {
           <h1 id="contact-heading" className="text-4xl md:text-5xl font-bold text-foreground mb-4">
             Entre em Contato - Fisioterapia Domiciliar em Barretos
           </h1>
-          <p className="text-xl text-muted-foreground">
+          <p className="text-xl text-muted-foreground mb-6">
             Estamos prontos para ajudar você. <strong className="text-primary">Resposta em até 3 horas.</strong>
+          </p>
+          
+          {/* Botão Cartão Virtual */}
+          <Link to="/cartao-virtual">
+            <Button 
+              size="lg"
+              variant="outline"
+              className="gap-2 bg-gradient-to-r from-primary/10 to-cyan-500/10 border-2 border-primary/30 hover:border-primary hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl text-base font-semibold"
+            >
+              <CreditCard className="h-5 w-5" />
+              Ver Cartão Virtual Profissional
+            </Button>
+          </Link>
+          <p className="text-sm text-muted-foreground mt-3">
+            💼 Salve meus contatos para facilitar futuras consultas
           </p>
         </div>
 

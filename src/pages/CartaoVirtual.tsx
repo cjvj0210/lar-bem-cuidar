@@ -2,7 +2,7 @@ import { Phone, Mail, MapPin, Award, Clock, Share2, MessageCircle } from "lucide
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import SEO from "@/components/SEO";
-import profileImage from "@/assets/roberta-profile.jpg";
+import profileImage from "@/assets/roberta-professional.jpg";
 import { FaWhatsapp, FaInstagram, FaFacebook } from "react-icons/fa";
 import { trackEvent } from "@/lib/analytics";
 
@@ -140,7 +140,7 @@ const CartaoVirtual = () => {
                 </div>
                 <div>
                   <p className="text-sm text-muted-foreground">Atendimento</p>
-                  <p className="font-medium">Barretos-SP e região</p>
+                  <p className="font-medium">Barretos-SP</p>
                 </div>
               </div>
 

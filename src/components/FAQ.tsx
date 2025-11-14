@@ -21,7 +21,7 @@ const FAQ = () => {
     },
     {
       question: "Atende em quais bairros de Barretos?",
-      answer: "Atendo em diversos bairros de Barretos-SP, incluindo Primavera, City Barretos, Centro, Jardim Eldorado, Vila Planalto, Jardim Botânico, Tamboré e região. O raio de atendimento é de 6km a partir do centro."
+      answer: "Atendo em diversos bairros de Barretos-SP, incluindo Primavera, City Barretos, Centro, Jardim Eldorado, Vila Planalto, Jardim Botânico e Tamboré. O raio de atendimento é de 6km a partir do centro."
     },
     {
       question: "Preciso ter equipamentos em casa?",

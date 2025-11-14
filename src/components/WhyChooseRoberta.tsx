@@ -6,7 +6,7 @@ const WhyChooseRoberta = () => {
     {
       icon: Award,
       title: "13 Anos de Experiência em Barretos",
-      description: "Mais de uma década cuidando de pacientes com dedicação e profissionalismo na região."
+      description: "Mais de uma década cuidando de pacientes com dedicação e profissionalismo em Barretos."
     },
     {
       icon: Stethoscope,

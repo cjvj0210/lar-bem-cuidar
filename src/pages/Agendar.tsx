@@ -361,7 +361,7 @@ const Agendar = () => {
                   <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
                     <CheckCircle2 className="w-6 h-6 text-primary" />
                   </div>
-                  <h3 className="font-semibold mb-2">Atendimento em Barretos e região</h3>
+                  <h3 className="font-semibold mb-2">Atendimento em Barretos</h3>
                   <p className="text-sm text-muted-foreground">
                     Raio de 6km a partir do centro
                   </p>
@@ -542,7 +542,7 @@ const Agendar = () => {
               <AccordionItem value="item-2">
                 <AccordionTrigger>Quais bairros você atende?</AccordionTrigger>
                 <AccordionContent>
-                  Atendo diversos bairros de Barretos-SP, incluindo Primavera, City Barretos, Centro, Jardim Eldorado, Vila Planalto e região. Entre em contato para confirmar se atendo seu bairro.
+                  Atendo diversos bairros de Barretos-SP, incluindo Primavera, City Barretos, Centro, Jardim Eldorado e Vila Planalto. Entre em contato para confirmar se atendo seu bairro.
                 </AccordionContent>
               </AccordionItem>
 

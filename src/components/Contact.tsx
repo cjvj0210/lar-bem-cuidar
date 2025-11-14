@@ -404,7 +404,7 @@ const Contact = () => {
           <div className="text-center mb-8">
             <h2 className="text-3xl font-bold text-foreground mb-4">Área de Atendimento</h2>
             <p className="text-muted-foreground">
-              Atendimento domiciliar em Barretos-SP e região
+              Atendimento domiciliar em Barretos-SP
             </p>
           </div>
 

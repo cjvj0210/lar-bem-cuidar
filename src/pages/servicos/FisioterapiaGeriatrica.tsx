@@ -381,7 +381,7 @@ const FisioterapiaGeriatrica = () => {
               <AccordionItem value="item-4" className="bg-background border-2 rounded-lg px-6">
                 <AccordionTrigger>Atende em qual região de Barretos?</AccordionTrigger>
                 <AccordionContent>
-                  Atendo em diversos bairros de Barretos-SP, incluindo Primavera, City Barretos, Centro, Jardim Eldorado, Vila Planalto e região. O raio de atendimento é de 6km a partir do centro.
+                  Atendo em diversos bairros de Barretos-SP, incluindo Primavera, City Barretos, Centro, Jardim Eldorado e Vila Planalto. O raio de atendimento é de 6km a partir do centro.
                 </AccordionContent>
               </AccordionItem>
 

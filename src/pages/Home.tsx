@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from "@/components/ui/card";
 import { ArrowRight, Heart, Brain, UserCircle, Stethoscope, Phone, Quote, Star, Check, Calendar, Shield, MessageCircle } from "lucide-react";
-import { trackWhatsAppClick, trackCTAClick } from "@/lib/analytics";
+import { trackWhatsAppClick, trackCTAClick, trackPhoneClick } from "@/lib/analytics";
 import { Link } from "react-router-dom";
 import SEO from "@/components/SEO";
 import WhyChooseRoberta from "@/components/WhyChooseRoberta";
@@ -745,7 +745,7 @@ const Home = () => {
               </Button>
             </div>
             <p className="text-sm text-muted-foreground">
-              Atendimento domiciliar premium em Barretos-SP • <a href="tel:+5517982123269" className="hover:text-primary transition-colors">(17) 98212-3269</a>
+              Atendimento domiciliar premium em Barretos-SP • <a href="tel:+5517982123269" className="hover:text-primary transition-colors" onClick={() => trackPhoneClick()}>(17) 98212-3269</a>
             </p>
           </div>
         </div>

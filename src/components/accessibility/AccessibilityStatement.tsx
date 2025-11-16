@@ -1,5 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AlertCircle, Check } from "lucide-react";
+import { trackPhoneClick } from "@/lib/analytics";
 
 const AccessibilityStatement = () => {
   return (
@@ -72,7 +73,7 @@ const AccessibilityStatement = () => {
                   <p className="text-sm text-muted-foreground">
                     Estamos comprometidos em melhorar continuamente a acessibilidade do nosso site. 
                     Se você encontrou algum problema ou tem sugestões, entre em contato pelo WhatsApp: 
-                    <a href="tel:+5517982123269" className="text-primary hover:underline ml-1">(17) 98212-3269</a> ou email: <a href="mailto:fisiorobertarochadomiciliar@gmail.com" className="text-primary hover:underline">fisiorobertarochadomiciliar@gmail.com</a>
+                    <a href="tel:+5517982123269" className="text-primary hover:underline ml-1" onClick={() => trackPhoneClick()}>(17) 98212-3269</a> ou email: <a href="mailto:fisiorobertarochadomiciliar@gmail.com" className="text-primary hover:underline">fisiorobertarochadomiciliar@gmail.com</a>
                   </p>
                 </div>
               </div>

@@ -1,5 +1,6 @@
 import { Heart, Instagram, Facebook } from "lucide-react";
 import { Link } from "react-router-dom";
+import { trackPhoneClick } from "@/lib/analytics";
 
 const Footer = () => {
   return (
@@ -86,6 +87,7 @@ const Footer = () => {
                   href="tel:+5517982123269" 
                   className="hover:text-primary-foreground transition-smooth focus:outline-none focus:ring-2 focus:ring-primary-foreground focus:ring-offset-2 focus:ring-offset-primary rounded"
                   aria-label="Ligar para (17) 98212-3269"
+                  onClick={() => trackPhoneClick()}
                 >
                   (17) 98212-3269
                 </a>

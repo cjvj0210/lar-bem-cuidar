@@ -31,6 +31,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { toast } from "@/hooks/use-toast";
 import SEO from "@/components/SEO";
 import robertaProfile from "@/assets/roberta-profile.jpg";
+import { trackPhoneClick } from "@/lib/analytics";
 
 const formSchema = z.object({
   name: z.string().trim().min(3, "Nome deve ter pelo menos 3 caracteres").max(100, "Nome muito longo"),
@@ -563,7 +564,7 @@ const Agendar = () => {
               <AccordionItem value="item-5">
                 <AccordionTrigger>Como faço para agendar?</AccordionTrigger>
                 <AccordionContent>
-                  Você pode agendar pelo formulário acima ou direto pelo WhatsApp <a href="tel:+5517982123269" className="text-primary hover:underline">(17) 98212-3269</a>. Respondo rapidamente e agendamos um horário conveniente para você.
+                  Você pode agendar pelo formulário acima ou direto pelo WhatsApp <a href="tel:+5517982123269" className="text-primary hover:underline" onClick={() => trackPhoneClick()}>(17) 98212-3269</a>. Respondo rapidamente e agendamos um horário conveniente para você.
                 </AccordionContent>
               </AccordionItem>
             </Accordion>

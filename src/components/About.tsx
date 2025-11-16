@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { Heart, Brain, Home, Users, Award } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import robertaImage from "@/assets/roberta-profile.jpg";
+import { trackWhatsAppClick } from "@/lib/analytics";
 
 const About = () => {
   const whatsappLink = "https://wa.me/5517982123269?text=Olá! Gostaria de saber mais sobre o atendimento de fisioterapia domiciliar.";
@@ -173,7 +174,12 @@ const About = () => {
               <Link to="/servicos">Ver serviços oferecidos</Link>
             </Button>
             <Button asChild size="lg" variant="outline" className="min-w-[200px]">
-              <a href={whatsappLink} target="_blank" rel="noopener noreferrer">
+              <a 
+                href={whatsappLink} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                onClick={() => trackWhatsAppClick('about_cta')}
+              >
                 Falar com Roberta
               </a>
             </Button>

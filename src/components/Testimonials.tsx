@@ -1,6 +1,7 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Quote, Heart, MapPin } from "lucide-react";
+import { trackWhatsAppClick } from "@/lib/analytics";
 
 const Testimonials = () => {
   const whatsappLink = "https://wa.me/5517982123269?text=Olá! Gostaria de agendar uma avaliação.";
@@ -124,6 +125,7 @@ const Testimonials = () => {
               href={whatsappLink}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => trackWhatsAppClick('testimonials_cta')}
             >
               Agendar avaliação
             </a>

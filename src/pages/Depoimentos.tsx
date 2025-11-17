@@ -3,12 +3,26 @@ import SEO from "@/components/SEO";
 import Breadcrumb from "@/components/Breadcrumb";
 
 const Depoimentos = () => {
+  const itemReviewed = {
+    "@type": "LocalBusiness",
+    "@id": "https://fisiorobertadomiciliar.com.br/#organization",
+    "name": "Fisioterapia Domiciliar Roberta Ribeiro",
+    "description": "Fisioterapia domiciliar especializada em Barretos-SP",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Barretos",
+      "addressRegion": "SP",
+      "addressCountry": "BR"
+    }
+  };
+
   const reviewsSchema = {
     "@context": "https://schema.org",
     "@type": "ItemList",
     "itemListElement": [
       {
         "@type": "Review",
+        "itemReviewed": itemReviewed,
         "reviewRating": {
           "@type": "Rating",
           "ratingValue": "5",
@@ -22,6 +36,7 @@ const Depoimentos = () => {
       },
       {
         "@type": "Review",
+        "itemReviewed": itemReviewed,
         "reviewRating": {
           "@type": "Rating",
           "ratingValue": "5",
@@ -35,6 +50,7 @@ const Depoimentos = () => {
       },
       {
         "@type": "Review",
+        "itemReviewed": itemReviewed,
         "reviewRating": {
           "@type": "Rating",
           "ratingValue": "5",
@@ -48,6 +64,7 @@ const Depoimentos = () => {
       },
       {
         "@type": "Review",
+        "itemReviewed": itemReviewed,
         "reviewRating": {
           "@type": "Rating",
           "ratingValue": "5",

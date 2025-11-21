@@ -1,8 +1,26 @@
 import { Star, Users, Award, TrendingUp } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { trackEvent } from "@/lib/analytics";
+import { useQuery } from "@tanstack/react-query";
+import { supabase } from "@/integrations/supabase/client";
 
 const SocialProof = () => {
+  const { data: stats } = useQuery({
+    queryKey: ['site-stats'],
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from('site_stats')
+        .select('stat_key, stat_value');
+      
+      if (error) throw error;
+      
+      return data.reduce((acc, stat) => {
+        acc[stat.stat_key] = stat.stat_value;
+        return acc;
+      }, {} as Record<string, string>);
+    }
+  });
+
   const handleGoogleReviewClick = () => {
     trackEvent('google_reviews_click', {
       source: 'social_proof_section'
@@ -25,8 +43,8 @@ const SocialProof = () => {
                 <div className="w-12 h-12 rounded-full bg-yellow-100 dark:bg-yellow-900/20 flex items-center justify-center mx-auto mb-3">
                   <Star className="w-6 h-6 fill-yellow-400 text-yellow-400" />
                 </div>
-                <p className="text-3xl font-bold text-foreground mb-1">5.0</p>
-                <p className="text-sm text-muted-foreground">⭐ 4 avaliações Google</p>
+                <p className="text-3xl font-bold text-foreground mb-1">{stats?.google_rating || '5.0'}</p>
+                <p className="text-sm text-muted-foreground">⭐ {stats?.google_reviews_count || '6'} avaliações Google</p>
               </CardContent>
             </Card>
           </a>
@@ -36,7 +54,7 @@ const SocialProof = () => {
               <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-3">
                 <Users className="w-6 h-6 text-primary" />
               </div>
-              <p className="text-3xl font-bold text-foreground mb-1">287+</p>
+              <p className="text-3xl font-bold text-foreground mb-1">{stats?.total_patients || '287'}+</p>
               <p className="text-sm text-muted-foreground">Pacientes atendidos</p>
             </CardContent>
           </Card>
@@ -46,7 +64,7 @@ const SocialProof = () => {
               <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-3">
                 <Award className="w-6 h-6 text-primary" />
               </div>
-              <p className="text-3xl font-bold text-foreground mb-1">13</p>
+              <p className="text-3xl font-bold text-foreground mb-1">{stats?.years_experience || '13'}</p>
               <p className="text-sm text-muted-foreground">Anos de experiência</p>
             </CardContent>
           </Card>
@@ -56,7 +74,7 @@ const SocialProof = () => {
               <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-3">
                 <TrendingUp className="w-6 h-6 text-primary" />
               </div>
-              <p className="text-3xl font-bold text-foreground mb-1">98%</p>
+              <p className="text-3xl font-bold text-foreground mb-1">{stats?.satisfaction_rate || '98'}%</p>
               <p className="text-sm text-muted-foreground">Taxa de satisfação</p>
             </CardContent>
           </Card>

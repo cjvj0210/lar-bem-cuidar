@@ -13,8 +13,26 @@ import Guarantees from "@/components/cro/Guarantees";
 import ComparisonTable from "@/components/cro/ComparisonTable";
 import heroImage from "@/assets/treatment-elderly-band.jpg";
 import robertaPortrait from "@/assets/roberta-profile.jpg";
+import { useQuery } from "@tanstack/react-query";
+import { supabase } from "@/integrations/supabase/client";
 
 const Home = () => {
+  const { data: stats } = useQuery({
+    queryKey: ['site-stats'],
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from('site_stats')
+        .select('stat_key, stat_value');
+      
+      if (error) throw error;
+      
+      return data.reduce((acc, stat) => {
+        acc[stat.stat_key] = stat.stat_value;
+        return acc;
+      }, {} as Record<string, string>);
+    }
+  });
+  
   const localBusinessSchema = {
     "@context": "https://schema.org",
     "@type": ["LocalBusiness", "MedicalBusiness", "Physiotherapist"],
@@ -63,10 +81,10 @@ const Home = () => {
     },
     "aggregateRating": {
       "@type": "AggregateRating",
-      "ratingValue": "5.0",
+      "ratingValue": stats?.google_rating || "5.0",
       "bestRating": "5",
       "worstRating": "1",
-      "reviewCount": "4"
+      "reviewCount": stats?.google_reviews_count || "6"
     },
     "sameAs": [
       "https://www.instagram.com/fisiorobertadomiciliar",
@@ -241,7 +259,7 @@ const Home = () => {
               <div className="inline-flex items-center space-x-2 bg-yellow-50 dark:bg-yellow-900/20 px-4 py-2 rounded-full">
                 <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
                 <span className="text-sm font-medium text-foreground">
-                  ⭐ 5.0 - 4 avaliações Google
+                  ⭐ {stats?.google_rating || '5.0'} - {stats?.google_reviews_count || '6'} avaliações Google
                 </span>
               </div>
 

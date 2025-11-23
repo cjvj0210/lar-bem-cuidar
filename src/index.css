@@ -244,5 +244,54 @@ All colors MUST be HSL.
       scroll-behavior: auto !important;
     }
   }
+
+  /* Blog Article Tables */
+  .article-content table {
+    @apply w-full border-collapse my-8 shadow-soft rounded-lg overflow-hidden;
+  }
+
+  .article-content thead {
+    @apply bg-primary text-primary-foreground;
+  }
+
+  .article-content thead th {
+    @apply px-6 py-4 text-left font-semibold text-sm uppercase tracking-wider border-r border-primary-foreground/20;
+  }
+
+  .article-content thead th:last-child {
+    @apply border-r-0;
+  }
+
+  .article-content tbody tr {
+    @apply border-b border-border hover:bg-muted/50 transition-colors;
+  }
+
+  .article-content tbody tr:last-child {
+    @apply border-b-0;
+  }
+
+  .article-content tbody td {
+    @apply px-6 py-4 text-sm border-r border-border/50;
+  }
+
+  .article-content tbody td:last-child {
+    @apply border-r-0;
+  }
+
+  .article-content tbody td:first-child {
+    @apply font-medium text-foreground;
+  }
+
+  /* Responsive tables */
+  @media (max-width: 768px) {
+    .article-content table {
+      @apply text-xs;
+    }
+
+    .article-content thead th,
+    .article-content tbody td {
+      @apply px-3 py-3;
+    }
+  }
 }
 

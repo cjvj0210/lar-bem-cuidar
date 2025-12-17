@@ -17,6 +17,7 @@ import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
 import Agendar from "./pages/Agendar";
 import Admin from "./pages/Admin";
+import Auth from "./pages/Auth";
 import NotFound from "./pages/NotFound";
 import FisioterapiaGeriatrica from "./pages/servicos/FisioterapiaGeriatrica";
 import FisioterapiaNeurologica from "./pages/servicos/FisioterapiaNeurologica";
@@ -79,6 +80,7 @@ const App = () => {
                 <Route path="/blog/categoria/:categoria" element={<Blog />} />
                 <Route path="/agendar" element={<Agendar />} />
                 <Route path="/admin" element={<Admin />} />
+                <Route path="/auth" element={<Auth />} />
                 {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                 <Route path="*" element={<NotFound />} />
               </Routes>

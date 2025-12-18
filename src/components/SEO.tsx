@@ -12,7 +12,7 @@ interface SEOProps {
 
 const SEO = ({ title, description, keywords, canonicalUrl, ogImage, schema, breadcrumbs }: SEOProps) => {
   const siteName = "Físio Roberta Domiciliar";
-  const siteUrl = "https://fisiorobertadomiciliar.com.br";
+  const siteUrl = "https://fisiorobertadomiciliar.com";
   const fullTitle = title.includes(siteName) ? title : `${title} | ${siteName}`;
   const defaultImage = `${siteUrl}/logo.png`;
   const finalCanonicalUrl = canonicalUrl || siteUrl;
@@ -74,7 +74,7 @@ const SEO = ({ title, description, keywords, canonicalUrl, ogImage, schema, brea
     "aggregateRating": {
       "@type": "AggregateRating",
       "ratingValue": "5.0",
-      "reviewCount": "4",
+      "reviewCount": "13",
       "bestRating": "5",
       "worstRating": "1"
     },

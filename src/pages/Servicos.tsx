@@ -9,7 +9,7 @@ const Servicos = () => {
         title="Serviços de Fisioterapia Domiciliar Barretos-SP"
         description="Serviços de fisioterapia domiciliar em Barretos-SP: geriátrica, neurológica, pós-operatória e respiratória. Atendimento personalizado. Agende sua avaliação!"
         keywords="fisioterapia geriátrica barretos, fisioterapia neurológica barretos, reabilitação pós-operatória barretos, fisioterapia ortopédica domiciliar"
-        canonicalUrl="https://fisiorobertadomiciliar.com.br/servicos"
+        canonicalUrl="https://fisiorobertadomiciliar.com/servicos"
         breadcrumbs={[
           { name: "Home", url: "/" },
           { name: "Serviços" }

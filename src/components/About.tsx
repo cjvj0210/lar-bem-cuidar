@@ -25,7 +25,7 @@ const About = () => {
               <img
                 src={robertaImage}
                 alt="Roberta Rocha - Fisioterapeuta especializada em atendimento domiciliar para idosos em Barretos-SP, com 13 anos de experiência em reabilitação geriátrica e neurológica"
-                className="rounded-xl shadow-lg w-full object-cover"
+                loading="lazy" className="rounded-xl shadow-lg w-full object-cover"
                 loading="lazy"
                 width="500"
                 height="600"

@@ -2,7 +2,7 @@ import { Phone, Mail, MapPin, Award, Clock, Share2, MessageCircle } from "lucide
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import SEO from "@/components/SEO";
-import profileImage from "@/assets/roberta-professional-clean.jpg";
+import profileImage from "@/assets/roberta-professional-clean.webp";
 import { FaWhatsapp, FaInstagram, FaFacebook } from "react-icons/fa";
 import { trackEvent } from "@/lib/analytics";
 
@@ -37,7 +37,7 @@ const CartaoVirtual = () => {
       <SEO 
         title="Cartão Virtual - Roberta Rocha Fisioterapeuta"
         description="Cartão virtual de Roberta Rocha, fisioterapeuta especializada em atendimento domiciliar em Barretos-SP. 13 anos de experiência."
-        canonicalUrl="https://fisiorobertadomiciliar.com.br/cartao-virtual"
+        canonicalUrl="https://fisiorobertadomiciliar.com/cartao-virtual"
       />
       
       <div className="min-h-screen bg-gradient-to-br from-background via-background to-primary/5 flex items-center justify-center p-4 pt-24 pb-8">

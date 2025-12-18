@@ -10,7 +10,7 @@ interface SocialShareProps {
 const SocialShare = ({ title, url }: SocialShareProps) => {
   const [copied, setCopied] = useState(false);
 
-  const shareUrl = `https://fisiorobertadomiciliar.com.br${url}`;
+  const shareUrl = `https://fisiorobertadomiciliar.com${url}`;
   const shareText = encodeURIComponent(title);
 
   const handleCopyLink = async () => {

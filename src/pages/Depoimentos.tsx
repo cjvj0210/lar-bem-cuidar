@@ -5,7 +5,7 @@ import Breadcrumb from "@/components/Breadcrumb";
 const Depoimentos = () => {
   const itemReviewed = {
     "@type": "LocalBusiness",
-    "@id": "https://fisiorobertadomiciliar.com.br/#organization",
+    "@id": "https://fisiorobertadomiciliar.com/#organization",
     "name": "Fisioterapia Domiciliar Roberta Ribeiro",
     "description": "Fisioterapia domiciliar especializada em Barretos-SP",
     "address": {
@@ -85,7 +85,7 @@ const Depoimentos = () => {
         title="Depoimentos - Fisioterapia Domiciliar Barretos-SP"
         description="Leia depoimentos reais de pacientes e familiares sobre a fisioterapia domiciliar em Barretos-SP. Histórias de recuperação e qualidade de vida."
         keywords="depoimentos fisioterapia barretos, avaliações fisioterapeuta domiciliar, testemunhos pacientes barretos"
-        canonicalUrl="https://fisiorobertadomiciliar.com.br/depoimentos"
+        canonicalUrl="https://fisiorobertadomiciliar.com/depoimentos"
         breadcrumbs={[
           { name: "Home", url: "/" },
           { name: "Depoimentos" }

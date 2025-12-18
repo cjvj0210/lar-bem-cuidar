@@ -247,7 +247,7 @@ const Home = () => {
         title="Fisioterapia Domiciliar em Barretos-SP | Roberta Rocha - 13 Anos de Experiência"
         description="Fisioterapia domiciliar premium em Barretos-SP. 13 anos de experiência em idosos, neurológica e pós-operatória. Atendimento personalizado. Agende agora!"
         keywords="fisioterapia domiciliar barretos, fisioterapeuta para idosos barretos, fisioterapia geriátrica barretos, reabilitação pós-operatória barretos, fisioterapia neurológica barretos"
-        canonicalUrl="https://fisiorobertadomiciliar.com.br/"
+        canonicalUrl="https://fisiorobertadomiciliar.com/"
         schema={[localBusinessSchema, faqSchema, personSchema, breadcrumbSchema]}
       />
       {/* Hero Section */}
@@ -315,6 +315,10 @@ const Home = () => {
                 alt="Fisioterapeuta Roberta Rocha atendendo paciente idosa com exercícios em Barretos-SP"
                 className="relative rounded-3xl shadow-elegant w-full h-auto object-cover"
                 loading="eager"
+                width={600}
+                height={400}
+                fetchPriority="high"
+                decoding="async"
               />
             </div>
           </div>

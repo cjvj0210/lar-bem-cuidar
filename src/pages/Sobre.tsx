@@ -19,7 +19,7 @@ const Sobre = () => {
       "addressCountry": "BR"
     },
     "telephone": "+55-17-98212-3269",
-    "url": "https://fisiorobertadomiciliar.com.br",
+    "url": "https://fisiorobertadomiciliar.com",
     "sameAs": [
       "https://www.instagram.com/fisiorobertadomiciliar/",
       "https://www.facebook.com/profile.php?id=61553900038660"
@@ -42,7 +42,7 @@ const Sobre = () => {
         title="Sobre Roberta Rocha - Fisioterapeuta Barretos-SP"
         description="Conheça Roberta Rocha, fisioterapeuta com 13 anos de experiência em Barretos-SP. Especialista em atendimento domiciliar para idosos e reabilitação. Agende sua avaliação!"
         keywords="fisioterapeuta barretos, roberta rocha fisioterapeuta, especialista em idosos barretos, fisioterapia domiciliar"
-        canonicalUrl="https://fisiorobertadomiciliar.com.br/sobre"
+        canonicalUrl="https://fisiorobertadomiciliar.com/sobre"
         breadcrumbs={[
           { name: "Home", url: "/" },
           { name: "Sobre" }

@@ -10,7 +10,7 @@ import { Activity, Shield, TrendingUp, Heart, CheckCircle2, Phone, Quote, Star, 
 import { Link } from "react-router-dom";
 import SEO from "@/components/SEO";
 import Breadcrumb from "@/components/Breadcrumb";
-const posOperatorioImage = "/images/paciente-pos-cirurgia-andador.jpg";
+const posOperatorioImage = "/images/paciente-pos-cirurgia-andador.webp";
 
 const ReabilitacaoPosOperatoria = () => {
   const serviceSchema = {
@@ -36,7 +36,7 @@ const ReabilitacaoPosOperatoria = () => {
         title="Reabilitação Pós-Operatória Domiciliar em Barretos | Fisioterapia Pós-Cirurgia"
         description="Fisioterapia pós-operatória em casa em Barretos-SP. Próteses, fraturas, cirurgias ortopédicas. Recuperação segura. Agende: (17) 98212-3269"
         keywords="fisioterapia pós-operatória barretos, reabilitação pós-cirurgia barretos, fisioterapia prótese quadril barretos, fisioterapia prótese joelho barretos"
-        canonicalUrl="https://fisiorobertadomiciliar.com.br/servicos/reabilitacao-pos-operatoria"
+        canonicalUrl="https://fisiorobertadomiciliar.com/servicos/reabilitacao-pos-operatoria"
         breadcrumbs={[
           { name: "Home", url: "/" },
           { name: "Serviços", url: "/servicos" },
@@ -97,7 +97,7 @@ const ReabilitacaoPosOperatoria = () => {
                 <img
                   src={posOperatorioImage}
                   alt="Reabilitação pós-operatória domiciliar em Barretos - Paciente com andador"
-                  className="rounded-3xl shadow-elegant w-full h-auto object-cover"
+                  loading="lazy" className="rounded-3xl shadow-elegant w-full h-auto object-cover"
                 />
               </div>
             </div>

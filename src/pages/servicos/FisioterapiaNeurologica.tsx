@@ -10,7 +10,7 @@ import { Brain, Activity, Target, TrendingUp, CheckCircle2, Phone, Quote, Star, 
 import { Link } from "react-router-dom";
 import SEO from "@/components/SEO";
 import Breadcrumb from "@/components/Breadcrumb";
-import avCImage from "@/assets/reabilitacao-avc.jpg";
+import avCImage from "@/assets/reabilitacao-avc.webp";
 
 const FisioterapiaNeurologica = () => {
   const serviceSchema = {
@@ -36,7 +36,7 @@ const FisioterapiaNeurologica = () => {
         title="Fisioterapia Neurológica Domiciliar em Barretos | AVC, Parkinson, Alzheimer"
         description="Reabilitação neurológica em casa em Barretos-SP. Especialista em AVC, Parkinson, Alzheimer. Atendimento humanizado. WhatsApp: (17) 98212-3269"
         keywords="fisioterapia neurologica barretos, reabilitação avc barretos, fisioterapia parkinson barretos, fisioterapia alzheimer barretos"
-        canonicalUrl="https://fisiorobertadomiciliar.com.br/servicos/fisioterapia-neurologica"
+        canonicalUrl="https://fisiorobertadomiciliar.com/servicos/fisioterapia-neurologica"
         breadcrumbs={[
           { name: "Home", url: "/" },
           { name: "Serviços", url: "/servicos" },
@@ -97,7 +97,7 @@ const FisioterapiaNeurologica = () => {
                 <img
                   src={avCImage}
                   alt="Fisioterapia neurológica domiciliar em Barretos - Reabilitação de AVC"
-                  className="rounded-3xl shadow-elegant w-full h-auto object-cover"
+                  loading="lazy" className="rounded-3xl shadow-elegant w-full h-auto object-cover"
                 />
               </div>
             </div>

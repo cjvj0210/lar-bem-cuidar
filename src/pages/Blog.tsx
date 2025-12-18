@@ -117,7 +117,7 @@ const Blog = () => {
         title={categoria ? `${selectedCategory} - Blog Fisioterapia Barretos-SP` : "Blog de Fisioterapia - Dicas e Informações | Barretos-SP"}
         description="Artigos sobre fisioterapia domiciliar, cuidados com idosos e reabilitação em Barretos-SP. Dicas práticas da fisioterapeuta Roberta Rocha. Leia agora!"
         keywords="blog fisioterapia barretos, artigos fisioterapia, dicas cuidados idosos, reabilitação domiciliar"
-        canonicalUrl={categoria ? `https://fisiorobertadomiciliar.com.br/blog/categoria/${categoria}` : "https://fisiorobertadomiciliar.com.br/blog"}
+        canonicalUrl={categoria ? `https://fisiorobertadomiciliar.com/blog/categoria/${categoria}` : "https://fisiorobertadomiciliar.com/blog"}
       />
       <Breadcrumb items={categoria 
         ? [{ label: "Blog", href: "/blog" }, { label: selectedCategory }]

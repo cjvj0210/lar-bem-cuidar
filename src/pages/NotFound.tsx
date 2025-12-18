@@ -9,7 +9,7 @@ const NotFound = () => {
       <SEO 
         title="Página não encontrada - 404"
         description="A página que você procura não existe. Volte para a página inicial da Fisioterapia Domiciliar Barretos-SP."
-        canonicalUrl="https://fisiorobertadomiciliar.com.br/404"
+        canonicalUrl="https://fisiorobertadomiciliar.com/404"
       />
       <div className="flex min-h-screen items-center justify-center bg-background px-4">
         <div className="text-center max-w-md animate-fade-in">

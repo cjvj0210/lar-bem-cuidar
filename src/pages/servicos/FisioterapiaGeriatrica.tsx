@@ -10,7 +10,7 @@ import { Heart, Shield, TrendingUp, Activity, CheckCircle2, Phone, Quote, Star, 
 import { Link } from "react-router-dom";
 import SEO from "@/components/SEO";
 import Breadcrumb from "@/components/Breadcrumb";
-import idosoImage from "@/assets/treatment-elderly-band.jpg";
+import idosoImage from "@/assets/treatment-elderly-band.webp";
 
 const FisioterapiaGeriatrica = () => {
   const serviceSchema = {
@@ -63,7 +63,7 @@ const FisioterapiaGeriatrica = () => {
         title="Fisioterapia Geriátrica Domiciliar em Barretos-SP | Roberta Rocha"
         description="Fisioterapia para idosos em casa em Barretos. Prevenção de quedas, fortalecimento muscular, mobilidade. 13 anos de experiência. Agende: (17) 98212-3269"
         keywords="fisioterapia geriátrica barretos, fisioterapia para idosos barretos, prevenção de quedas barretos, fisioterapeuta domiciliar idosos"
-        canonicalUrl="https://fisiorobertadomiciliar.com.br/servicos/fisioterapia-geriatrica"
+        canonicalUrl="https://fisiorobertadomiciliar.com/servicos/fisioterapia-geriatrica"
         breadcrumbs={[
           { name: "Home", url: "/" },
           { name: "Serviços", url: "/servicos" },
@@ -125,7 +125,7 @@ const FisioterapiaGeriatrica = () => {
                 <img
                   src={idosoImage}
                   alt="Fisioterapia geriátrica domiciliar em Barretos - Idosa realizando exercícios"
-                  className="rounded-3xl shadow-elegant w-full h-auto object-cover"
+                  loading="lazy" className="rounded-3xl shadow-elegant w-full h-auto object-cover"
                 />
               </div>
             </div>

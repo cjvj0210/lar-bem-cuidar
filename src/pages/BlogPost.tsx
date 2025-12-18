@@ -114,25 +114,25 @@ const BlogPost = () => {
     "@type": "Article",
     "headline": post.title,
     "description": post.subtitle || post.content.substring(0, 155),
-    "image": post.image_url || "https://fisiorobertadomiciliar.com.br/logo.png",
+    "image": post.image_url || "https://fisiorobertadomiciliar.com/logo.png",
     "author": {
       "@type": "Person",
       "name": "Roberta Rocha",
-      "url": "https://fisiorobertadomiciliar.com.br/sobre"
+      "url": "https://fisiorobertadomiciliar.com/sobre"
     },
     "publisher": {
       "@type": "Organization",
       "name": "Físio Roberta Domiciliar",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://fisiorobertadomiciliar.com.br/logo.png"
+        "url": "https://fisiorobertadomiciliar.com/logo.png"
       }
     },
     "datePublished": post.created_at,
     "dateModified": post.created_at,
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id": `https://fisiorobertadomiciliar.com.br/blog/${post.slug}`
+      "@id": `https://fisiorobertadomiciliar.com/blog/${post.slug}`
     }
   };
 
@@ -142,7 +142,7 @@ const BlogPost = () => {
         title={`${post.title} - Blog Fisioterapia Barretos-SP`}
         description={post.subtitle || post.content.substring(0, 155)}
         keywords={`${post.category}, fisioterapia domiciliar barretos, blog fisioterapia, dicas cuidados idosos`}
-        canonicalUrl={`https://fisiorobertadomiciliar.com.br/blog/${post.slug}`}
+        canonicalUrl={`https://fisiorobertadomiciliar.com/blog/${post.slug}`}
       />
       
       {/* Article Schema */}

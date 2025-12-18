@@ -11,8 +11,8 @@ import UrgencyBanner from "@/components/cro/UrgencyBanner";
 import SocialProof from "@/components/cro/SocialProof";
 import Guarantees from "@/components/cro/Guarantees";
 import ComparisonTable from "@/components/cro/ComparisonTable";
-import heroImage from "@/assets/treatment-elderly-band.jpg";
-import robertaPortrait from "@/assets/roberta-profile.jpg";
+import heroImage from "@/assets/treatment-elderly-band.webp";
+import robertaPortrait from "@/assets/roberta-profile.webp";
 import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 

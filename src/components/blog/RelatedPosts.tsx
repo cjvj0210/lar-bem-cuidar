@@ -56,10 +56,11 @@ const RelatedPosts = ({ currentSlug, category }: RelatedPostsProps) => {
                   <img
                     src={post.image_url}
                     alt={post.title}
-                    loading="lazy" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                     loading="lazy"
-                    width="400"
-                    height="300"
+                    width={400}
+                    height={300}
+                    decoding="async"
                   />
                 </div>
               )}

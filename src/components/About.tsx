@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { Heart, Brain, Home, Users, Award } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import robertaImage from "@/assets/roberta-profile.jpg";
+import robertaImage from "@/assets/roberta-profile.webp";
 import { trackWhatsAppClick } from "@/lib/analytics";
 
 const About = () => {
@@ -25,10 +25,11 @@ const About = () => {
               <img
                 src={robertaImage}
                 alt="Roberta Rocha - Fisioterapeuta especializada em atendimento domiciliar para idosos em Barretos-SP, com 13 anos de experiência em reabilitação geriátrica e neurológica"
-                loading="lazy" className="rounded-xl shadow-lg w-full object-cover"
+                className="rounded-xl shadow-lg w-full object-cover"
                 loading="lazy"
-                width="500"
-                height="600"
+                width={500}
+                height={600}
+                decoding="async"
               />
             </div>
           </div>

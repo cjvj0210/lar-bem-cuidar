@@ -30,7 +30,7 @@ import {
 import { Card, CardContent } from "@/components/ui/card";
 import { toast } from "@/hooks/use-toast";
 import SEO from "@/components/SEO";
-import robertaProfile from "@/assets/roberta-profile.jpg";
+import robertaProfile from "@/assets/roberta-profile.webp";
 import { trackPhoneClick } from "@/lib/analytics";
 
 const formSchema = z.object({
@@ -155,6 +155,10 @@ const Agendar = () => {
                     src={robertaProfile}
                     alt="Fisioterapeuta Roberta Rocha atendendo paciente em Barretos"
                     className="rounded-lg shadow-elegant w-full object-cover aspect-[4/3]"
+                    loading="lazy"
+                    width={640}
+                    height={480}
+                    decoding="async"
                   />
                   <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 bg-background border border-border rounded-full px-6 py-3 shadow-lg">
                     <div className="flex items-center gap-2">

@@ -14,7 +14,7 @@ const SEO = ({ title, description, keywords, canonicalUrl, ogImage, schema, brea
   const siteName = "Físio Roberta Domiciliar";
   const siteUrl = "https://fisiorobertadomiciliar.com";
   const fullTitle = title.includes(siteName) ? title : `${title} | ${siteName}`;
-  const defaultImage = `${siteUrl}/logo.png`;
+  const defaultImage = `${siteUrl}/logo.webp`;
   const finalCanonicalUrl = canonicalUrl || siteUrl;
 
   // Breadcrumb Schema

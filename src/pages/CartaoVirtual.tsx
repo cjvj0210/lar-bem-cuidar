@@ -62,6 +62,10 @@ const CartaoVirtual = () => {
                     src={profileImage}
                     alt="Roberta Rocha"
                     className="w-32 h-32 rounded-full object-cover border-4 border-background shadow-lg"
+                    loading="lazy"
+                    width={128}
+                    height={128}
+                    decoding="async"
                   />
                   <div className="absolute -bottom-2 -right-2 bg-background rounded-full p-2 shadow-md">
                     <Award className="h-6 w-6 text-primary" />
@@ -192,8 +196,8 @@ const CartaoVirtual = () => {
               </Button>
               
               <a
-                href="/images/cartao-virtual-roberta-hd.jpg"
-                download="cartao-roberta-rocha.jpg"
+                href="/images/cartao-virtual-roberta-hd.webp"
+                download="cartao-roberta-rocha.webp"
                 className="block w-full"
               >
                 <Button

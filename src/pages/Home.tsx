@@ -39,8 +39,8 @@ const Home = () => {
     "name": "Roberta Rocha - Fisioterapia Domiciliar",
     "alternateName": "Físio Roberta Domiciliar",
     "description": "Fisioterapia domiciliar premium em Barretos-SP. Especializada em atendimento para idosos, reabilitação pós-operatória e fisioterapia neurológica. 13 anos de experiência com atendimento humanizado de 50 minutos.",
-    "image": "https://www.fisiorobertadomiciliar.com/logo.png",
-    "logo": "https://www.fisiorobertadomiciliar.com/logo.png",
+    "image": "https://www.fisiorobertadomiciliar.com/logo.webp",
+    "logo": "https://www.fisiorobertadomiciliar.com/logo.webp",
     "url": "https://www.fisiorobertadomiciliar.com",
     "telephone": "+5517982123269",
     "email": "fisiorobertarochadomiciliar@gmail.com",
@@ -345,6 +345,9 @@ const Home = () => {
                 alt="Roberta Rocha - Fisioterapeuta especializada em atendimento domiciliar em Barretos-SP"
                 className="relative rounded-3xl shadow-elegant w-full h-auto object-cover"
                 loading="lazy"
+                width={640}
+                height={640}
+                decoding="async"
               />
             </div>
 

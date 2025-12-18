@@ -125,7 +125,11 @@ const FisioterapiaGeriatrica = () => {
                 <img
                   src={idosoImage}
                   alt="Fisioterapia geriátrica domiciliar em Barretos - Idosa realizando exercícios"
-                  loading="lazy" className="rounded-3xl shadow-elegant w-full h-auto object-cover"
+                  className="rounded-3xl shadow-elegant w-full h-auto object-cover"
+                  loading="lazy"
+                  width={640}
+                  height={360}
+                  decoding="async"
                 />
               </div>
             </div>

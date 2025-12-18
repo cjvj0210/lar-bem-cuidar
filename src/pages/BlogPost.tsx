@@ -114,7 +114,7 @@ const BlogPost = () => {
     "@type": "Article",
     "headline": post.title,
     "description": post.subtitle || post.content.substring(0, 155),
-    "image": post.image_url || "https://fisiorobertadomiciliar.com/logo.png",
+    "image": post.image_url || "https://fisiorobertadomiciliar.com/logo.webp",
     "author": {
       "@type": "Person",
       "name": "Roberta Rocha",
@@ -125,7 +125,7 @@ const BlogPost = () => {
       "name": "Físio Roberta Domiciliar",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://fisiorobertadomiciliar.com/logo.png"
+        "url": "https://fisiorobertadomiciliar.com/logo.webp"
       }
     },
     "datePublished": post.created_at,

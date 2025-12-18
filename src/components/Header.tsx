@@ -16,9 +16,13 @@ const Header = () => {
         <div className="flex items-center justify-between">
           <Link to="/" className="flex items-center space-x-2 hover:opacity-80 transition-smooth" aria-label="Voltar para página inicial">
             <img 
-              src="/logo.png" 
+              src="/logo.webp" 
               alt="Logo Roberta Rocha Fisioterapeuta" 
               className="w-16 h-16 md:w-20 md:h-20 object-contain"
+              width={80}
+              height={80}
+              loading="eager"
+              decoding="async"
             />
             <div>
               <h1 className="text-xl md:text-2xl font-bold text-foreground">Físio Roberta</h1>

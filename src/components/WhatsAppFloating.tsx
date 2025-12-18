@@ -6,7 +6,7 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { trackWhatsAppClick } from "@/lib/analytics";
-import whatsappIcon from "@/assets/whatsapp-icon.jpg";
+import whatsappIcon from "@/assets/whatsapp-icon.webp";
 
 const WhatsAppFloating = () => {
   const whatsappNumber = "5517982123269";
@@ -35,6 +35,10 @@ const WhatsAppFloating = () => {
               alt="WhatsApp" 
               className="w-full h-full object-cover"
               aria-hidden="true"
+              width={60}
+              height={60}
+              loading="lazy"
+              decoding="async"
             />
           </Button>
         </TooltipTrigger>

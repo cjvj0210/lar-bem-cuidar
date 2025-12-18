@@ -10,9 +10,13 @@ const Footer = () => {
           <div>
             <div className="flex items-center space-x-2 mb-4">
               <img 
-                src="/logo.png" 
+                src="/logo.webp" 
                 alt="Logo Roberta Rocha Fisioterapeuta" 
                 className="w-12 h-12 object-contain"
+                width={48}
+                height={48}
+                loading="lazy"
+                decoding="async"
               />
               <div>
                 <h3 className="font-bold">Físio Roberta</h3>

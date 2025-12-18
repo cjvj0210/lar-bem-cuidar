@@ -97,7 +97,11 @@ const ReabilitacaoPosOperatoria = () => {
                 <img
                   src={posOperatorioImage}
                   alt="Reabilitação pós-operatória domiciliar em Barretos - Paciente com andador"
-                  loading="lazy" className="rounded-3xl shadow-elegant w-full h-auto object-cover"
+                  className="rounded-3xl shadow-elegant w-full h-auto object-cover"
+                  loading="lazy"
+                  width={640}
+                  height={360}
+                  decoding="async"
                 />
               </div>
             </div>

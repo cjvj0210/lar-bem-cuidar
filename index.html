@@ -69,8 +69,218 @@
     <meta name="twitter:description" content="Fisioterapia especializada no conforto do seu lar" />
     <meta name="twitter:image" content="/logo.png" />
     
-    <link rel="canonical" href="https://fisiorobertadomiciliar.com.br/" />
+    <link rel="canonical" href="https://www.fisiorobertadomiciliar.com/" />
     <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
+    
+    <!-- Schema.org JSON-LD para Agentic Discovery (AEO) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "MedicalBusiness",
+          "@id": "https://www.fisiorobertadomiciliar.com/#organization",
+          "name": "Físio Roberta Domiciliar",
+          "alternateName": "Fisioterapia Domiciliar Roberta Rocha",
+          "description": "Fisioterapia domiciliar especializada em idosos e pacientes neurológicos em Barretos-SP. Atendimento humanizado no conforto do seu lar com 13 anos de experiência.",
+          "url": "https://www.fisiorobertadomiciliar.com",
+          "logo": "https://www.fisiorobertadomiciliar.com/logo.png",
+          "image": "https://www.fisiorobertadomiciliar.com/assets/roberta-profile-CJBxKm4g.webp",
+          "telephone": "+55-17-98212-3269",
+          "priceRange": "$$",
+          "currenciesAccepted": "BRL",
+          "paymentAccepted": "Dinheiro, PIX, Cartão de Crédito, Cartão de Débito",
+          "medicalSpecialty": ["Physiotherapy", "Geriatric", "Neurological"],
+          "areaServed": {
+            "@type": "GeoCircle",
+            "geoMidpoint": {
+              "@type": "GeoCoordinates",
+              "latitude": -20.5575,
+              "longitude": -48.5678
+            },
+            "geoRadius": "30000"
+          },
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Barretos",
+            "addressRegion": "SP",
+            "addressCountry": "BR",
+            "postalCode": "14780-000"
+          },
+          "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": -20.5575,
+            "longitude": -48.5678
+          },
+          "openingHoursSpecification": [
+            {
+              "@type": "OpeningHoursSpecification",
+              "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+              "opens": "08:00",
+              "closes": "18:00"
+            },
+            {
+              "@type": "OpeningHoursSpecification",
+              "dayOfWeek": "Saturday",
+              "opens": "08:00",
+              "closes": "12:00"
+            }
+          ],
+          "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "5.0",
+            "reviewCount": "13",
+            "bestRating": "5",
+            "worstRating": "1"
+          },
+          "sameAs": [
+            "https://www.instagram.com/fisio.robertarocha/",
+            "https://www.facebook.com/fisiorobertadomiciliar"
+          ],
+          "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Serviços de Fisioterapia Domiciliar",
+            "itemListElement": [
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Fisioterapia Geriátrica",
+                  "description": "Prevenção de quedas, fortalecimento muscular e manutenção da autonomia para idosos"
+                }
+              },
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Fisioterapia Neurológica",
+                  "description": "Reabilitação de AVC, Parkinson, Alzheimer e outras condições neurológicas"
+                }
+              },
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Fisioterapia Ortopédica",
+                  "description": "Recuperação pós-operatória, fraturas, próteses e condições musculoesqueléticas"
+                }
+              },
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Fisioterapia Respiratória",
+                  "description": "Melhora da capacidade pulmonar e tratamento de condições respiratórias"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "@type": "Person",
+          "@id": "https://www.fisiorobertadomiciliar.com/#person",
+          "name": "Roberta Rocha",
+          "jobTitle": "Fisioterapeuta",
+          "description": "Fisioterapeuta com 13 anos de experiência em Barretos-SP, especializada em fisioterapia domiciliar para idosos e pacientes neurológicos.",
+          "image": "https://www.fisiorobertadomiciliar.com/assets/roberta-profile-CJBxKm4g.webp",
+          "telephone": "+55-17-98212-3269",
+          "worksFor": {
+            "@id": "https://www.fisiorobertadomiciliar.com/#organization"
+          },
+          "hasCredential": {
+            "@type": "EducationalOccupationalCredential",
+            "credentialCategory": "Professional License",
+            "recognizedBy": {
+              "@type": "Organization",
+              "name": "CREFITO-3"
+            },
+            "identifier": "189269-F"
+          },
+          "knowsAbout": [
+            "Fisioterapia Geriátrica",
+            "Fisioterapia Neurológica",
+            "Fisioterapia Respiratória",
+            "Reabilitação Pós-AVC",
+            "Prevenção de Quedas em Idosos",
+            "Doença de Parkinson",
+            "Doença de Alzheimer"
+          ],
+          "sameAs": ["https://www.instagram.com/fisio.robertarocha/"]
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://www.fisiorobertadomiciliar.com/#website",
+          "url": "https://www.fisiorobertadomiciliar.com",
+          "name": "Físio Roberta Domiciliar",
+          "description": "Site oficial da Fisioterapeuta Roberta Rocha - Fisioterapia Domiciliar em Barretos-SP",
+          "publisher": {
+            "@id": "https://www.fisiorobertadomiciliar.com/#organization"
+          },
+          "inLanguage": "pt-BR"
+        },
+        {
+          "@type": "WebPage",
+          "@id": "https://www.fisiorobertadomiciliar.com/#webpage",
+          "url": "https://www.fisiorobertadomiciliar.com",
+          "name": "Fisioterapia Domiciliar em Barretos-SP | Roberta Rocha - 13 Anos de Experiência",
+          "description": "Fisioterapia domiciliar em Barretos-SP para idosos. Atendimento personalizado: geriátrica, neurológica e pós-operatória. Agende sua avaliação.",
+          "isPartOf": {
+            "@id": "https://www.fisiorobertadomiciliar.com/#website"
+          },
+          "about": {
+            "@id": "https://www.fisiorobertadomiciliar.com/#organization"
+          },
+          "inLanguage": "pt-BR"
+        },
+        {
+          "@type": "FAQPage",
+          "@id": "https://www.fisiorobertadomiciliar.com/#faq",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "Como funciona o atendimento de fisioterapia domiciliar?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "O atendimento domiciliar é realizado na casa do paciente, em horários flexíveis. A fisioterapeuta leva todos os equipamentos necessários e realiza avaliação individualizada para criar um plano personalizado de tratamento focado nas necessidades específicas de cada paciente."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Quanto custa a fisioterapia domiciliar em Barretos?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Os valores variam de acordo com o tipo de tratamento, frequência das sessões e necessidades específicas de cada paciente. Oferecemos diferentes opções de frequência e condições facilitadas de pagamento. Entre em contato via WhatsApp (17) 98212-3269 para receber informações personalizadas."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Quais condições são tratadas pela fisioterapia domiciliar?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Atendemos principalmente idosos com dificuldade de locomoção, pacientes em reabilitação pós-operatória, sequelas de AVC, Parkinson, Alzheimer, condições ortopédicas (fraturas, próteses) e respiratórias."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Qual a área de atendimento da fisioterapia domiciliar?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Atendemos em Barretos-SP e cidades próximas em um raio de aproximadamente 30km do centro da cidade."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Qual a duração de uma sessão de fisioterapia domiciliar?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Cada sessão de fisioterapia domiciliar tem duração de 50 minutos, tempo adequado para um atendimento completo, personalizado e atencioso."
+              }
+            }
+          ]
+        }
+      ]
+    }
+    </script>
   </head>
 
   <body>

@@ -1,6 +1,64 @@
+# Robots.txt - Físio Roberta Domiciliar
+# Otimizado para SEO tradicional e Agentic Discovery (AEO)
+
+# Regras gerais
 User-agent: *
 Allow: /
 Disallow: /admin/
 Disallow: /obrigado
 
+# Sitemap
 Sitemap: https://www.fisiorobertadomiciliar.com/sitemap.xml
+
+# LLMs.txt para agentes de IA
+# https://www.fisiorobertadomiciliar.com/llms.txt
+
+# ============================================
+# PERMISSÕES PARA CRAWLERS DE IA
+# ============================================
+
+# OpenAI (ChatGPT)
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+# Anthropic (Claude)
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+# Google (Gemini/Bard)
+User-agent: Google-Extended
+Allow: /
+
+# Perplexity AI
+User-agent: PerplexityBot
+Allow: /
+
+# Microsoft (Copilot/Bing)
+User-agent: Bingbot
+Allow: /
+
+# Common Crawl (usado por muitos LLMs)
+User-agent: CCBot
+Allow: /
+
+# Amazon (Alexa)
+User-agent: Amazonbot
+Allow: /
+
+# Meta AI
+User-agent: FacebookBot
+Allow: /
+
+# Apple (Siri)
+User-agent: Applebot
+Allow: /
+
+# Cohere AI
+User-agent: cohere-ai
+Allow: /
